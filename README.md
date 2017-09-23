@@ -5,6 +5,7 @@ The game will be based on battling bosses and minions, gathering upgrades and pa
 The project will be written in java
 
 Project Members:
+
 Hakan Sarp Aydemir
 
 Berk Mandıracıoğlu
