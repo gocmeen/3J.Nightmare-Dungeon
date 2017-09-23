@@ -6,6 +6,9 @@ The project will be written in java
 
 Project Members:
 Hakan Sarp Aydemir
+
 Berk Mandıracıoğlu
+
 Mehmet Oğuz Göçmen
+
 Hüseyin Emre Başar
