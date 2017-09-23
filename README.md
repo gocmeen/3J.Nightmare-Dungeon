@@ -3,15 +3,15 @@
 
 # Nightmare Dungeon.
 
-CS319 Object Oriented Software Engineering Fall'17
+*CS319 Object Oriented Software Engineering Fall'17*
 
-Instructor: Bora Güngören
+**Instructor:** Bora Güngören
 
-Section 3 - Group 3J
+*Section 3 - Group 3J*
 
 ### Project Description
 
-Our cs-319 project will be a video game called "nightmare dungeon(sıktım)". 
+Our cs-319 project will be a video game called "nightmare dungeon". 
 Nightmare Dungeon will run on desktop. The genre of Nightmare Dungeon is dungeon crawler/rogue-like and it is a 2d game. 
 The game will be based on battling bosses and minions, gathering upgrades, finding items and passing levels. 
 The project will be written in java
@@ -25,4 +25,4 @@ The project will be written in java
 
 * [Mehmet Oğuz Göçmen](https://github.com/Gocmeen)
 
-* [Hüseyin Emre Başar]
+* [Hüseyin Emre Başar](https://github.com/eemrebasar)
