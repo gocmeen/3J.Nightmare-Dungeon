@@ -23,6 +23,6 @@ The project will be written in java
 
 * [Berk Mandıracıoğlu](https://github.com/BerkMandiracioglu)
 
-* [Mehmet Oğuz Göçmen]
+* [Mehmet Oğuz Göçmen](https://github.com/Gocmeen)
 
 * [Hüseyin Emre Başar]
