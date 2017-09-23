@@ -3,11 +3,11 @@
 
 # Nightmare Dungeon.
 
-CS319 Object Oriented Software Engineering Fall'17
+*CS319 Object Oriented Software Engineering Fall'17*
 
-Instructor: Bora Güngören
+*Instructor:* Bora Güngören
 
-Section 3 - Group 3J
+*Section 3 - Group 3J*
 
 ### Project Description
 
