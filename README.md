@@ -18,10 +18,10 @@ The project will be written in java
 
 #### Project Members:
 
-⋅⋅* [Hakan Sarp Aydemir](https://github.com/hsarpaydemir)
+* [Hakan Sarp Aydemir](https://github.com/hsarpaydemir)
 
-⋅⋅* [Berk Mandıracıoğlu]
+* [Berk Mandıracıoğlu](https://github.com/BerkMandiracioglu)
 
-⋅⋅* [Mehmet Oğuz Göçmen]
+* [Mehmet Oğuz Göçmen]
 
-⋅⋅* [Hüseyin Emre Başar]
+* [Hüseyin Emre Başar]
