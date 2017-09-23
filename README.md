@@ -16,12 +16,13 @@ Nightmare Dungeon will run on desktop. The genre of Nightmare Dungeon is dungeon
 The game will be based on battling bosses and minions, gathering upgrades, finding items and passing levels. 
 The project will be written in java
 
-Project Members:
+#### Project Members:
 
-[Hakan Sarp Aydemir](https://github.com/hsarpaydemir)
 
-Berk Mandıracıoğlu
+* [Hakan Sarp Aydemir](https://github.com/hsarpaydemir)
 
-Mehmet Oğuz Göçmen
+* [Berk Mandıracıoğlu](https://github.com/BerkMandiracioglu)
 
-Hüseyin Emre Başar
+* [Mehmet Oğuz Göçmen]
+
+* [Hüseyin Emre Başar]
