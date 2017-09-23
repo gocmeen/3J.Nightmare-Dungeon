@@ -18,7 +18,7 @@ The project will be written in java
 
 Project Members:
 
-Hakan Sarp Aydemir
+[Hakan Sarp Aydemir](https://github.com/hsarpaydemir)
 
 Berk Mandıracıoğlu
 
