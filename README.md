@@ -25,4 +25,4 @@ The project will be written in java
 
 * [Mehmet Oğuz Göçmen](https://github.com/Gocmeen)
 
-* [Hüseyin Emre Başar]
+* [Hüseyin Emre Başar](https://github.com/eemrebasar)
