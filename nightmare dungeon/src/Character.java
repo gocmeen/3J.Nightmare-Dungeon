@@ -14,6 +14,9 @@ public class Character extends Entity{
     protected boolean alive;
     protected int projectileCount;
     protected String name;
+    protected static final String playerLeft1="asdsd.png";
+    protected static final String playerLeft2="asdsd.png";
+    protected static final String playerLeft3="asdsd.png";
     public Character(int x, int y, int typeID,int width, int height, int health , int speed, int attackDamage, int attackSpeed){
         super(x,y,typeID,width,height);
         this.health = health ;
@@ -25,8 +28,8 @@ public class Character extends Entity{
 
     }
     public void move(){
-        x += directionX * speed ;
-        y += directionY * speed ;
+        x += directionX * speed/2 ;
+        y += directionY * speed/2 ;
     }
     public void attack(){
         //attack yapılacak
@@ -90,5 +93,6 @@ public class Character extends Entity{
     public int getSpeed() {
         return speed;
     }
-}
 
+
+}

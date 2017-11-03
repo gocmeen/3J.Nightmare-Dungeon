@@ -2,7 +2,7 @@
  * Created by wifinaynay on 01/11/17.
  */
 import java.util.ArrayList;
-public class Room {
+public class Room{
     private ArrayList<Monster> monsterList;
     private int id;
     private int width, height;
