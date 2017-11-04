@@ -4,12 +4,14 @@
 
 import java.awt.Graphics; //these will be changed
 import java.awt.Rectangle;
+import java.util.ArrayList;
 public class Character extends Entity{
 
     protected int health;
     protected int speed;
-    protected int directionX, directionY;
+    protected double directionX, directionY;
     protected int attackDamage,attackSpeed;
+    protected ArrayList<Projectile> projectile;
     //image olacak
     protected boolean alive;
     protected int projectileCount;
@@ -25,11 +27,12 @@ public class Character extends Entity{
         this.directionY = 0;
         this.attackDamage=attackDamage;
         this.attackSpeed=attackSpeed;
+        projectile = new ArrayList<Projectile>();
 
     }
     public void move(){
-        x += directionX * speed/2 ;
-        y += directionY * speed/2 ;
+        x += directionX * speed ;
+        y += directionY * speed ;
     }
     public void attack(){
         //attack yapılacak
@@ -49,11 +52,11 @@ public class Character extends Entity{
         return name;
     }
 
-    public int getDirectionX() {
+    public double getDirectionX() {
         return directionX;
     }
 
-    public int getDirectionY() {
+    public double getDirectionY() {
         return directionY;
     }
 
@@ -70,7 +73,7 @@ public class Character extends Entity{
         this.attackDamage = attackDamage;
     }
 
-    public void setDirectionX(int directionX) {
+    public void setDirectionX(double directionX) {
         this.directionX = directionX;
     }
 
@@ -78,7 +81,7 @@ public class Character extends Entity{
         this.attackSpeed = attackSpeed;
     }
 
-    public void setDirectionY(int directionY) {
+    public void setDirectionY(double directionY) {
         this.directionY = directionY;
     }
 
@@ -92,6 +95,16 @@ public class Character extends Entity{
 
     public int getSpeed() {
         return speed;
+    }
+    public void attack(int x, int y, int dirX, int dirY) //x and y are directions
+    {
+        if(projectile.size()<20)
+        projectile.add(new Projectile(1,1,x,y,1,1,dirX,dirY));
+
+    }
+    public void addProjectile(Projectile p)
+    {
+        projectile.add(p);
     }
 
 
