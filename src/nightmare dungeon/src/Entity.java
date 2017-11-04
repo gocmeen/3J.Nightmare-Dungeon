@@ -1,17 +1,13 @@
-/**
- * Created by wifinaynay on 01/11/17.
- */
-import java.awt.Graphics; //these will be changed
 import java.awt.Rectangle;
 abstract class Entity{
     //attributes
-    protected int typeID;
-    //sprite object
-    protected int x,y;
-    protected int width,height;
-    protected Rectangle bounds;
-    protected boolean active = true;
-    //methods
+    protected int typeID; // determines the type of entity
+    protected int x,y; //position x and position y of entity
+    protected int width,height; // width and height properties of object
+    protected Rectangle bounds; // bounds to determine boundaries of object, used in collission detection
+    protected boolean active = true; 
+    
+    //constructor
     public Entity(int x, int y, int typeID,int width, int height){
         this.x = x;
         this.y = y;
@@ -20,16 +16,15 @@ abstract class Entity{
         this.height = height;
 
 
-        bounds = new Rectangle(0, 0, width, height);
+        bounds = new Rectangle(0, 0, width, height); //create a rect object that determines bounds
     }
-    public Entity(){
 
-    }
-    //draw methodu yapılcak
-    //this method returns the new positions rectangle.gideceği mesafe ile topluyor yeni rect return ediyor
+    //this method returns the new positions rectangle as entity moves
     public Rectangle getCollisionRectangle(int xOffset,int  yOffset){
         return new Rectangle( (x + bounds.x + xOffset), (y + bounds.y + yOffset), bounds.width, bounds.height);
     }
+    
+    // getters and setters for attributes
     public int getX() {
         return x;
     }
@@ -69,5 +64,24 @@ abstract class Entity{
     public void setActive(boolean active) {
         this.active = active;
     }
+
+	public int getTypeID() {
+		return typeID;
+	}
+
+	public void setTypeID(int typeID) {
+		this.typeID = typeID;
+	}
+
+	public Rectangle getBounds() {
+		return bounds;
+	}
+
+	public void setBounds(Rectangle bounds) {
+		this.bounds = bounds;
+	}
+
+
+
 
 }

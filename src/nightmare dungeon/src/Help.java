@@ -9,6 +9,8 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Help extends BasicGameState{
+	
+	//constructor
 	public Help(int help){
 		
 	}
@@ -19,6 +21,7 @@ public class Help extends BasicGameState{
 
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		//images are drawn
 		g.drawString("Movement:", 225, 250);
 		g.drawImage(new Image("res/arrowControls.png"), 100, 300);
 		g.drawImage(new Image("res/help.png"), 400, 100);
@@ -29,13 +32,14 @@ public class Help extends BasicGameState{
 
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		//state changes according to which button is pressed
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 			sbg.enterState(0);
 		if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
 			sbg.enterState(6);
 	}
 
-	
+	//the state number of the class
 	public int getID() {
 		return 4;
 	}

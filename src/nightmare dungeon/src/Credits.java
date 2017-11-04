@@ -9,6 +9,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Credits extends BasicGameState{
+	//constructor
 	public Credits(int credits){
 		
 	}
@@ -19,6 +20,7 @@ public class Credits extends BasicGameState{
 
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		//images are drawn
 		g.drawImage(new Image("res/credits.png"), 340, 100);
 		g.drawString("Mehmet Oguz Gocmen", 440, 300);
 		g.drawString("Berk Mandiracioglu", 440, 400);
@@ -29,11 +31,12 @@ public class Credits extends BasicGameState{
 
 	
 	public void update(GameContainer arg0, StateBasedGame sbg, int delta) throws SlickException {
+		//user presses escape to return to the main menu
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 			sbg.enterState(0);
 	}
 
-	
+	//the state number of the class
 	public int getID() {
 		return 5;
 	}

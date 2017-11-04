@@ -7,6 +7,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class Game extends StateBasedGame{
 	
+	//the states are initialized
 	public static final String gameName = "RPG game";
 	public static final int startMenu = 0;
 	public static final int arak= 1;
@@ -15,21 +16,26 @@ public class Game extends StateBasedGame{
 	public static final int help = 4;
 	public static final int credits = 5;
 	public static final int help2 = 6;
-
-	public Game(String gameName) {
+	
+	//constructor
+	public Game(String gameName)throws SlickException {
 		super(gameName);
+		Settings x = new Settings(settings);
+
 		this.addState(new Menu(startMenu));
-		this.addState(new GameManager(arak));
-		this.addState(new Settings(settings));
+		this.addState(new GameManager(arak,x.isSoundOn(),x.isMusicOn()));
+		this.addState(x);
 		this.addState(new HighScores(highScores));
 		this.addState(new Help(help));
 		this.addState(new Credits(credits));
 		this.addState(new Help2(help2));
 
 	}
-
+	
+	
 	public void initStatesList(GameContainer gc) throws SlickException {
 		
+		//The states are initialized
 		this.getState(startMenu).init(gc, this);
 		this.getState(arak).init(gc, this);
 		this.getState(settings).init(gc, this);
@@ -40,6 +46,7 @@ public class Game extends StateBasedGame{
 		this.enterState(startMenu);
 	}
 	
+	//main method creates and AppGameContainer that takes a Game as a parameter and starts the game
 	public static void main(String[] args) {
 		AppGameContainer agc;
 		try{

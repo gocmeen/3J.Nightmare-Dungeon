@@ -9,20 +9,22 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Menu extends BasicGameState{
-	private boolean prevDown = false;
-	private boolean prevUp = false;
-	private boolean playActivated = true;
+	private boolean prevDown = false; // used for taking single input from user
+	private boolean prevUp = false; // used for taking single input from user
+	
+	//different states as booleans for forming the translation between them
+	private boolean playActivated = true;         
 	private boolean settingsActivated = false;
 	private boolean highScoresActivated = false;
 	private boolean helpActivated = false;
 	private boolean creditsActivated = false;
 	private boolean exitActivated = false;
-	private boolean play = false;
-
+	
+	//constructor
 	public Menu(int startmenu) {
 	}
 
-
+	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		
 	}
@@ -31,6 +33,7 @@ public class Menu extends BasicGameState{
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.drawImage(new Image("res/nightmareDungeon.png"), 250, 100);
 		
+		//if a boolean is true the button is highlighted
 		if (playActivated == false)
 			g.drawImage(new Image("res/playUnactive.png"), 400, 200);
 		else
@@ -64,6 +67,8 @@ public class Menu extends BasicGameState{
 	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+		
+		//input from user is taken, when space is pressed it changes the states
 		if (settingsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			sbg.enterState(2);
 		if (playActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
@@ -76,6 +81,8 @@ public class Menu extends BasicGameState{
 			sbg.enterState(5);
 		if (exitActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			gc.exit();
+		
+		//boolean logic of changing buttons
 		if (Keyboard.isKeyDown(Keyboard.KEY_DOWN) && prevDown == false){
 			prevDown = true;
 			if (playActivated){
@@ -136,7 +143,7 @@ public class Menu extends BasicGameState{
 			prevUp = false;
 	}
 
-	
+	//the state number of the class
 	public int getID() {
 		return 0;
 	}

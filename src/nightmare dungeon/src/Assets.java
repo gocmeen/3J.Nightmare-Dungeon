@@ -1,11 +1,11 @@
 /**
  * Created by wifinaynay on 03/11/17.
  */
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Image;
+
+//this class is used as a container of image destinations
 public class Assets{
 
-
+		//static string variables are declared to be used as directories of images in the GameManager class
         public static String playerUp = "res/AliceUp.png";
         public static String playerDown = "res/Alice.png";
         public static String playerRight = "res/AliceRight.png";
