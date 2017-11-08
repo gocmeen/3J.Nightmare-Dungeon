@@ -1,7 +1,11 @@
 
 Youtube Link:
 
+<<<<<<< HEAD
 https://m.youtube.com/watch?v=pvkK399cohY
+=======
+https://m.youtube.com/watch?v=pvkK399cohY 
+>>>>>>> master
 
 # Nightmare Dungeon.
 
@@ -28,3 +32,4 @@ Note: This project is inspired from the game "The Binding of Isaac".
 * [Mehmet Oğuz Göçmen](https://github.com/Gocmeen)
 
 * [Hüseyin Emre Başar](https://github.com/eemrebasar)
+
