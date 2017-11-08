@@ -42,9 +42,9 @@ public class Room{
     //generating 3 monsters for now
     public void generateMonsters(){
 
-            Monster m1 = new Monster(600,600,1,30,44);
-            Monster m2 = new Monster(800,70,1,40,44);
-            Monster m3 = new Monster(900,300,1,40,44);
+            Monster m1 = new Monster(200,600,1,30,44,0);
+            Monster m2 = new Monster(400,70,1,40,44,0);
+            Monster m3 = new Monster(500,300,1,131,155,1);
             monsterList.add(m1);
             monsterList.add(m2);
             monsterList.add(m3);
@@ -98,7 +98,7 @@ public class Room{
 
         for (int i = 0; i < monsterList.size(); i++) {
 
-                if (project.getCollisionRectangle((project.getdirX() * project.getSpeed()),(int)project.getdirY() * project.getSpeed()).intersects(monsterList.get(i).getCollisionRectangle(0, 0))
+                if (project.getCollisionRectangle((int)(project.getdirX() * project.getSpeed()),(int)project.getdirY() * project.getSpeed()).intersects(monsterList.get(i).getCollisionRectangle(0, 0))
                         )
                     return monsterList.get(i);
 
@@ -106,10 +106,57 @@ public class Room{
         }
         return null;
     }
+
+    //this method makes monsters attack
+    public void attackMonsterProjectiles(Player someone){
+
+        int x = someone.getX();
+        int y=someone.getY();
+        long startTime = System.currentTimeMillis();
+        double angle;
+        for (int i = 0; i < monsterList.size(); i++) {
+            if(monsterList.get(i).getMonsterType()==0) {
+
+                angle = (float) Math.atan2(((double) y - monsterList.get(i).getY()), ((double) x - monsterList.get(i).getX()));
+
+                monsterList.get(i).attack(startTime, monsterList.get(i).getX(), monsterList.get(i).getY(), Math.cos(angle), Math.sin(angle));
+            }
+        }
+        moveProjectiles(someone);
+    }
+
     /*this method is used for moving the projectiles inside the room
-    *
-    * */
+   *
+   * */
     public void moveProjectiles(Player someone){
+
+        for (int i = 0; i < monsterList.size(); i++) {
+            for(int j =0; j < monsterList.get(i).getProjectile().size();j++){
+                //collided creature
+                Entity creature = checkProjectileCollision(monsterList.get(i).getProjectile().get(j));
+                //checking collision
+               // if(checkProjectileCollision(monsterList.get(i).getProjectile().get(j))==null)
+                    monsterList.get(i).updateProjectile(j);
+                /*else{
+                    //if collided creature is monster
+                    if(creature.typeID==0){
+                        //casting Entity to Creature
+                        Character abc = (Character)creature;
+                        //decreasing monsters health by the damage of projectile
+                        abc.setHealth(-monsterList.get(i).getProjectile().get(j).getDamage());
+                        //if monster dies
+                        if(abc.getHealth()<=0) {
+                            //erasing the monster
+                            //monsterList.remove(creature);
+                            System.out.println("here");
+
+                        }
+                    }
+                    //when collided projectile is removed from room
+                   // monsterList.get(i).removeProjectile(j);
+                }*/
+            }
+        }
 
         for(int i =0; i < someone.getProjectile().size();i++){
             //collided creature
@@ -150,53 +197,54 @@ public class Room{
         double angle;
         //looping through the monster
         for (int i = 0; i < monsterList.size(); i++) {
-            //calculating the angle between the monster and the player
-             angle=(float)Math.atan2((double)(y-monsterList.get(i).getY()),(x-monsterList.get(i).getX()));
+            if (monsterList.get(i).getMonsterType() == 1){
+                //calculating the angle between the monster and the player
+                angle = (float) Math.atan2((double) (y - monsterList.get(i).getY()), (x - monsterList.get(i).getX()));
             //set directions of the monster so that monster follows player
-            if(collided.get(i)==0) {
+            if (collided.get(i) == 0) {
                 //x direction gets the cosine of the angle
                 monsterList.get(i).setDirectionX(Math.cos(angle));
                 //y direction gets the sine of the angle
                 monsterList.get(i).setDirectionY(Math.sin(angle));
             }
             //checking collision
-             if((checkCollision(monsterList.get(i))==null)&&
-                    !monsterList.get(i).getCollisionRectangle((int)monsterList.get(i).getDirectionX() * someone.getSpeed(), (int)monsterList.get(i).getDirectionY() * someone.getSpeed()).intersects(someone.getCollisionRectangle(0, 0))
-                     ){
-                 if(collided.get(i)>0) {
+            if ((checkCollision(monsterList.get(i)) == null) &&
+                    !monsterList.get(i).getCollisionRectangle((int) monsterList.get(i).getDirectionX() * someone.getSpeed(), (int) monsterList.get(i).getDirectionY() * someone.getSpeed()).intersects(someone.getCollisionRectangle(0, 0))
+                    ) {
+                if (collided.get(i) > 0) {
 
-                     collided.set(i, collided.get(i) + 1);
-                     //bouncing back when collided
-                     if(collided.get(i)==25){
-                         monsterList.get(i).setDirectionY(monsterList.get(i).getDirectionY());
-                         monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
-                     }
-                     //still bouncing but this time towards another direction
-                     if(collided.get(i)==40){
-                         monsterList.get(i).setDirectionY(0*monsterList.get(i).getDirectionY());
-                         monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
-                     }
+                    collided.set(i, collided.get(i) + 1);
+                    //bouncing back when collided
+                    if (collided.get(i) == 25) {
+                        monsterList.get(i).setDirectionY(monsterList.get(i).getDirectionY());
+                        monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
+                    }
+                    //still bouncing but this time towards another direction
+                    if (collided.get(i) == 40) {
+                        monsterList.get(i).setDirectionY(0 * monsterList.get(i).getDirectionY());
+                        monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
+                    }
 
-                 }
-                 //moving the monster
-                 monsterList.get(i).move();
-                 if( collided.get(i)==80)
-                     collided.set(i,0);}
-             else
-             {
-                 //if collides after colliding bounce back again
-                 if(collided.get(i)<100){
-                 monsterList.get(i).setDirectionY(-monsterList.get(i).getDirectionY());
-                 monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
+                }
+                //moving the monster
+                monsterList.get(i).move();
+                if (collided.get(i) == 80)
+                    collided.set(i, 0);
+            } else {
+                //if collides after colliding bounce back again
+                if (collided.get(i) < 100) {
+                    monsterList.get(i).setDirectionY(-monsterList.get(i).getDirectionY());
+                    monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
 
-                 }
-                 //if collided for the first time
-                if(collided.get(i)==0)
-                 collided.set(i,collided.get(i)+1);
+                }
+                //if collided for the first time
+                if (collided.get(i) == 0)
+                    collided.set(i, collided.get(i) + 1);
 
-                 monsterList.get(i).move();
+                monsterList.get(i).move();
 
-             }
+            }
+        }
 
 
         }

@@ -1,16 +1,15 @@
 public class Projectile extends Entity {
 
-	//attributes
-    protected int damage; // holds damage of projectile
-    protected int speed; // holds speed of projectile
-    protected long startTime; // attribute for determinig the time interval in which a projectile is thrown
-    protected int directionX; // holds x component of movement direction
-    protected int directionY; // holds y component of movement direction
+    protected int damage;
+    protected int speed;
+    long startTime;
+    protected double directionX;
+    protected double directionY;
 
 
-    public Projectile(long startTime,int damage, int speed,int typeID,  int x, int y, int height, int width, int dirX, int dirY)
+    public Projectile(long startTime,int damage, int speed,int typeID,  int x, int y, int height, int width, double dirX, double dirY)
     {
-        super(x,y,typeID,width,height); // inherits super class Entity
+        super(x,y,typeID,width,height);
         this.damage = damage;
         this.speed = speed;
         this.directionX = dirX;
@@ -19,21 +18,25 @@ public class Projectile extends Entity {
 
 
     }
-    
-    // updates position of projectile according to speed and direction
+
+
+
     public void updatePosition()
     {
         this.x += directionX * speed ;
         this.y += directionY * speed ;
+
     }
 
-    //getters
-    public int getdirX(){
+    public double getdirX()
+    {
         return directionX;
+
     }
-    
-    public int getdirY(){
+    public double getdirY()
+    {
         return directionY;
+
     }
 
     public int getSpeed() {

@@ -108,15 +108,20 @@ public class Character extends Entity {
     * this method is used for attacking (shooting projectile)
     *
     * */
-    public void attack(long startTime,int x, int y, int dirX, int dirY) //x and y are directions
+    public boolean attack(long startTime,int x, int y, double dirX, double dirY) //x and y are directions
     {
         //if there are no projectiles in the room
-        if(projectile.size()==0)
+        if(projectile.size()==0){
             addProjectile(new Projectile(startTime,1,4,3,x,y,1,1,dirX,dirY));
+        return true;
+        }
         else //if there are projectiles
             //if the time differences between last projectile and this one is greater then half a second
-            if(startTime-projectile.get(projectile.size()-1).startTime>1*0.5*1000)
-                addProjectile(new Projectile(startTime,1,4,3,x,y,1,1,dirX,dirY)); //add the projectile
+            if(startTime-projectile.get(projectile.size()-1).startTime>1*1*1000) {
+                addProjectile(new Projectile(startTime, 1, 4, 3, x, y, 1, 1, dirX, dirY)); //add the projectile
+                return true;
+            }
+    return false;
     }
     public void addProjectile(Projectile p)
     {

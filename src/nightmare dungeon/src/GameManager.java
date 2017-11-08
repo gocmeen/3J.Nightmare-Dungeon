@@ -45,11 +45,18 @@ public class GameManager extends BasicGameState{
     *This method is called repetetively as the game continues
     * */
     public void render(GameContainer gc,StateBasedGame sbg, Graphics g) throws SlickException{
+
         //getting the current room from the Map
         Room curr = mapList.get(currentMapID).getCurrentRoom();
+
+        g.drawImage(new Image (Assets.background), 0,0);
         //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
         for(int i = 0; i < curr.getMonsterList().size();i++){
-            g.drawImage(new Image (Assets.monster), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
+            if(curr.getMonsterList().get(i).getMonsterType()==0){
+            g.drawImage(new Image (Assets.monster1), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());}
+            else if(curr.getMonsterList().get(i).getMonsterType()==1){
+                g.drawImage(new Image (Assets.monster2), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
+            }
         }
         //Looping through the itemList to get the coordinates the coordinates of the items inside the room
         for(int i = 0; i < curr.getItemList().size();i++){
@@ -69,6 +76,8 @@ public class GameManager extends BasicGameState{
            g.drawImage(new Image (Assets.playerRight),someone.getX(),someone.getY());
         else if(lFlag)
            g.drawImage(new Image (Assets.playerLeft),someone.getX(),someone.getY());
+        else
+           g.drawImage(new Image (Assets.playerDown),someone.getX(),someone.getY());
 
 
 
@@ -79,6 +88,16 @@ public class GameManager extends BasicGameState{
 
 
         }
+for(int i = 0; i < curr.getMonsterList().size();i++) {
+    for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
+        if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1000&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
+                &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<850&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
+        g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
+
+
+    }
+    //System.out.println("aaa");
+}
 
     }
 
@@ -99,6 +118,7 @@ public class GameManager extends BasicGameState{
         Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
         curr.moveMonsters(someone);
         //movement according to key presses W, A , S and D
+        curr.attackMonsterProjectiles(someone);
         if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_D))
         {
             //Setting the direction according to Input
@@ -108,7 +128,7 @@ public class GameManager extends BasicGameState{
             someone.move();
 
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_D))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_D))
         {
             //Setting the direction according to Input
             someone.setDirectionX(1);
@@ -116,7 +136,7 @@ public class GameManager extends BasicGameState{
             someone.move();
 
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_A))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_A))
         {
             //Setting the direction according to Input
             someone.setDirectionX(-1);
@@ -124,7 +144,7 @@ public class GameManager extends BasicGameState{
             someone.move();
 
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_A))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_A))
         {
             //Setting the direction according to Input
             someone.setDirectionX(-1);
@@ -132,7 +152,7 @@ public class GameManager extends BasicGameState{
             someone.move();
 
         }
-        if (Keyboard.isKeyDown(Keyboard.KEY_W))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_W))
         {
             //Setting the direction according to Input
             someone.setDirectionX(0);
@@ -230,32 +250,36 @@ public class GameManager extends BasicGameState{
         if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)&&Keyboard.isKeyDown(Keyboard.KEY_UP)){
             //gets current time to set time intervals between projectiles
             long startTime = System.currentTimeMillis();
+
+            if(someone.attack(startTime, someone.getX(), someone.getY(), -1, -1))
             soundmanager.playSound(1);
-            someone.attack(startTime, someone.getX(), someone.getY(), -1, -1);
         }
         else if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)&&Keyboard.isKeyDown(Keyboard.KEY_DOWN)){
             long startTime = System.currentTimeMillis();
+
+            if(someone.attack(startTime, someone.getX(), someone.getY(), -1, 1))
             soundmanager.playSound(1);
-            someone.attack(startTime, someone.getX(), someone.getY(), -1, 1);
         }
         else if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)&&Keyboard.isKeyDown(Keyboard.KEY_UP)){
             long startTime = System.currentTimeMillis();
+
+            if(someone.attack(startTime, someone.getX(), someone.getY(), 1, -1))
             soundmanager.playSound(1);
-            someone.attack(startTime, someone.getX(), someone.getY(), 1, -1);
         }
         else if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)&&Keyboard.isKeyDown(Keyboard.KEY_DOWN)){
             long startTime = System.currentTimeMillis();
+
+            if(someone.attack(startTime, someone.getX(), someone.getY(), 1, 1))
             soundmanager.playSound(1);
-            someone.attack(startTime, someone.getX(), someone.getY(), 1, 1);
         }
         else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
 
-            soundmanager.playSound(1);
+
                 long startTime = System.currentTimeMillis();
 
-                someone.attack(startTime, someone.getX(), someone.getY(), -1, 0);
+                if(someone.attack(startTime, someone.getX(), someone.getY(), -1, 0))
 
-
+                    soundmanager.playSound(1);
 
 
 
@@ -267,7 +291,7 @@ public class GameManager extends BasicGameState{
         {
 
             long startTime = System.currentTimeMillis();
-                someone.attack(startTime,someone.getX(), someone.getY(), 1, 0);
+                if(someone.attack(startTime,someone.getX(), someone.getY(), 1, 0))
 
 
             soundmanager.playSound(1);
@@ -281,7 +305,7 @@ public class GameManager extends BasicGameState{
 
 
                 long startTime = System.currentTimeMillis();
-                someone.attack(startTime,someone.getX(), someone.getY(), 0, -1);
+               if( someone.attack(startTime,someone.getX(), someone.getY(), 0, -1))
 
             soundmanager.playSound(1);
 
@@ -294,7 +318,7 @@ public class GameManager extends BasicGameState{
 
 
                 long startTime = System.currentTimeMillis();
-                someone.attack(startTime,someone.getX(), someone.getY(), 0, 1);
+                if(someone.attack(startTime,someone.getX(), someone.getY(), 0, 1))
 
 
             soundmanager.playSound(1);
