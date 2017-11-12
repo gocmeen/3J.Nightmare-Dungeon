@@ -22,8 +22,8 @@ public class GameManager extends BasicGameState{
     private ArrayList<Map> mapList; //holds the list of maps
     private Player someone; //Player object(Alice)
     private int currentMapID; //id of the current Map
-    private int width = 700;
-    private int height = 700;
+    private int width = 1200;
+    private int height = 720;
     boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
 
     protected SoundManager soundmanager; // Sound Manager Object
@@ -67,6 +67,12 @@ public class GameManager extends BasicGameState{
             g.drawImage(new Image (Assets.item1),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
             else if(curr.getItemList().get(i).itemID==1)
                 g.drawImage(new Image (Assets.item2),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
+
+        }
+
+        for(int i = 0; i < curr.getObstacleList().size();i++){
+
+                g.drawImage(new Image (Assets.obstacle), curr.getObstacleList().get(i).getX(),curr.getObstacleList().get(i).getY());
 
         }
         //changing the image of player according to the direction it goes

@@ -10,6 +10,7 @@ public class Room{
     //attributes
     private ArrayList<Monster> monsterList;
     private ArrayList<Item> itemList;
+    private ArrayList<Obstacle> obstacleList;
     private int id;
     private int width, height1;
     private ArrayList<Integer> collided;
@@ -23,10 +24,12 @@ public class Room{
         this.width=width;
         this.height1=height;
         this.id = id;
+        obstacleList = new ArrayList<Obstacle>();
         monsterList = new ArrayList<Monster>();
         itemList= new ArrayList<Item>();
         generateMonsters();
         generateItems();
+        generateObstacles();
     }
 
     public int getHeight() {
@@ -63,6 +66,16 @@ public class Room{
         itemList.add(i1);
         itemList.add(i2);
     }
+
+    public void generateObstacles(){
+
+        Obstacle o1 = new Obstacle(200, 400,3,39,27);
+        Obstacle o2 = new Obstacle(500, 100,3,39,27);
+        Obstacle o3 = new Obstacle(800, 600,3,39,27);
+        obstacleList.add(o1);
+        obstacleList.add(o2);
+        obstacleList.add(o3);
+    }
     //removes items from the room
     public void removeItem(Item item){
         for (int i = 0; i < itemList.size(); i++) {
@@ -78,20 +91,20 @@ public class Room{
                     &&someone!=monsterList.get(i))
                 return monsterList.get(i);
         }
+
         for (int i = 0; i < itemList.size(); i++) {
             if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(itemList.get(i).getCollisionRectangle(0, 0))
                     )
                 return itemList.get(i);
         }
+
+        for (int i = 0; i < obstacleList.size(); i++) {
+            if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(obstacleList.get(i).getCollisionRectangle(0, 0))
+                    )
+                return obstacleList.get(i);
+        }
+
         return null;
-    }
-
-    public ArrayList<Item> getItemList() {
-        return itemList;
-    }
-
-    public ArrayList<Monster> getMonsterList() {
-        return monsterList;
     }
 
     //checks the collision of the projectile
@@ -264,5 +277,18 @@ public class Room{
     //removeProjectile()
 
 
+    //getters
+
+    public ArrayList<Item> getItemList() {
+        return itemList;
+    }
+
+    public ArrayList<Monster> getMonsterList() {
+        return monsterList;
+    }
+
+    public ArrayList<Obstacle> getObstacleList() {
+        return obstacleList;
+    }
 
 }
