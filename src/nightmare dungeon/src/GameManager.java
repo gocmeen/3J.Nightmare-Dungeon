@@ -168,8 +168,8 @@ public class GameManager extends BasicGameState{
             someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
 
-                someone.addPassive((Item)colliededObject);
-                curr.removeItem((Item)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
 
             }
             //setting directions
@@ -192,8 +192,8 @@ public class GameManager extends BasicGameState{
             else if(colliededObject.typeID==2)// && curr.checkRoomCollision(someone))
             {
 
-                someone.addPassive((Item)colliededObject);
-                curr.removeItem((Item)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
 
             }
             //setting directions
@@ -215,8 +215,8 @@ public class GameManager extends BasicGameState{
             someone.move(width,height);
             else if(colliededObject.typeID==2 ){
 
-                someone.addPassive((Item)colliededObject);
-                curr.removeItem((Item)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
 
             }
             //setting directions
@@ -239,8 +239,8 @@ public class GameManager extends BasicGameState{
             someone.move(width,height);
             else if(colliededObject.typeID==2 ){
 
-                someone.addPassive((Item)colliededObject);
-                curr.removeItem((Item)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
 
             }
             //setting directions

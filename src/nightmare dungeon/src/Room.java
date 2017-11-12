@@ -58,8 +58,8 @@ public class Room{
     //generates items inside the room
     public void generateItems(){
 
-        Item i1 = new Item(600,90,2,30,44,0,30,40,5,60);
-        Item i2 = new Item(400,400,2,30,44,1,30,40,4,60);
+        Item i1 = new PassiveItem(600,90,2,30,44,0,30,40,5,60);
+        Item i2 = new PassiveItem(400,400,2,30,44,1,30,40,4,60);
         itemList.add(i1);
         itemList.add(i2);
     }

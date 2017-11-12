@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Player extends Character {
     private int lifecount;
     //private ActiveItem activeItem;
-    private ArrayList<Item> items;
+    private ArrayList<PassiveItem> items;
     //private Projectile projectileList;
 
     private static final int   SPEED = 5;
@@ -17,7 +17,7 @@ public class Player extends Character {
      public Player(int x, int y, int typeID,int width, int height)
      {
           super(x,  y,  typeID, width,  height,  HEALTH ,  SPEED, ATTACK_DAMAGE,ATTACK_SPEED);
-          items = new ArrayList<Item>();
+          items = new ArrayList<PassiveItem>();
      }
 
 
@@ -30,7 +30,7 @@ public class Player extends Character {
      //public void useActive(Item it){}
     //public void updatelifecount()[]
     //removePassive()
-    public void addPassive(Item item){
+    public void addPassive(PassiveItem item){
          items.add(item);
          this.speed += item.getSpeedUp();
          this.attackDamage+= item.getAttackDamageUp();
