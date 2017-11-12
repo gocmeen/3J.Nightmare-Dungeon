@@ -23,8 +23,9 @@ public class Projectile extends Entity {
 
     public void updatePosition()
     {
-        this.x += directionX * speed ;
-        this.y += directionY * speed ;
+        setX(x + (int)(directionX * speed)) ;
+        setY(y + (int)(directionY * speed)) ;
+        System.out.println(this.getX());
 
     }
 

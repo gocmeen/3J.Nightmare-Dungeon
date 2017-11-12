@@ -4,13 +4,14 @@
 
 import org.lwjgl.Sys;
 
+import java.awt.*;
 import java.util.ArrayList;
 public class Room{
     //attributes
     private ArrayList<Monster> monsterList;
     private ArrayList<Item> itemList;
     private int id;
-    private int width, height;
+    private int width, height1;
     private ArrayList<Integer> collided;
 
 
@@ -20,7 +21,7 @@ public class Room{
     //constructor
     public Room(int width, int height,int id){
         this.width=width;
-        this.height=height;
+        this.height1=height;
         this.id = id;
         monsterList = new ArrayList<Monster>();
         itemList= new ArrayList<Item>();
@@ -29,7 +30,7 @@ public class Room{
     }
 
     public int getHeight() {
-        return height;
+        return height1;
     }
 
     public int getId() {
@@ -42,17 +43,17 @@ public class Room{
     //generating 3 monsters for now
     public void generateMonsters(){
 
-            Monster m1 = new Monster(200,600,1,30,44,0);
-            Monster m2 = new Monster(400,70,1,40,44,0);
-            Monster m3 = new Monster(500,300,1,131,155,1);
-            monsterList.add(m1);
-            monsterList.add(m2);
-            monsterList.add(m3);
+        Monster m1 = new Monster(200,600,1,30,44,0);
+        Monster m2 = new Monster(400,70,1,40,44,0);
+        Monster m3 = new Monster(400,400,1,93,125,1);
+        monsterList.add(m1);
+        monsterList.add(m2);
+        monsterList.add(m3);
         collided = new ArrayList<Integer>();
         for(int i = 0; i < monsterList.size(); i++ ){
             collided.add(0);
         }
-
+        //
     }
     //generates items inside the room
     public void generateItems(){
@@ -111,11 +112,11 @@ public class Room{
     public void attackMonsterProjectiles(Player someone){
 
         int x = someone.getX();
-        int y=someone.getY();
+        int y = someone.getY();
         long startTime = System.currentTimeMillis();
         double angle;
         for (int i = 0; i < monsterList.size(); i++) {
-            if(monsterList.get(i).getMonsterType()==0) {
+            if(monsterList.get(i).getMonsterType()== 0) {
 
                 angle = (float) Math.atan2(((double) y - monsterList.get(i).getY()), ((double) x - monsterList.get(i).getX()));
 
@@ -133,6 +134,8 @@ public class Room{
         for (int i = 0; i < monsterList.size(); i++) {
             for(int j =0; j < monsterList.get(i).getProjectile().size();j++){
                 //collided creature
+                System.out.println(monsterList.get(i).getProjectile().get(j).getX());
+                System.out.println(monsterList.get(i).getProjectile().get(j).getY());
                 Entity creature = checkProjectileCollision(monsterList.get(i).getProjectile().get(j));
                 //checking collision
                // if(checkProjectileCollision(monsterList.get(i).getProjectile().get(j))==null)
@@ -192,7 +195,7 @@ public class Room{
     public void moveMonsters(Player someone){
         //getting the coordinates of the user
         int x = someone.getX();
-        int y=someone.getY();
+        int y = someone.getY();
 
         double angle;
         //looping through the monster
@@ -200,12 +203,14 @@ public class Room{
             if (monsterList.get(i).getMonsterType() == 1){
                 //calculating the angle between the monster and the player
                 angle = (float) Math.atan2((double) (y - monsterList.get(i).getY()), (x - monsterList.get(i).getX()));
+                //System.out.println(angle);
             //set directions of the monster so that monster follows player
             if (collided.get(i) == 0) {
                 //x direction gets the cosine of the angle
                 monsterList.get(i).setDirectionX(Math.cos(angle));
                 //y direction gets the sine of the angle
                 monsterList.get(i).setDirectionY(Math.sin(angle));
+                System.out.println("debuggg");
             }
             //checking collision
             if ((checkCollision(monsterList.get(i)) == null) &&
@@ -227,7 +232,7 @@ public class Room{
 
                 }
                 //moving the monster
-                monsterList.get(i).move();
+                monsterList.get(i).move(width,height1);
                 if (collided.get(i) == 80)
                     collided.set(i, 0);
             } else {
@@ -241,7 +246,7 @@ public class Room{
                 if (collided.get(i) == 0)
                     collided.set(i, collided.get(i) + 1);
 
-                monsterList.get(i).move();
+                monsterList.get(i).move(width,height1);
 
             }
         }

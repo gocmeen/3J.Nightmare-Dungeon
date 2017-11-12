@@ -22,6 +22,8 @@ public class GameManager extends BasicGameState{
     private ArrayList<Map> mapList; //holds the list of maps
     private Player someone; //Player object(Alice)
     private int currentMapID; //id of the current Map
+    private int width = 700;
+    private int height = 700;
     boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
 
     protected SoundManager soundmanager; // Sound Manager Object
@@ -30,7 +32,7 @@ public class GameManager extends BasicGameState{
     //Constructor
     public GameManager(int a, boolean sound_on, boolean music_on)throws SlickException{
         currentMapID = 0; //initial map is with id = 0
-        someone= new Player(700,700,0,50, 50); //initializing Alice
+        someone= new Player(300,300,0,50, 50); //initializing Alice
         mapList = new ArrayList<Map>();
         generateMaps(); //Basically generates the maps and rooms and entities inside the Rooms
         soundmanager = new SoundManager(sound_on,music_on);
@@ -88,11 +90,12 @@ public class GameManager extends BasicGameState{
 
 
         }
-for(int i = 0; i < curr.getMonsterList().size();i++) {
-    for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
-        if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1000&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
-                &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<850&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
-        g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
+
+        for(int i = 0; i < curr.getMonsterList().size();i++) {
+            for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
+                if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1000&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
+                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<850&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
+                g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
 
 
     }
@@ -119,40 +122,40 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
         curr.moveMonsters(someone);
         //movement according to key presses W, A , S and D
         curr.attackMonsterProjectiles(someone);
-        if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_D))
+        if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(1);
             someone.setDirectionY(-1);
             //Move method is called
-            someone.move();
+            someone.move(width,height);
 
         }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_D))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(1);
             someone.setDirectionY(1);
-            someone.move();
+            someone.move(width,height);
 
         }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_A))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(-1);
             someone.setDirectionY(-1);
-            someone.move();
+            someone.move(width,height);
 
         }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_A))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(-1);
             someone.setDirectionY(1);
-            someone.move();
+            someone.move(width,height);
 
         }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_W))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_W))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(0);
@@ -161,11 +164,11 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
             //Collision method of Room class is called in order to check collision
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
-            if(curr.checkCollision(someone)==null)
-            someone.move();
-            else if(colliededObject.typeID==2){
+            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
+            someone.move(width,height);
+            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
 
-                someone.addpassive((Item)colliededObject);
+                someone.addPassive((Item)colliededObject);
                 curr.removeItem((Item)colliededObject);
 
             }
@@ -176,7 +179,7 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
             lFlag = false;
 
         }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_S))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_S))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(0);
@@ -184,11 +187,12 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
             //Collision method of Room class is called in order to check collision
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
-            if(colliededObject==null)
-            someone.move();
-            else if(colliededObject.typeID==2){
+            if(colliededObject==null )//&& curr.checkRoomCollision(someone))
+            someone.move(width,height);
+            else if(colliededObject.typeID==2)// && curr.checkRoomCollision(someone))
+            {
 
-                someone.addpassive((Item)colliededObject);
+                someone.addPassive((Item)colliededObject);
                 curr.removeItem((Item)colliededObject);
 
             }
@@ -199,7 +203,7 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
             lFlag = false;
 
         }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_A))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(-1);
@@ -207,11 +211,11 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
             //Collision method of Room class is called in order to check collision
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
-            if(curr.checkCollision(someone)==null)
-            someone.move();
-            else if(colliededObject.typeID==2){
+            if(curr.checkCollision(someone)==null )
+            someone.move(width,height);
+            else if(colliededObject.typeID==2 ){
 
-                someone.addpassive((Item)colliededObject);
+                someone.addPassive((Item)colliededObject);
                 curr.removeItem((Item)colliededObject);
 
             }
@@ -223,7 +227,7 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
 
         }
 
-        else if (Keyboard.isKeyDown(Keyboard.KEY_D))
+        else if (Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
         {
             //Setting the direction according to Input
             someone.setDirectionX(1);
@@ -231,11 +235,11 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
             //Collision method of Room class is called in order to check collision
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
-            if(curr.checkCollision(someone)==null)
-            someone.move();
-            else if(colliededObject.typeID==2){
+            if(curr.checkCollision(someone)==null )
+            someone.move(width,height);
+            else if(colliededObject.typeID==2 ){
 
-                someone.addpassive((Item)colliededObject);
+                someone.addPassive((Item)colliededObject);
                 curr.removeItem((Item)colliededObject);
 
             }
@@ -323,13 +327,6 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
 
             soundmanager.playSound(1);
 
-
-
-
-
-
-
-
         }
 
         curr.moveProjectiles(someone);
@@ -353,9 +350,9 @@ for(int i = 0; i < curr.getMonsterList().size();i++) {
     }
     //generates maps(layers) inside the game
     public void generateMaps(){
-        Map m1 = new Map(0);
-        Map m2 = new Map(1);
-        Map m3 = new Map(2);
+        Map m1 = new Map(0,width,height);
+        Map m2 = new Map(1,width,height);
+        Map m3 = new Map(2,width,height);
         mapList.add(m1);
         mapList.add(m2);
         mapList.add(m3);

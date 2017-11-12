@@ -30,7 +30,7 @@ public class Player extends Character {
      //public void useActive(Item it){}
     //public void updatelifecount()[]
     //removePassive()
-    public void addpassive(Item item){
+    public void addPassive(Item item){
          items.add(item);
          this.speed += item.getSpeedUp();
          this.attackDamage+= item.getAttackDamageUp();

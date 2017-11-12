@@ -6,15 +6,15 @@ import org.newdawn.slick.Image;
 public class Assets{
 
 
-        public static String playerUp = "res/AliceUp.png";
-        public static String playerDown = "res/Alice.png";
-        public static String playerRight = "res/AliceRight.png";
-        public static String playerLeft = "res/AliceLeft.png";
-        public static String monster1 = "res/monster1.png";
-        public static String item1 = "res/item1.png";
-        public static String item2 = "res/item2.png";
-        public static String playerAttack="res/AliceAttack.png";
-        public static String monsterAttack="res/MonsterAttack.png";
-        public static String monster2="res/Judas.png";
-        public static String background="res/background.png";
+        public static String playerUp = "src/nightmare dungeon/res/AliceUp.png";
+        public static String playerDown = "src/nightmare dungeon/res/Alice.png";
+        public static String playerRight = "src/nightmare dungeon/res/AliceRight.png";
+        public static String playerLeft = "src/nightmare dungeon/res/AliceLeft.png";
+        public static String monster1 = "src/nightmare dungeon/res/monster1.png";
+        public static String item1 = "src/nightmare dungeon/res/item1.png";
+        public static String item2 = "src/nightmare dungeon/res/item2.png";
+        public static String playerAttack="src/nightmare dungeon/res/AliceAttack.png";
+        public static String monsterAttack="src/nightmare dungeon/res/MonsterAttack.png";
+        public static String monster2="src/nightmare dungeon/res/Judas.png";
+        public static String background="src/nightmare dungeon/res/background.png";
 }

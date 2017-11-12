@@ -36,9 +36,66 @@ public class Character extends Entity {
 
     }
     //changes the x and y coordinates of the player
-    public void move(){
-        x += directionX * speed ;
-        y += directionY * speed ;
+    public void move(int roomWidth, int roomHeight){
+
+        if(this instanceof Player) {
+            boolean inRangeWidthMin = (this.getX() > 0);
+            boolean inRangeWidthMax = (this.getX() < roomWidth);
+            boolean inRangeHeightMin = (this.getY() > 0);
+            boolean inRangeHeightMax = (this.getY() < roomHeight);
+
+            System.out.println("x: " + this.getX() + " y: " + this.getY());
+
+            if (inRangeWidthMin && inRangeWidthMax && inRangeHeightMin && inRangeHeightMax) {
+                this.setX(x + (int) (directionX * speed));
+                this.setY(y + (int) (directionY * speed));
+                System.out.println("x: " + this.getX() + " y: " + this.getY());
+            } else if (inRangeWidthMax && inRangeWidthMin) {
+                if (!inRangeHeightMax) {
+                    System.out.println("debug1");
+                    this.setY(roomHeight - 1);
+                } else if (!inRangeHeightMin) {
+                    System.out.println("debug2");
+                    this.setY(y + 1);
+                }
+            } else if (inRangeHeightMax && inRangeHeightMin) {
+                if (!inRangeWidthMin) {
+                    System.out.println("debug2");
+                    this.setX(x + 1);
+                } else if (!inRangeWidthMax) {
+                    System.out.println("debug3");
+                    this.setX(roomWidth - 1);
+                }
+            }
+        else if(!inRangeHeightMax && !inRangeWidthMin){
+            //System.out.println("debug4");
+            this.setX(x+1);
+            this.setY(roomHeight-1);
+        }
+        else if(!inRangeHeightMax && !inRangeWidthMax){
+            //System.out.println("debug5");
+            this.setX(roomWidth+1);
+            this.setY(roomHeight-1);
+        }
+        else if(!inRangeHeightMin && !inRangeWidthMin){
+            //System.out.println("debug6");
+            this.setX(x+1);
+            this.setY(y+1);
+        }
+        else if(!inRangeHeightMin && !inRangeWidthMax){
+            //System.out.println("debug7");
+            this.setX(roomWidth-1);
+            this.setY(y+1);
+        }
+        }else if(this instanceof Monster){
+            x +=  (directionX * speed);
+            y +=  (directionY * speed);
+            //this.setX(x + (int) (directionX * speed));
+            //this.setY(y + (int) (directionY * speed));
+        }
+
+        //System.out.println("x: " + this.getX() + " y: " + this.getY());
+
     }
 
     //GETTERS
