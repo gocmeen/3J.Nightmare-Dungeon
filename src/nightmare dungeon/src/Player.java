@@ -10,7 +10,8 @@ public class Player extends Character {
     //private Projectile projectileList;
 
     private static final int   SPEED = 5;
-    private static final int   HEALTH = 50;
+    final protected int MAX_HEALTH = 200;
+    private static final int   HEALTH = 200;
     private static final int   ATTACK_DAMAGE = 50;
     private static final int   ATTACK_SPEED = 50;
 

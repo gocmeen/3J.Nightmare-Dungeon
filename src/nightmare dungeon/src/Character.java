@@ -1,6 +1,4 @@
-/**
- * Created by wifinaynay on 01/11/17.
- */
+
 
 import java.awt.Graphics; //these will be changed
 import java.awt.Rectangle;
@@ -11,6 +9,7 @@ public class Character extends Entity {
     //Attributes
     protected boolean attacked;
     protected int health;
+    final protected int MAX_HEALTH = 100;
     protected int speed;
     protected double directionX, directionY;
     protected int attackDamage,attackSpeed;
@@ -18,6 +17,7 @@ public class Character extends Entity {
     protected boolean alive;
     protected int projectileCount;
     protected String name;
+
 
     //Constructor
     public Character(int x, int y, int typeID,int width, int height, int health , int speed, int attackDamage, int attackSpeed){
@@ -39,7 +39,7 @@ public class Character extends Entity {
     public void move(int roomWidth, int roomHeight){
 
         if(this instanceof Player) {
-            boolean inRangeWidthMin = (this.getX() > 0);
+            boolean inRangeWidthMin = (this.getX() > 150);
             boolean inRangeWidthMax = (this.getX() < roomWidth);
             boolean inRangeHeightMin = (this.getY() > 0);
             boolean inRangeHeightMax = (this.getY() < roomHeight);
@@ -101,6 +101,10 @@ public class Character extends Entity {
     //GETTERS
     public int getHealth(){
         return health;
+    }
+
+    public int getMaxHealth(){
+        return MAX_HEALTH;
     }
     public int getAttackDamage(){
         return attackDamage;
@@ -208,6 +212,7 @@ public class Character extends Entity {
     public void setAttacked(boolean attacked) {
         this.attacked = attacked;
     }
+
     public void removeProjectile(int index){
         projectile.remove(index);
     }
@@ -215,4 +220,5 @@ public class Character extends Entity {
     public void setHealth(int health) {
         this.health+= health;
     }
+
 }

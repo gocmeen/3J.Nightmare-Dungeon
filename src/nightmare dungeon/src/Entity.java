@@ -1,4 +1,8 @@
+import java.awt.Image;
+import org.newdawn.slick.SlickException;
+
 import java.awt.Rectangle;
+import java.awt.Graphics2D;
 abstract class Entity{
     //attributes
     protected int typeID; // determines the type of entity
@@ -23,6 +27,10 @@ abstract class Entity{
     public Rectangle getCollisionRectangle(int xOffset,int  yOffset){
         return new Rectangle( (x + bounds.x + xOffset), (y + bounds.y + yOffset), bounds.width, bounds.height);
     }
+
+  /*  public void draw( Graphics2D g, Image img) throws SlickException {
+        g.drawImage(new Image(Assets.playerDown),this.getX(),this.getY());
+    }*/
     
     // getters and setters for attributes
     public int getX() {

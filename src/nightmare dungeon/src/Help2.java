@@ -22,9 +22,9 @@ public class Help2 extends BasicGameState{
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		//images are drawn
-		g.drawImage(new Image("res/help.png"), 400, 100);
+		g.drawImage(new Image("src/nightmare dungeon/res/help.png"), 400, 100);
 		g.drawString("Press           to go back", 50, 800);
-		g.drawImage(new Image("res/leftButton.png"), 50, 755);
+		g.drawImage(new Image("src/nightmare dungeon/res/leftButton.png"), 50, 755);
 	}
 
 	

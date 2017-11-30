@@ -32,28 +32,28 @@ public class Settings extends BasicGameState{
 
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawImage(new Image("res/settingsTitle.png"), 300, 150);
+		g.drawImage(new Image("src/nightmare dungeon/res/settingsTitle.png"), 300, 150);
 		g.drawString("In-Game Effect Sound", 400, 300);
 		g.drawString("In-Game Music Sound", 400, 500);
 		g.drawString("Press Esc to go back", 50, 800);
 		
 		//if a boolean is true the switch is highlighted
 		if (effectSoundOn && effectActive)       							
-			g.drawImage(new Image("res/switchOnActive.png"), 425, 350);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOnActive.png"), 425, 350);
 		else if (!effectSoundOn && effectActive)
-			g.drawImage(new Image("res/switchOffActive.png"), 425, 350);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOffActive.png"), 425, 350);
 		if (musicSoundOn && musicActive)
-			g.drawImage(new Image("res/switchOnActive.png"), 425, 550);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOnActive.png"), 425, 550);
 		else if (!musicSoundOn && musicActive)
-			g.drawImage(new Image("res/switchOffActive.png"), 425, 550);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOffActive.png"), 425, 550);
 		if (effectSoundOn && !effectActive)
-			g.drawImage(new Image("res/switchOn.png"), 425, 350);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOn.png"), 425, 350);
 		else if (!effectSoundOn && !effectActive)
-			g.drawImage(new Image("res/switchOff.png"), 425, 350);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOff.png"), 425, 350);
 		if (musicSoundOn && !musicActive)
-			g.drawImage(new Image("res/switchOn.png"), 425, 550);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOn.png"), 425, 550);
 		else if (!musicSoundOn && !musicActive)
-			g.drawImage(new Image("res/switchOff.png"), 425, 550);
+			g.drawImage(new Image("src/nightmare dungeon/res/switchOff.png"), 425, 550);
 
 	}
 

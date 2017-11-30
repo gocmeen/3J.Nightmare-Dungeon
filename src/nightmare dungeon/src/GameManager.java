@@ -1,5 +1,6 @@
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
+import java.awt.Rectangle;
 
 import java.util.Arrays;
 import java.util.Timer;
@@ -7,9 +8,6 @@ import java.util.ArrayList;
 import java.util.concurrent.*;
 
 import org.lwjgl.input.Keyboard;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -29,6 +27,9 @@ public class GameManager extends BasicGameState{
     protected SoundManager soundmanager; // Sound Manager Object
     boolean sound_on,music_on; //flags for sound and music checks
 
+    GameRender renderer;
+
+
     //Constructor
     public GameManager(int a, boolean sound_on, boolean music_on)throws SlickException{
         currentMapID = 0; //initial map is with id = 0
@@ -38,6 +39,7 @@ public class GameManager extends BasicGameState{
         soundmanager = new SoundManager(sound_on,music_on);
         this.sound_on = sound_on;
         this.music_on = music_on;
+        renderer = new GameRender();
 
     }
 
@@ -48,10 +50,19 @@ public class GameManager extends BasicGameState{
     * */
     public void render(GameContainer gc,StateBasedGame sbg, Graphics g) throws SlickException{
 
+        //renderer.render(gc, sbg, g,
+          //      someone, mapList, currentMapID,
+        //    dFlag, uFlag, lFlag, rFlag);
+        Rectangle healthbar = new Rectangle();
+        g.setColor(Color.red);
+
+        g.fillRect(10,50,someone.getMaxHealth()*(someone.getHealth()/someone.getMaxHealth()),50);
+        g.setColor(Color.white);
+        g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,55);
         //getting the current room from the Map
         Room curr = mapList.get(currentMapID).getCurrentRoom();
 
-        g.drawImage(new Image (Assets.background), 0,0);
+        g.drawImage(new Image (Assets.background), 150,0);
         //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
         for(int i = 0; i < curr.getMonsterList().size();i++){
             if(curr.getMonsterList().get(i).getMonsterType()==0){
@@ -124,6 +135,7 @@ public class GameManager extends BasicGameState{
     *
     * */
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+
         Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
         curr.moveMonsters(someone);
         //movement according to key presses W, A , S and D
