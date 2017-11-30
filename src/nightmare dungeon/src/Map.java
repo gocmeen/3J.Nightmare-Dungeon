@@ -38,6 +38,10 @@ public class Map {
 		this.currentRoomID = currentRoomID;
 	}
 
+	public int getMapID(){
+	    return mapID;
+    }
+
 	public int getWidth() {
 		return width;
 	}

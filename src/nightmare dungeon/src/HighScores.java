@@ -22,7 +22,7 @@ public class HighScores extends BasicGameState{
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		//images are drawn
-		g.drawImage(new Image("res/highScore.png"), 250, 100);
+		g.drawImage(new Image("src/nightmare dungeon/res/highScore.png"), 250, 100);
 		g.drawString("Press Esc to go back", 50, 800);
 	}
 

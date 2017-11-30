@@ -88,8 +88,14 @@ public class Room{
     public Entity checkCollision(Character someone) {
         for (int i = 0; i < monsterList.size(); i++) {
             if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(monsterList.get(i).getCollisionRectangle(0, 0))
-                    &&someone!=monsterList.get(i))
+                    &&someone!=monsterList.get(i)){
+
+                if(someone.getHealth() >= 0)
+                    someone.setHealth(someone.getHealth() - monsterList.get(i).getAttackDamage());
+
                 return monsterList.get(i);
+            }
+
         }
 
         for (int i = 0; i < itemList.size(); i++) {

@@ -21,7 +21,7 @@ public class Credits extends BasicGameState{
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		//images are drawn
-		g.drawImage(new Image("res/credits.png"), 340, 100);
+		g.drawImage(new Image("src/nightmare dungeon/res/credits.png"), 340, 100);
 		g.drawString("Mehmet Oguz Gocmen", 440, 300);
 		g.drawString("Berk Mandiracioglu", 440, 400);
 		g.drawString("Huseyin Emre Basar", 440, 500);

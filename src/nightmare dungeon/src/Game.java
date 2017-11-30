@@ -9,7 +9,7 @@ public class Game extends StateBasedGame{
 	
 	public static final String gameName = "RPG game";
 	public static final int startMenu = 0;
-	public static final int arak= 1;
+	public static final int game= 1;
 	public static final int settings = 2;
 	public static final int highScores = 3;
 	public static final int help = 4;
@@ -21,7 +21,7 @@ public class Game extends StateBasedGame{
 		Settings x = new Settings(settings);
 
 		this.addState(new Menu(startMenu));
-		this.addState(new GameManager(arak,x.isSoundOn(),x.isMusicOn()));
+		this.addState(new GameManager(game,x.isSoundOn(),x.isMusicOn()));
 		this.addState(x);
 		this.addState(new HighScores(highScores));
 		this.addState(new Help(help));
