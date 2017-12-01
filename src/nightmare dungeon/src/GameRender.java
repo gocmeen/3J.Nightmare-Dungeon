@@ -1,0 +1,86 @@
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
+
+import java.awt.*;
+import java.util.ArrayList;
+
+public class GameRender{
+
+
+    public GameRender(){
+
+    }
+
+    public void render(GameContainer gc, StateBasedGame sbg, Graphics g,
+                       Player someone, ArrayList<Map> mapList, int currentMapID,
+                       boolean dFlag, boolean uFlag, boolean lFlag, boolean rFlag) throws SlickException {
+        Rectangle healthbar = new Rectangle();
+        g.setColor(org.newdawn.slick.Color.red);
+
+        g.fillRect(10,50,someone.getMaxHealth()*(someone.getHealth()/someone.getMaxHealth()),50);
+        g.setColor(org.newdawn.slick.Color.white);
+        g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,55);
+        //getting the current room from the Map
+        Room curr = mapList.get(currentMapID).getCurrentRoom();
+
+        g.drawImage(new org.newdawn.slick.Image(Assets.background), 150,0);
+        //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
+        for(int i = 0; i < curr.getMonsterList().size();i++){
+            if(curr.getMonsterList().get(i).getMonsterType()==0){
+                g.drawImage(new org.newdawn.slick.Image(Assets.monster1), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());}
+            else if(curr.getMonsterList().get(i).getMonsterType()==1){
+                g.drawImage(new org.newdawn.slick.Image(Assets.monster2), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
+            }
+        }
+        //Looping through the itemList to get the coordinates the coordinates of the items inside the room
+        for(int i = 0; i < curr.getItemList().size();i++){
+
+            if(curr.getItemList().get(i).itemID==0)
+                g.drawImage(new org.newdawn.slick.Image(Assets.item1),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
+            else if(curr.getItemList().get(i).itemID==1)
+                g.drawImage(new org.newdawn.slick.Image(Assets.item2),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
+
+        }
+
+        for(int i = 0; i < curr.getObstacleList().size();i++){
+
+            g.drawImage(new org.newdawn.slick.Image(Assets.obstacle), curr.getObstacleList().get(i).getX(),curr.getObstacleList().get(i).getY());
+
+        }
+        //changing the image of player according to the direction it goes
+        if(dFlag )
+            g.drawImage(new org.newdawn.slick.Image(Assets.playerDown),someone.getX(),someone.getY());
+        else if(uFlag)
+            g.drawImage(new org.newdawn.slick.Image(Assets.playerUp),someone.getX(),someone.getY());
+        else if(rFlag)
+            g.drawImage(new org.newdawn.slick.Image(Assets.playerRight),someone.getX(),someone.getY());
+        else if(lFlag)
+            g.drawImage(new org.newdawn.slick.Image(Assets.playerLeft),someone.getX(),someone.getY());
+        else
+            g.drawImage(new org.newdawn.slick.Image(Assets.playerDown),someone.getX(),someone.getY());
+
+
+
+        //looping through the projectileList to draw projectiles inside the room.
+        for (int i = 0; i < someone.getProjectile().size();i++) {
+
+            g.drawImage(new org.newdawn.slick.Image(Assets.playerAttack), someone.getProjectile().get(i).getX(),someone.getProjectile().get(i).getY());
+
+
+        }
+
+        for(int i = 0; i < curr.getMonsterList().size();i++) {
+            for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
+                if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1000&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
+                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<850&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
+                    g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
+
+
+            }
+            //System.out.println("aaa");
+        }
+    }
+}

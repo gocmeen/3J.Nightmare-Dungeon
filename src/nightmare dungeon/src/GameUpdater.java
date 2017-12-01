@@ -1,146 +1,55 @@
-import org.newdawn.slick.*;
-import org.newdawn.slick.state.BasicGameState;
-import java.awt.Rectangle;
-
-import java.util.Arrays;
-import java.util.Timer;
-import java.util.ArrayList;
-import java.util.concurrent.*;
-
 import org.lwjgl.input.Keyboard;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-/**
- * Created by wifinaynay on 01/11/17.
- */
-public class GameManager extends BasicGameState{
-    //Attributes
-    /*private ArrayList<Map> mapList; //holds the list of maps
+import java.util.ArrayList;
+
+public class GameUpdater{
+
+    private ArrayList<Map> mapList; //holds the list of maps
     private Player someone; //Player object(Alice)
     private int currentMapID; //id of the current Map
     private int width = 1200;
     private int height = 720;
-    boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
+    private boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
 
     protected SoundManager soundmanager; // Sound Manager Object
+
     boolean sound_on,music_on; //flags for sound and music checks
-    */
-    GameRender renderer;
-    GameUpdater updater;
 
+    public GameUpdater()throws SlickException{//ArrayList<Map> mapList, int currentMapID,
+                       //Player someone, int width, int height, SoundManager soundmanager,
+                       //boolean sound_on, boolean music_on)throws SlickException{
+        /*this.currentMapID = currentMapID; //initial map is with id = 0
+        this.someone= someone; //initializing Alice
+        this.mapList = mapList;
+        this.width = width;
+        this.height = height;
+        generateMaps(); //Basically generates the maps and rooms and entities inside the Rooms
+        this.soundmanager = soundmanager;
+        this.sound_on = sound_on;
+        this.music_on = music_on;*/
+        //renderer = new GameRender();
 
-    //Constructor
-    public GameManager(int a, boolean sound_on, boolean music_on)throws SlickException{
-        /*currentMapID = 0; //initial map is with id = 0
+        currentMapID = 0; //initial map is with id = 0
         someone= new Player(300,300,0,50, 50); //initializing Alice
         mapList = new ArrayList<Map>();
-        //generateMaps(); //Basically generates the maps and rooms and entities inside the Rooms
+        generateMaps(); //Basically generates the maps and rooms and entities inside the Rooms
         soundmanager = new SoundManager(sound_on,music_on);
         this.sound_on = sound_on;
         this.music_on = music_on;
-    */
-        renderer = new GameRender();
-        updater = new GameUpdater();//mapList, currentMapID,someone,width,height,soundmanager,sound_on,music_on);
-
-    }
-
-    /*
-    * This method gets the X and Y coordinates of the Entities in Room class
-    * Then, it draws them using their corresponding coordinates and images
-    *This method is called repetetively as the game continues
-    * */
-    public void render(GameContainer gc,StateBasedGame sbg, Graphics g) throws SlickException{
-
-        renderer.render(gc, sbg, g,
-                updater.getPlayer(), updater.getMapList(), updater.getCurrentMapID(),
-            updater.getDownFlag(), updater.getUpFlag(), updater.getLeftFlag(), updater.getRightFlag());
-       /*Rectangle healthbar = new Rectangle();
-        g.setColor(Color.red);
-
-        g.fillRect(10,50,someone.getMaxHealth()*(someone.getHealth()/someone.getMaxHealth()),50);
-        g.setColor(Color.white);
-        g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,55);
-        //getting the current room from the Map
-        Room curr = mapList.get(currentMapID).getCurrentRoom();
-
-        g.drawImage(new Image (Assets.background), 150,0);
-        //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
-        for(int i = 0; i < curr.getMonsterList().size();i++){
-            if(curr.getMonsterList().get(i).getMonsterType()==0){
-            g.drawImage(new Image (Assets.monster1), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());}
-            else if(curr.getMonsterList().get(i).getMonsterType()==1){
-                g.drawImage(new Image (Assets.monster2), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
-            }
-        }
-        //Looping through the itemList to get the coordinates the coordinates of the items inside the room
-        for(int i = 0; i < curr.getItemList().size();i++){
-
-            if(curr.getItemList().get(i).itemID==0)
-            g.drawImage(new Image (Assets.item1),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
-            else if(curr.getItemList().get(i).itemID==1)
-                g.drawImage(new Image (Assets.item2),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
-
-        }
-
-        for(int i = 0; i < curr.getObstacleList().size();i++){
-
-                g.drawImage(new Image (Assets.obstacle), curr.getObstacleList().get(i).getX(),curr.getObstacleList().get(i).getY());
-
-        }
-        //changing the image of player according to the direction it goes
-       if(dFlag )
-        g.drawImage(new Image (Assets.playerDown),someone.getX(),someone.getY());
-        else if(uFlag)
-           g.drawImage(new Image (Assets.playerUp),someone.getX(),someone.getY());
-        else if(rFlag)
-           g.drawImage(new Image (Assets.playerRight),someone.getX(),someone.getY());
-        else if(lFlag)
-           g.drawImage(new Image (Assets.playerLeft),someone.getX(),someone.getY());
-        else
-           g.drawImage(new Image (Assets.playerDown),someone.getX(),someone.getY());
-
-
-
-        //looping through the projectileList to draw projectiles inside the room.
-        for (int i = 0; i < someone.getProjectile().size();i++) {
-
-            g.drawImage(new Image(Assets.playerAttack), someone.getProjectile().get(i).getX(),someone.getProjectile().get(i).getY());
-
-
-        }
-
-        for(int i = 0; i < curr.getMonsterList().size();i++) {
-            for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
-                if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1000&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
-                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<850&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
-                g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
-
-
-    }
-    //System.out.println("aaa");
-}*/
 
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
-        updater.init(gc,sbg);
+        soundmanager.playMusic();
 
     }
 
-
-    /*
-    * This method is called repetetively as the game continues
-    * Inside this method Controller manipulates Model according to the user Input
-    * This method manages the movement and attack of the player
-    *
-    * */
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-
-        updater.update(gc,sbg,delta);
-        /*Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
+        Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
         curr.moveMonsters(someone);
         //movement according to key presses W, A , S and D
         curr.attackMonsterProjectiles(someone);
@@ -187,7 +96,7 @@ public class GameManager extends BasicGameState{
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
-            someone.move(width,height);
+                someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
 
                 someone.addPassive((PassiveItem)colliededObject);
@@ -210,7 +119,7 @@ public class GameManager extends BasicGameState{
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
             if(colliededObject==null )//&& curr.checkRoomCollision(someone))
-            someone.move(width,height);
+                someone.move(width,height);
             else if(colliededObject.typeID==2)// && curr.checkRoomCollision(someone))
             {
 
@@ -234,7 +143,7 @@ public class GameManager extends BasicGameState{
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
             if(curr.checkCollision(someone)==null )
-            someone.move(width,height);
+                someone.move(width,height);
             else if(colliededObject.typeID==2 ){
 
                 someone.addPassive((PassiveItem)colliededObject);
@@ -258,7 +167,7 @@ public class GameManager extends BasicGameState{
             Entity colliededObject = curr.checkCollision(someone);
             //move according to collision
             if(curr.checkCollision(someone)==null )
-            someone.move(width,height);
+                someone.move(width,height);
             else if(colliededObject.typeID==2 ){
 
                 someone.addPassive((PassiveItem)colliededObject);
@@ -278,34 +187,34 @@ public class GameManager extends BasicGameState{
             long startTime = System.currentTimeMillis();
 
             if(someone.attack(startTime, someone.getX(), someone.getY(), -1, -1))
-            soundmanager.playSound(1);
+                soundmanager.playSound(1);
         }
         else if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)&&Keyboard.isKeyDown(Keyboard.KEY_DOWN)){
             long startTime = System.currentTimeMillis();
 
             if(someone.attack(startTime, someone.getX(), someone.getY(), -1, 1))
-            soundmanager.playSound(1);
+                soundmanager.playSound(1);
         }
         else if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)&&Keyboard.isKeyDown(Keyboard.KEY_UP)){
             long startTime = System.currentTimeMillis();
 
             if(someone.attack(startTime, someone.getX(), someone.getY(), 1, -1))
-            soundmanager.playSound(1);
+                soundmanager.playSound(1);
         }
         else if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)&&Keyboard.isKeyDown(Keyboard.KEY_DOWN)){
             long startTime = System.currentTimeMillis();
 
             if(someone.attack(startTime, someone.getX(), someone.getY(), 1, 1))
-            soundmanager.playSound(1);
+                soundmanager.playSound(1);
         }
         else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
 
 
-                long startTime = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis();
 
-                if(someone.attack(startTime, someone.getX(), someone.getY(), -1, 0))
+            if(someone.attack(startTime, someone.getX(), someone.getY(), -1, 0))
 
-                    soundmanager.playSound(1);
+                soundmanager.playSound(1);
 
 
 
@@ -317,10 +226,10 @@ public class GameManager extends BasicGameState{
         {
 
             long startTime = System.currentTimeMillis();
-                if(someone.attack(startTime,someone.getX(), someone.getY(), 1, 0))
+            if(someone.attack(startTime,someone.getX(), someone.getY(), 1, 0))
 
 
-            soundmanager.playSound(1);
+                soundmanager.playSound(1);
 
 
 
@@ -330,10 +239,10 @@ public class GameManager extends BasicGameState{
         {
 
 
-                long startTime = System.currentTimeMillis();
-               if( someone.attack(startTime,someone.getX(), someone.getY(), 0, -1))
+            long startTime = System.currentTimeMillis();
+            if( someone.attack(startTime,someone.getX(), someone.getY(), 0, -1))
 
-            soundmanager.playSound(1);
+                soundmanager.playSound(1);
 
         }
 
@@ -343,11 +252,11 @@ public class GameManager extends BasicGameState{
 
 
 
-                long startTime = System.currentTimeMillis();
-                if(someone.attack(startTime,someone.getX(), someone.getY(), 0, 1))
+            long startTime = System.currentTimeMillis();
+            if(someone.attack(startTime,someone.getX(), someone.getY(), 0, 1))
 
 
-            soundmanager.playSound(1);
+                soundmanager.playSound(1);
 
         }
 
@@ -359,20 +268,16 @@ public class GameManager extends BasicGameState{
         music_on = SoundManager.music_on;  //for pause menu
         //sound on kısmı yok
 
-        if(!music_on)
-            soundmanager.getMusic().stop();
-
-            */
+        //if(!music_on)
+            //soundmanager.getMusic().stop();
 
     }
 
-
-
-    //returns current map
-    /*public Map getCurrentMap(){
+    public Map getCurrentMap(){
         return mapList.get(currentMapID);
     }
     //generates maps(layers) inside the game
+
     public void generateMaps(){
         Map m1 = new Map(0,width,height);
         Map m2 = new Map(1,width,height);
@@ -385,9 +290,31 @@ public class GameManager extends BasicGameState{
         this.currentMapID = currentMapID;
     }
 
+    public int getCurrentMapID(){
+        return currentMapID;
+    }
 
-    */
-    public int getID(){
-        return 1;
+    public Player getPlayer(){
+        return someone;
+    }
+
+    public ArrayList<Map> getMapList(){
+        return mapList;
+    }
+
+    public boolean getUpFlag(){
+        return uFlag;
+    }
+
+    public boolean getDownFlag(){
+        return dFlag;
+    }
+
+    public boolean getRightFlag(){
+        return rFlag;
+    }
+
+    public boolean getLeftFlag(){
+        return lFlag;
     }
 }
