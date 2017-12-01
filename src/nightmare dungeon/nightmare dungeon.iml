@@ -10,5 +10,8 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="native" level="project" />
     <orderEntry type="library" name="macosx" level="project" />
+    <orderEntry type="library" name="jogg-0.0.7" level="project" />
+    <orderEntry type="library" name="asm-debug-all" level="project" />
+    <orderEntry type="library" name="jars" level="project" />
   </component>
 </module>
