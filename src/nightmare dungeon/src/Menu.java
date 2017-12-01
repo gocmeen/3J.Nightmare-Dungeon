@@ -72,7 +72,7 @@ public class Menu extends BasicGameState{
 		if (settingsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			sbg.enterState(2);
 		if (playActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
-			sbg.enterState(1);
+			sbg.enterState(7);
 		if (highScoresActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			sbg.enterState(3);
 		if (helpActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
