@@ -10,6 +10,7 @@ public class ChooseCharacter extends BasicGameState {
 
     private boolean prevLeft = false; // used for taking single input from user
     private boolean prevRight = false; // used for taking single input from user
+    public static int chosenCharacter; //the chosen character can be accessed from all classes
 
     //different states as booleans for forming the translation between them
     private boolean aliceActivated = true;
@@ -54,8 +55,16 @@ public class ChooseCharacter extends BasicGameState {
         spacePressed += delta; //To not capture the KEY_SPACE press of the main menu.
 
         //input from user is taken, when space is pressed it changes the states
-        if ((aliceActivated || lazarusActivated || judasActivated) && Keyboard.isKeyDown(Keyboard.KEY_SPACE) && (spacePressed >= 1000))
+        if ((aliceActivated || lazarusActivated || judasActivated) && Keyboard.isKeyDown(Keyboard.KEY_SPACE) && (spacePressed >= 1000)) {
+            if (aliceActivated) {
+                chosenCharacter = 1;
+            }
+            else if (lazarusActivated)
+                chosenCharacter = 2;
+            else if (judasActivated)
+                chosenCharacter = 3;
             sbg.enterState(1);
+        }
         if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
             sbg.enterState(0);
 

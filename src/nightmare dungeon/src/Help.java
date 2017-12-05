@@ -28,6 +28,7 @@ public class Help extends BasicGameState{
 		g.drawString("Press Esc to go back", 50, 800);
 		g.drawString("Press           to continue help", 650, 800);
 		g.drawImage(new Image("src/nightmare dungeon/res/rightButton.png"), 650, 745);
+
 	}
 
 	

@@ -50,17 +50,43 @@ public class GameRender{
             g.drawImage(new org.newdawn.slick.Image(Assets.obstacle), curr.getObstacleList().get(i).getX(),curr.getObstacleList().get(i).getY());
 
         }
-        //changing the image of player according to the direction it goes
-        if(dFlag )
-            g.drawImage(new org.newdawn.slick.Image(Assets.playerDown),someone.getX(),someone.getY());
-        else if(uFlag)
-            g.drawImage(new org.newdawn.slick.Image(Assets.playerUp),someone.getX(),someone.getY());
-        else if(rFlag)
-            g.drawImage(new org.newdawn.slick.Image(Assets.playerRight),someone.getX(),someone.getY());
-        else if(lFlag)
-            g.drawImage(new org.newdawn.slick.Image(Assets.playerLeft),someone.getX(),someone.getY());
-        else
-            g.drawImage(new org.newdawn.slick.Image(Assets.playerDown),someone.getX(),someone.getY());
+        //changing the image of player according to the direction it goes and the chosen character
+        if (ChooseCharacter.chosenCharacter == 1) {
+            if (dFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.playerDown), someone.getX(), someone.getY());
+            else if (uFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.playerUp), someone.getX(), someone.getY());
+            else if (rFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.playerRight), someone.getX(), someone.getY());
+            else if (lFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.playerLeft), someone.getX(), someone.getY());
+            else
+                g.drawImage(new org.newdawn.slick.Image(Assets.playerDown), someone.getX(), someone.getY());
+        }
+        else if (ChooseCharacter.chosenCharacter == 2){
+            if (dFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player2Down), someone.getX(), someone.getY());
+            else if (uFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player2Up), someone.getX(), someone.getY());
+            else if (rFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player2Right), someone.getX(), someone.getY());
+            else if (lFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player2Left), someone.getX(), someone.getY());
+            else
+                g.drawImage(new org.newdawn.slick.Image(Assets.player2Down), someone.getX(), someone.getY());
+        }
+        else if (ChooseCharacter.chosenCharacter == 3){
+            if (dFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player3Down), someone.getX(), someone.getY());
+            else if (uFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player3Up), someone.getX(), someone.getY());
+            else if (rFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player3Right), someone.getX(), someone.getY());
+            else if (lFlag)
+                g.drawImage(new org.newdawn.slick.Image(Assets.player3Left), someone.getX(), someone.getY());
+            else
+                g.drawImage(new org.newdawn.slick.Image(Assets.player3Down), someone.getX(), someone.getY());
+        }
 
 
 
