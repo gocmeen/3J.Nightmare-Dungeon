@@ -11,16 +11,16 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Settings extends BasicGameState{
 	private boolean prevUp = false; // used for taking single input from user
 	private boolean prevDown = false; // used for taking single input from user
-	
+
 	//different states as booleans for forming the translation between them
 	private boolean prevSwitch = false;
-	private boolean effectSoundOn = true;
+	private boolean effectSoundOn = false;
 	private boolean effectActive = true;
-	private boolean musicSoundOn = true;
+	private boolean musicSoundOn = false;
 	private boolean musicActive = false;
 
 	private long spacePressed = 0; //To not capture the KEY_SPACE press of the main menu.
-	
+
 	//constructor
 	public Settings(int settings)
 	{
@@ -38,9 +38,9 @@ public class Settings extends BasicGameState{
 		g.drawString("In-Game Effect Sound", 400, 300);
 		g.drawString("In-Game Music Sound", 400, 500);
 		g.drawString("Press Esc to go back", 50, 800);
-		
+
 		//if a boolean is true the switch is highlighted
-		if (effectSoundOn && effectActive)       							
+		if (effectSoundOn && effectActive)
 			g.drawImage(new Image("src/nightmare dungeon/res/switchOnActive.png"), 425, 350);
 		else if (!effectSoundOn && effectActive)
 			g.drawImage(new Image("src/nightmare dungeon/res/switchOffActive.png"), 425, 350);
@@ -59,7 +59,7 @@ public class Settings extends BasicGameState{
 
 	}
 
-	
+
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 
 		spacePressed += delta; //To not capture the KEY_SPACE press of the main menu.
@@ -69,7 +69,7 @@ public class Settings extends BasicGameState{
 			sbg.enterState(0);
 		if (Keyboard.isKeyDown(Keyboard.KEY_SPACE) && prevSwitch == false && (spacePressed >= 1000)){
 			prevSwitch = true;
-			
+
 			//boolean logic of changing switches
 			if (effectSoundOn && effectActive)
 			{

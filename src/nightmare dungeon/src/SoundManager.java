@@ -24,12 +24,12 @@ public class SoundManager {
     //constructor
     public SoundManager(boolean sound_on, boolean music_on)throws SlickException
     {
-        //soundList = new ArrayList<Sound>();
-        //music = new Music("src/nightmare dungeon/res/MainMenu.ogg");
-        //soundList.add(new Sound("src/nightmare dungeon/res/PlayerAttack.wav"));
+        soundList = new ArrayList<Sound>();
+        music = new Music("src/nightmare dungeon/res/MainMenu.ogg");
+        soundList.add(new Sound("src/nightmare dungeon/res/PlayerAttack.wav"));
         this.sound_on = sound_on;
         this.music_on = music_on;
-//        soundList.add(new Sound("src/nightmare dungeon/res/Player_Attack"));
+       soundList.add(new Sound("src/nightmare dungeon/res/PlayerAttack.wav"));
     }
 
 
@@ -38,27 +38,27 @@ public class SoundManager {
     //music is played on loop if it is on
     public static void playMusic()throws SlickException
     {
-     /*   if(music_on)
+        if(music_on)
         {
             music.loop();;
         }
         if(!music_on && music.playing())
         {
             music.stop();
-        }*/
+        }
     }
 
 
     //sound effects
     public void playSound(int i)throws SlickException
     {
-        /*if(sound_on)
+        if(sound_on)
         {
             if(i ==1)
             {
                 soundList.get(0).play();
             }
-        }*/
+        }
 
     }
     

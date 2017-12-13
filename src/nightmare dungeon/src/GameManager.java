@@ -47,15 +47,15 @@ public class GameManager extends BasicGameState{
     }
 
     /*
-    * This method gets the X and Y coordinates of the Entities in Room class
-    * Then, it draws them using their corresponding coordinates and images
-    *This method is called repetetively as the game continues
-    * */
+     * This method gets the X and Y coordinates of the Entities in Room class
+     * Then, it draws them using their corresponding coordinates and images
+     *This method is called repetetively as the game continues
+     * */
     public void render(GameContainer gc,StateBasedGame sbg, Graphics g) throws SlickException{
 
         renderer.render(gc, sbg, g,
                 updater.getPlayer(), updater.getMapList(), updater.getCurrentMapID(),
-            updater.getDownFlag(), updater.getUpFlag(), updater.getLeftFlag(), updater.getRightFlag());
+                updater.getDownFlag(), updater.getUpFlag(), updater.getLeftFlag(), updater.getRightFlag());
        /*Rectangle healthbar = new Rectangle();
         g.setColor(Color.red);
 
@@ -132,11 +132,11 @@ public class GameManager extends BasicGameState{
 
 
     /*
-    * This method is called repetetively as the game continues
-    * Inside this method Controller manipulates Model according to the user Input
-    * This method manages the movement and attack of the player
-    *
-    * */
+     * This method is called repetetively as the game continues
+     * Inside this method Controller manipulates Model according to the user Input
+     * This method manages the movement and attack of the player
+     *
+     * */
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
 
         updater.update(gc,sbg,delta);
