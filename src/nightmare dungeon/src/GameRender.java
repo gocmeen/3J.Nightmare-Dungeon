@@ -17,6 +17,7 @@ public class GameRender{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g,
                        Player someone, ArrayList<Map> mapList, int currentMapID,
                        boolean dFlag, boolean uFlag, boolean lFlag, boolean rFlag) throws SlickException {
+        g.drawImage(new org.newdawn.slick.Image(Assets.background), 0,0);
         Rectangle healthbar = new Rectangle();
         g.setColor(org.newdawn.slick.Color.red);
 
@@ -26,7 +27,7 @@ public class GameRender{
         //getting the current room from the Map
         Room curr = mapList.get(currentMapID).getCurrentRoom();
 
-        g.drawImage(new org.newdawn.slick.Image(Assets.background), 150,0);
+
         //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
         for(int i = 0; i < curr.getMonsterList().size();i++){
             if(curr.getMonsterList().get(i).getMonsterType()==0){
