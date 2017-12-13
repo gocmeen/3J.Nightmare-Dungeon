@@ -14,12 +14,12 @@ public class HighScores extends BasicGameState{
 	public HighScores(int highScores){
 		fm = new FileManager("src/nightmare dungeon/res/highScores.txt");
 	}
-	
+
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		
+
 	}
 
-	
+
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		//images are drawn
 		g.drawImage(new Image("src/nightmare dungeon/res/highScore.png"), 250, 100);
