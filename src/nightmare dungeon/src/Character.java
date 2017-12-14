@@ -3,13 +3,14 @@
 import java.awt.Graphics; //these will be changed
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Timer;
 import java.util.concurrent.*;
 
 public class Character extends Entity {
     //Attributes
     protected boolean attacked;
     protected int health;
-    final protected int MAX_HEALTH = 100;
+    final protected int MAX_HEALTH = 300;
     protected int speed;
     protected double directionX, directionY;
     protected int attackDamage,attackSpeed;
@@ -17,7 +18,7 @@ public class Character extends Entity {
     protected boolean alive;
     protected int projectileCount;
     protected String name;
-
+    protected boolean vulnerable;
 
     //Constructor
     public Character(int x, int y, int typeID,int width, int height, int health , int speed, int attackDamage, int attackSpeed){
@@ -33,13 +34,13 @@ public class Character extends Entity {
         attacked= false;
         projectile = new ArrayList<Projectile>();
         alive = true;
-
+        vulnerable = true;
     }
     //changes the x and y coordinates of the player
     public void move(int roomWidth, int roomHeight){
 
         if(this instanceof Player) {
-            boolean inRangeWidthMin = (this.getX() > 150);
+            boolean inRangeWidthMin = (this.getX() > 0);
             boolean inRangeWidthMax = (this.getX() < roomWidth);
             boolean inRangeHeightMin = (this.getY() > 0);
             boolean inRangeHeightMax = (this.getY() < roomHeight);
@@ -218,7 +219,12 @@ public class Character extends Entity {
     }
 
     public void setHealth(int health) {
+        if(vulnerable)
         this.health+= health;
     }
+
+
+
+
 
 }

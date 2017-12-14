@@ -18,10 +18,14 @@ public class GameRender{
                        Player someone, ArrayList<Map> mapList, int currentMapID,
                        boolean dFlag, boolean uFlag, boolean lFlag, boolean rFlag) throws SlickException {
         g.drawImage(new org.newdawn.slick.Image(Assets.background), 0,0);
-        Rectangle healthbar = new Rectangle();
-        g.setColor(org.newdawn.slick.Color.red);
+        //  Rectangle healthbar = new Rectangle();
+        g.setColor(org.newdawn.slick.Color.black);
 
-        g.fillRect(10,50,someone.getMaxHealth()*(someone.getHealth()/someone.getMaxHealth()),50);
+        g.fillRect(10,50,someone.getMaxHealth(),30);
+
+        g.setColor(org.newdawn.slick.Color.red);
+        g.fillRect(10,50,someone.getHealth(),30);
+
         g.setColor(org.newdawn.slick.Color.white);
         g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,55);
         //getting the current room from the Map

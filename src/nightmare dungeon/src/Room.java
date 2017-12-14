@@ -3,6 +3,7 @@
  */
 
 import org.lwjgl.Sys;
+import org.lwjgl.util.Timer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,8 +15,7 @@ public class Room{
     private int id;
     private int width, height1;
     private ArrayList<Integer> collided;
-
-
+    private long currTime;
 
 
 
@@ -30,6 +30,8 @@ public class Room{
         generateMonsters();
         generateItems();
         generateObstacles();
+        currTime = System.currentTimeMillis(); //Game start time
+
     }
 
     public int getHeight() {
@@ -86,13 +88,18 @@ public class Room{
     }
     //checks collision between characters and entities and returns collided object
     public Entity checkCollision(Character someone) {
+        System.out.println("game time is" + System.currentTimeMillis());
+
         for (int i = 0; i < monsterList.size(); i++) {
+
             if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(monsterList.get(i).getCollisionRectangle(0, 0))
                     &&someone!=monsterList.get(i)){
 
-                if(someone.getHealth() >= 0)
-                    someone.setHealth(someone.getHealth() - monsterList.get(i).getAttackDamage());
 
+                if(someone.getHealth() > 0 && System.currentTimeMillis()-currTime >  300) {  //.Checks time delay between attacks. Cant get hit for like 0.3 second after first hit.
+                    someone.setHealth(-(monsterList.get(i).getAttackDamage()));
+                    currTime = System.currentTimeMillis();
+                }
                 return monsterList.get(i);
             }
 
