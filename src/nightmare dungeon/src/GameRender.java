@@ -70,7 +70,10 @@ public class GameRender{
 
         }
         for(int i = 0; i < curr.getDoorList().size();i++){
-            g.drawImage(new org.newdawn.slick.Image(Assets.door),curr.getDoorList().get(i).getX(),curr.getDoorList().get(i).getY());
+            if(curr.checkCleared())
+                g.drawImage(new org.newdawn.slick.Image(Assets.opendoor),curr.getDoorList().get(i).getX(),curr.getDoorList().get(i).getY());
+            else
+                g.drawImage(new org.newdawn.slick.Image(Assets.door),curr.getDoorList().get(i).getX(),curr.getDoorList().get(i).getY());
         }
         //changing the image of player according to the direction it goes and the chosen character
         if (ChooseCharacter.chosenCharacter == 1) {

@@ -107,6 +107,9 @@ public class Room{
 
 
     }
+    public boolean checkCleared(){
+        return monsterList.size()==0;
+    }
     //generates items inside the room
     public void generateItems(){
 

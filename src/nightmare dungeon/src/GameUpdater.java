@@ -77,7 +77,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
@@ -100,7 +100,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
@@ -123,7 +123,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
@@ -146,7 +146,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
@@ -172,7 +172,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                         mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
@@ -203,7 +203,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
@@ -233,7 +233,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
@@ -264,7 +264,7 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
-            else if(curr.checkCollision(someone).typeID==4){
+            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
