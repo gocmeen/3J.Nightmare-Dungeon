@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by wifinaynay on 01/11/17.
@@ -29,18 +30,51 @@ public class Map {
 
 	//ths method generates the rooms
 	public void generateRooms()throws IOException{
-		ArrayList<Integer> neighbours1 = new ArrayList<Integer>();
-		neighbours1.add(1);
-		neighbours1.add(2);
-		ArrayList<Integer> neighbours2 = new ArrayList<Integer>();
-		neighbours2.add(0);
-		neighbours2.add(2);
-		ArrayList<Integer> neighbours3 = new ArrayList<Integer>();
-		neighbours3.add(1);
-		neighbours3.add(0);
-		Room m1 = new Room( width, height1,0,neighbours1,false);
-		Room m2 = new Room(width, height1,1,neighbours2,false);
-		Room m3 = new Room(width, height1,2,neighbours3,false);
+		ArrayList<Door> positionsDoor=new ArrayList<Door>();
+		//three doors randomly positioned
+		for(int i = 0; i  < 3; i++){
+			for(int j = i+1; j<3;j++){
+
+				int randomX= ThreadLocalRandom.current().nextInt(0,1330);
+				int randomY = ThreadLocalRandom.current().nextInt(0,740);
+				int selectFrom4 = ThreadLocalRandom.current().nextInt(0,4);
+				Door d1;
+				Door d2;
+				if(selectFrom4==0){
+					d1 = new Door(0,randomY,4,30,30,i,j);
+					d2 = new Door ( 1330,randomY,4,30,30,j,i);
+
+				}
+				else if(selectFrom4==1){
+					d1 = new Door(1330,randomY,4,30,30,i,j);
+
+					d2 = new Door(0,randomY,4,30,30,j,i);
+				}
+				else if(selectFrom4==2){
+					d1 = new Door(randomX,0,4,30,30,i,j);
+
+					d2 = new Door ( randomX,740,4,30,30,j,i);
+				}
+				else{
+					d1 = new Door(randomX,740,4,30,30,i,j);
+					d2 = new Door(randomX,0,4,30,30,j,i);
+
+				}
+				positionsDoor.add(d1);
+				positionsDoor.add(d2);
+
+			}
+
+
+		}
+
+		//door coordinates
+
+
+
+		Room m1 = new Room( width, height1,0,positionsDoor,false);
+		Room m2 = new Room(width, height1,1,positionsDoor,false);
+		Room m3 = new Room(width, height1,2,positionsDoor,false);
 		roomArrayList.add(m1);
 		roomArrayList.add(m2);
 		roomArrayList.add(m3);

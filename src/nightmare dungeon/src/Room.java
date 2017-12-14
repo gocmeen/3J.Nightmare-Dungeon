@@ -22,14 +22,14 @@ public class Room{
     private int width, height1;
     private ArrayList<Integer> collided;
     private long currTime;
-    private ArrayList<Integer> neighbours;
+
     private boolean isBoss;
     private Portal port;
 
 
 
     //constructor
-    public Room(int width, int height,int id,ArrayList<Integer> neighbours,boolean isBoss)throws IOException{
+    public Room(int width, int height,int id,ArrayList<Door> neighbours,boolean isBoss)throws IOException{
         this.width=width;
         this.height1=height;
         this.id = id;
@@ -43,12 +43,15 @@ public class Room{
         port = null;
 
         currTime = System.currentTimeMillis(); //Game start time
-        this.neighbours = new ArrayList<>();
+       doorList= new ArrayList<Door>();
 
         for(int i = 0;i < neighbours.size();i++){
-            this.neighbours.add(neighbours.get(i));
+            if(neighbours.get(i).getRoomID1()==id){
+                doorList.add(new Door(neighbours.get(i).getX(),neighbours.get(i).getY(),4,30,30,neighbours.get(i).getRoomID1(),neighbours.get(i).getRoomID2()));
+            }
+
         }
-        generateDoors();
+        //generateDoors();
         this.isBoss=isBoss;
 
     }
@@ -102,7 +105,7 @@ public class Room{
     }
     public void generateDoors(){
 
-
+/*
 
         for(int i = 0; i < neighbours.size();i++){
             int randomX= ThreadLocalRandom.current().nextInt(0,1330);
@@ -119,7 +122,7 @@ public class Room{
                 d1= new Door(randomX,750,4,30,30,id,neighbours.get(i));
             doorList.add(d1);
 
-        }
+        }*/
 
 
 
