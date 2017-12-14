@@ -10,8 +10,8 @@ public class GameUpdater{
     private ArrayList<Map> mapList; //holds the list of maps
     private Player someone; //Player object(Alice)
     private int currentMapID; //id of the current Map
-    private int width = 1200;
-    private int height = 720;
+    private int width = 1366;
+    private int height = 780;
     private boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
 
     public static boolean pausePressed = false;
