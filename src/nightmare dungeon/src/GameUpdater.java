@@ -14,6 +14,8 @@ public class GameUpdater{
     private int height = 720;
     private boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
 
+    public static boolean pausePressed = false;
+
     protected SoundManager soundmanager; // Sound Manager Object
 
     boolean sound_on,music_on; //flags for sound and music checks
@@ -49,6 +51,13 @@ public class GameUpdater{
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
+        /*if (gc.getInput().isKeyPressed(Keyboard.KEY_P))
+            gc.setPaused(!gc.isPaused());*/
+        if (gc.getInput().isKeyPressed(Keyboard.KEY_P)) {
+            pausePressed = true;
+            sbg.enterState(8);
+        }
+
         Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
         curr.moveMonsters(someone);
         //movement according to key presses W, A , S and D

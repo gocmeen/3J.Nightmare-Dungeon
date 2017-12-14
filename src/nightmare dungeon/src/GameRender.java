@@ -1,3 +1,5 @@
+import org.lwjgl.input.Keyboard;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 
 public class GameRender{
 
-
+    public static Image lastState;
     public GameRender(){
 
     }
@@ -17,21 +19,27 @@ public class GameRender{
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g,
                        Player someone, ArrayList<Map> mapList, int currentMapID,
                        boolean dFlag, boolean uFlag, boolean lFlag, boolean rFlag) throws SlickException {
-        g.drawImage(new org.newdawn.slick.Image(Assets.background), 0,0);
-        //  Rectangle healthbar = new Rectangle();
-        g.setColor(org.newdawn.slick.Color.black);
-
-        g.fillRect(10,50,someone.getMaxHealth(),30);
-
+        /*if (gc.isPaused())
+        {
+            g.drawString("asdfasdfasdfasdfasdfasdfasdfasdfdddddddddddddd", 500, 500);
+            Rectangle rect = new Rectangle (0, 0, 1300, 780);
+            g.setColor(new Color(0xAABBCCDD));
+            g.fillRect(300,300,300,300);
+        }*/
+        if (GameUpdater.pausePressed) {
+            lastState = new Image("src/nightmare dungeon/res/backGround1.png");
+            g.copyArea(lastState, 0, 0);
+        }
+        Rectangle healthbar = new Rectangle();
         g.setColor(org.newdawn.slick.Color.red);
-        g.fillRect(10,50,someone.getHealth(),30);
 
+        g.fillRect(10,50,someone.getMaxHealth()*(someone.getHealth()/someone.getMaxHealth()),50);
         g.setColor(org.newdawn.slick.Color.white);
         g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,55);
         //getting the current room from the Map
         Room curr = mapList.get(currentMapID).getCurrentRoom();
 
-
+        g.drawImage(new org.newdawn.slick.Image(Assets.background), 150,0);
         //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
         for(int i = 0; i < curr.getMonsterList().size();i++){
             if(curr.getMonsterList().get(i).getMonsterType()==0){
