@@ -31,38 +31,38 @@ public class Menu extends BasicGameState{
 
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		g.drawImage(new Image("src/nightmare dungeon/res/nightmareDungeon.png"), 250, 100);
+		g.drawImage(new Image("src/nightmare dungeon/res/nightmareDungeon.png"), 400, 100);
 		
 		//if a boolean is true the button is highlighted
 		if (playActivated == false)
-			g.drawImage(new Image("src/nightmare dungeon/res/playUnactive.png"), 400, 200);
+			g.drawImage(new Image("src/nightmare dungeon/res/playUnactive.png"), 550, 200);
 		else
-			g.drawImage(new Image("src/nightmare dungeon/res/playActivated.png"), 400, 200);
+			g.drawImage(new Image("src/nightmare dungeon/res/playActivated.png"), 550, 200);
 		
 		if (settingsActivated == false)
-			g.drawImage(new Image("src/nightmare dungeon/res/settingsUnactivated.png"), 400, 300);
+			g.drawImage(new Image("src/nightmare dungeon/res/settingsUnactivated.png"), 550, 300);
 		else
-			g.drawImage(new Image("src/nightmare dungeon/res/settingsActivated.png"), 400, 300);
+			g.drawImage(new Image("src/nightmare dungeon/res/settingsActivated.png"), 550, 300);
 		
 		if (highScoresActivated == false)
-			g.drawImage(new Image("src/nightmare dungeon/res/highScoreUnactive.png"), 400, 400);
+			g.drawImage(new Image("src/nightmare dungeon/res/highScoreUnactive.png"), 550, 400);
 		else
-			g.drawImage(new Image("src/nightmare dungeon/res/highScoreActivated.png"), 400, 400);
+			g.drawImage(new Image("src/nightmare dungeon/res/highScoreActivated.png"), 550, 400);
 		
 		if (helpActivated == false)
-			g.drawImage(new Image("src/nightmare dungeon/res/helpUnactive.png"), 400, 500);
+			g.drawImage(new Image("src/nightmare dungeon/res/helpUnactive.png"), 550, 500);
 		else
-			g.drawImage(new Image("src/nightmare dungeon/res/helpActivated.png"), 400, 500);
+			g.drawImage(new Image("src/nightmare dungeon/res/helpActivated.png"), 550, 500);
 		
 		if (creditsActivated == false)
-			g.drawImage(new Image("src/nightmare dungeon/res/creditsUnactive.png"), 400, 600);
+			g.drawImage(new Image("src/nightmare dungeon/res/creditsUnactive.png"), 550, 600);
 		else
-			g.drawImage(new Image("src/nightmare dungeon/res/creditsActivated.png"), 400, 600);
+			g.drawImage(new Image("src/nightmare dungeon/res/creditsActivated.png"), 550, 600);
 		
 		if (exitActivated == false)
-			g.drawImage(new Image("src/nightmare dungeon/res/exitUnactive.png"), 400, 700);
+			g.drawImage(new Image("src/nightmare dungeon/res/exitUnactive.png"), 550, 700);
 		else
-			g.drawImage(new Image("src/nightmare dungeon/res/exitActivated.png"), 400, 700);
+			g.drawImage(new Image("src/nightmare dungeon/res/exitActivated.png"), 550, 700);
 	}
 	
 	
