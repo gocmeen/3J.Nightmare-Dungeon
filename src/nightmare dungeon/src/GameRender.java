@@ -26,20 +26,26 @@ public class GameRender{
             g.setColor(new Color(0xAABBCCDD));
             g.fillRect(300,300,300,300);
         }*/
+
         if (GameUpdater.pausePressed) {
             lastState = new Image("src/nightmare dungeon/res/backGround1.png");
             g.copyArea(lastState, 0, 0);
         }
-        Rectangle healthbar = new Rectangle();
-        g.setColor(org.newdawn.slick.Color.red);
+        g.drawImage(new org.newdawn.slick.Image(Assets.background), 0,0);
+        //  Rectangle healthbar = new Rectangle();
+        g.setColor(org.newdawn.slick.Color.black);
 
-        g.fillRect(10,50,someone.getMaxHealth()*(someone.getHealth()/someone.getMaxHealth()),50);
+        g.fillRect(10,50,someone.getMaxHealth(),30);
+
+        g.setColor(org.newdawn.slick.Color.red);
+        g.fillRect(10,50,someone.getHealth(),30);
+
         g.setColor(org.newdawn.slick.Color.white);
         g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,55);
         //getting the current room from the Map
         Room curr = mapList.get(currentMapID).getCurrentRoom();
 
-        g.drawImage(new org.newdawn.slick.Image(Assets.background), 150,0);
+
         //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
         for(int i = 0; i < curr.getMonsterList().size();i++){
             if(curr.getMonsterList().get(i).getMonsterType()==0){
@@ -64,7 +70,7 @@ public class GameRender{
 
         }
         for(int i = 0; i < curr.getDoorList().size();i++){
-            g.drawImage(new org.newdawn.slick.Image(Assets.obstacle),curr.getDoorList().get(i).getX(),curr.getDoorList().get(i).getY());
+            g.drawImage(new org.newdawn.slick.Image(Assets.door),curr.getDoorList().get(i).getX(),curr.getDoorList().get(i).getY());
         }
         //changing the image of player according to the direction it goes and the chosen character
         if (ChooseCharacter.chosenCharacter == 1) {

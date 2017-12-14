@@ -26,4 +26,5 @@ public class Assets{
         public static String monster2="src/nightmare dungeon/res/Judas.png";
         public static String background="src/nightmare dungeon/res/background.png";
         public static String obstacle="src/nightmare dungeon/res/obstacle.png";
+        public static String door = "src/nightmare dungeon/res/door.png";
 }
