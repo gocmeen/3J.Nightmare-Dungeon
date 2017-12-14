@@ -3,6 +3,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameUpdater{
@@ -20,7 +21,7 @@ public class GameUpdater{
 
     boolean sound_on,music_on; //flags for sound and music checks
 
-    public GameUpdater()throws SlickException{//ArrayList<Map> mapList, int currentMapID,
+    public GameUpdater()throws SlickException, IOException{//ArrayList<Map> mapList, int currentMapID,
                        //Player someone, int width, int height, SoundManager soundmanager,
                        //boolean sound_on, boolean music_on)throws SlickException{
         /*this.currentMapID = currentMapID; //initial map is with id = 0
@@ -50,7 +51,7 @@ public class GameUpdater{
 
     }
 
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException{
+    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException,IOException{
         /*if (gc.getInput().isKeyPressed(Keyboard.KEY_P))
             gc.setPaused(!gc.isPaused());*/
         if (gc.getInput().isKeyPressed(Keyboard.KEY_P)) {
@@ -72,9 +73,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -95,9 +96,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -118,9 +119,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -141,9 +142,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -167,9 +168,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -198,9 +199,9 @@ public class GameUpdater{
                 someone.move(width,height);
             else if(colliededObject.typeID==2)// && curr.checkRoomCollision(someone))
             {
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -228,9 +229,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null )
                 someone.move(width,height);
             else if(colliededObject.typeID==2 ){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -259,9 +260,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null )
                 someone.move(width,height);
             else if(colliededObject.typeID==2 ){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -375,7 +376,7 @@ public class GameUpdater{
     }
     //generates maps(layers) inside the game
 
-    public void generateMaps(){
+    public void generateMaps() throws IOException{
         Map m1 = new Map(0,width,height);
         Map m2 = new Map(1,width,height);
         Map m3 = new Map(2,width,height);

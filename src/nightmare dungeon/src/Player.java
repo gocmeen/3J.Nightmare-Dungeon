@@ -13,7 +13,7 @@ public class Player extends Character {
     final protected int MAX_HEALTH = 300;
     private static final int   HEALTH = 200;
     private static final int   ATTACK_DAMAGE = 50;
-    private static final int   ATTACK_SPEED = 50;
+    private static final int   ATTACK_SPEED = 70;
 
      public Player(int x, int y, int typeID,int width, int height)
      {

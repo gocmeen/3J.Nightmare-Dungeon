@@ -1,7 +1,9 @@
+import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import java.awt.Rectangle;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Timer;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
 /**
  * Created by wifinaynay on 01/11/17.
  */
-public class GameManager extends BasicGameState{
+public class GameManager extends BasicGameState {
     //Attributes
     /*private ArrayList<Map> mapList; //holds the list of maps
     private Player someone; //Player object(Alice)
@@ -32,7 +34,7 @@ public class GameManager extends BasicGameState{
 
 
     //Constructor
-    public GameManager(int a, boolean sound_on, boolean music_on)throws SlickException{
+    public GameManager(int a, boolean sound_on, boolean music_on)throws SlickException,IOException{
         /*currentMapID = 0; //initial map is with id = 0
         someone= new Player(300,300,0,50, 50); //initializing Alice
         mapList = new ArrayList<Map>();
@@ -138,8 +140,11 @@ public class GameManager extends BasicGameState{
      *
      * */
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+try{
+        updater.update(gc,sbg,delta);}catch (IOException e){
+    System.out.print("asd");
+}
 
-        updater.update(gc,sbg,delta);
         /*Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
         curr.moveMonsters(someone);
         //movement according to key presses W, A , S and D
