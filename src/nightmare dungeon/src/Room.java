@@ -3,7 +3,7 @@
  */
 
 import org.lwjgl.Sys;
-import org.lwjgl.util.Timer;
+
 
 import java.awt.*;
 import java.util.ArrayList;
