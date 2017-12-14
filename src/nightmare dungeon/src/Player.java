@@ -8,7 +8,7 @@ public class Player extends Character {
     //private ActiveItem activeItem;
     private ArrayList<PassiveItem> items;
     //private Projectile projectileList;
-
+    private long lastChangedRoom;
     private static final int   SPEED = 5;
     final protected int MAX_HEALTH = 300;
     private static final int   HEALTH = 200;
@@ -19,6 +19,7 @@ public class Player extends Character {
      {
           super(x,  y,  typeID, width,  height,  HEALTH ,  SPEED, ATTACK_DAMAGE,ATTACK_SPEED);
           items = new ArrayList<PassiveItem>();
+          lastChangedRoom = -1;
      }
 
 

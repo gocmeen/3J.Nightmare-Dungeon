@@ -19,7 +19,7 @@ public class Character extends Entity {
     protected int projectileCount;
     protected String name;
     protected boolean vulnerable;
-
+    protected long lastAttacked;
     //Constructor
     public Character(int x, int y, int typeID,int width, int height, int health , int speed, int attackDamage, int attackSpeed){
         //calling the constructor of Entity class
@@ -35,6 +35,7 @@ public class Character extends Entity {
         projectile = new ArrayList<Projectile>();
         alive = true;
         vulnerable = true;
+        lastAttacked=-1;
     }
     //changes the x and y coordinates of the player
     public void move(int roomWidth, int roomHeight){
@@ -173,14 +174,16 @@ public class Character extends Entity {
     public boolean attack(long startTime,int x, int y, double dirX, double dirY) //x and y are directions
     {
         //if there are no projectiles in the room
-        if(projectile.size()==0){
+        if(lastAttacked==-1){
             addProjectile(new Projectile(startTime,1,4,3,x,y,1,1,dirX,dirY));
+            lastAttacked=startTime;
         return true;
         }
         else //if there are projectiles
             //if the time differences between last projectile and this one is greater then half a second
-            if(startTime-projectile.get(projectile.size()-1).startTime>1*1*1000) {
+            if(startTime-lastAttacked>1*1*1000) {
                 addProjectile(new Projectile(startTime, 1, 4, 3, x, y, 1, 1, dirX, dirY)); //add the projectile
+                lastAttacked=startTime;
                 return true;
             }
     return false;

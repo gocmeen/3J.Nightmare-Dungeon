@@ -68,7 +68,22 @@ public class GameUpdater{
             someone.setDirectionX(1);
             someone.setDirectionY(-1);
             //Move method is called
-            someone.move(width,height);
+            Entity colliededObject = curr.checkCollision(someone);
+            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
+                someone.move(width,height);
+            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
+
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
+
+            }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+            }
 
         }
         else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
@@ -76,7 +91,22 @@ public class GameUpdater{
             //Setting the direction according to Input
             someone.setDirectionX(1);
             someone.setDirectionY(1);
-            someone.move(width,height);
+            Entity colliededObject = curr.checkCollision(someone);
+            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
+                someone.move(width,height);
+            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
+
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
+
+            }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+            }
 
         }
         else if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
@@ -84,7 +114,22 @@ public class GameUpdater{
             //Setting the direction according to Input
             someone.setDirectionX(-1);
             someone.setDirectionY(-1);
-            someone.move(width,height);
+            Entity colliededObject = curr.checkCollision(someone);
+            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
+                someone.move(width,height);
+            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
+
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
+
+            }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+            }
 
         }
         else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
@@ -92,7 +137,22 @@ public class GameUpdater{
             //Setting the direction according to Input
             someone.setDirectionX(-1);
             someone.setDirectionY(1);
-            someone.move(width,height);
+            Entity colliededObject = curr.checkCollision(someone);
+            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
+                someone.move(width,height);
+            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
+
+                someone.addPassive((PassiveItem)colliededObject);
+                curr.removeItem((PassiveItem)colliededObject);
+
+            }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+            }
 
         }
         else if (Keyboard.isKeyDown(Keyboard.KEY_W))//&& curr.checkRoomCollision(someone))
@@ -143,6 +203,13 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+            }
             //setting directions
             uFlag=false;
             dFlag = true;
@@ -165,6 +232,13 @@ public class GameUpdater{
                 someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
 
+            }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
             }
             //setting directions
             uFlag=false;
@@ -189,6 +263,13 @@ public class GameUpdater{
                 someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
 
+            }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
             }
             //setting directions
             uFlag=false;

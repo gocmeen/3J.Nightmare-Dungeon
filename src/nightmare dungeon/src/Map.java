@@ -37,9 +37,9 @@ public class Map {
 		ArrayList<Integer> neighbours3 = new ArrayList<Integer>();
 		neighbours3.add(1);
 		neighbours3.add(0);
-		Room m1 = new Room( width, height1,0,neighbours1);
-		Room m2 = new Room(width, height1,1,neighbours2);
-		Room m3 = new Room(width, height1,2,neighbours3);
+		Room m1 = new Room( width, height1,0,neighbours1,false);
+		Room m2 = new Room(width, height1,1,neighbours2,false);
+		Room m3 = new Room(width, height1,2,neighbours3,false);
 		roomArrayList.add(m1);
 		roomArrayList.add(m2);
 		roomArrayList.add(m3);
