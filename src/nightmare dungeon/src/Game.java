@@ -16,6 +16,7 @@ public class Game extends StateBasedGame{
 	public static final int credits = 5;
 	public static final int help2 = 6;
 	public static final int chooseCharacter = 7;
+	public static final int pauseMenu = 8;
 
 
 	public Game(String gameName)throws SlickException {
@@ -30,6 +31,7 @@ public class Game extends StateBasedGame{
 		this.addState(new Credits(credits));
 		this.addState(new Help2(help2));
 		this.addState(new ChooseCharacter(chooseCharacter));
+		this.addState(new PauseMenu(pauseMenu));
 
 	}
 
@@ -43,6 +45,7 @@ public class Game extends StateBasedGame{
 		this.getState(credits).init(gc, this);
 		this.getState(help2).init(gc, this);
 		this.getState(chooseCharacter).init(gc, this);
+		this.getState(pauseMenu).init(gc, this);
 		this.enterState(startMenu);
 	}
 	
