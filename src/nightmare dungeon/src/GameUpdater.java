@@ -73,9 +73,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -96,9 +96,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -119,9 +119,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -142,9 +142,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -168,9 +168,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
                 someone.move(width,height);
             else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -199,9 +199,9 @@ public class GameUpdater{
                 someone.move(width,height);
             else if(colliededObject.typeID==2)// && curr.checkRoomCollision(someone))
             {
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -229,9 +229,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null )
                 someone.move(width,height);
             else if(colliededObject.typeID==2 ){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
@@ -260,9 +260,9 @@ public class GameUpdater{
             if(curr.checkCollision(someone)==null )
                 someone.move(width,height);
             else if(colliededObject.typeID==2 ){
-
-                someone.addPassive((PassiveItem)colliededObject);
                 curr.removeItem((PassiveItem)colliededObject);
+                someone.addPassive((PassiveItem)colliededObject);
+
 
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){

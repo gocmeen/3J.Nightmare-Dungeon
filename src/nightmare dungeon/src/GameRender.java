@@ -125,8 +125,8 @@ public class GameRender{
 
         for(int i = 0; i < curr.getMonsterList().size();i++) {
             for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
-                if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1000&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
-                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<850&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
+                if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1366&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
+                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<780&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
                     g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
 
 

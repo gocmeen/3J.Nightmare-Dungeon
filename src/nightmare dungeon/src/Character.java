@@ -188,7 +188,8 @@ public class Character extends Entity {
         }
         else //if there are projectiles
             //if the time differences between last projectile and this one is greater then half a second
-            if(startTime-lastAttacked>1*1*1000) {
+            if((double)startTime-lastAttacked>(50/(double)attackSpeed)*1*1000) {
+                System.out.println("AAAAA: "+ (double)(50/attackSpeed)*1*1000);
                 addProjectile(new Projectile(startTime, 1, 4, 3, x, y, w, h, dirX, dirY)); //add the projectile
                 lastAttacked=startTime;
                 return true;

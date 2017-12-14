@@ -44,8 +44,7 @@ public class Room{
 
         currTime = System.currentTimeMillis(); //Game start time
         this.neighbours = new ArrayList<>();
-        if(neighbours == null)
-            System.out.println("herrere");
+
         for(int i = 0;i < neighbours.size();i++){
             this.neighbours.add(neighbours.get(i));
         }
@@ -75,8 +74,8 @@ public class Room{
     public void generateMonsters() throws IOException{
 
         for(int i = 0 ; i < 3; i++){
-           int randomX= ThreadLocalRandom.current().nextInt(0,1366);
-            int randomY = ThreadLocalRandom.current().nextInt(0,780);
+           int randomX= ThreadLocalRandom.current().nextInt(0,1000);
+            int randomY = ThreadLocalRandom.current().nextInt(0,600);
             int typee = ThreadLocalRandom.current().nextInt(0,2);
             BufferedImage image = null;
             if(typee==0)
@@ -102,14 +101,24 @@ public class Room{
         //
     }
     public void generateDoors(){
-        int x = 100;
-        if(neighbours==null)
-            System.out.println("aaa");
-        else
+
+
+
         for(int i = 0; i < neighbours.size();i++){
-            Door d1 = new Door(x,0,4,30,30,id,neighbours.get(i));
+            int randomX= ThreadLocalRandom.current().nextInt(0,1330);
+            int randomY = ThreadLocalRandom.current().nextInt(0,740);
+            int selectFrom4 = ThreadLocalRandom.current().nextInt(0,4);
+            Door d1=null;
+            if(selectFrom4==0)
+                 d1= new Door(randomX,0,4,30,30,id,neighbours.get(i));
+            else if(selectFrom4==1)
+                d1= new Door(0,randomY,4,30,30,id,neighbours.get(i));
+            else if(selectFrom4==2)
+                d1= new Door(1340,randomY,4,30,30,id,neighbours.get(i));
+            else
+                d1= new Door(randomX,750,4,30,30,id,neighbours.get(i));
             doorList.add(d1);
-            x+= 100;
+
         }
 
 
@@ -121,8 +130,8 @@ public class Room{
     //generates items inside the room
     public void generateItems()throws IOException{
         for(int i = 0; i < 2; i++){
-            int randomX= ThreadLocalRandom.current().nextInt(0,1366);
-            int randomY = ThreadLocalRandom.current().nextInt(0,780);
+            int randomX= ThreadLocalRandom.current().nextInt(0,1000);
+            int randomY = ThreadLocalRandom.current().nextInt(0,600);
             int typee = ThreadLocalRandom.current().nextInt(0,2);
             BufferedImage image = null;
             if(typee==0)
@@ -131,7 +140,7 @@ public class Room{
                 image = ImageIO.read(new File(Assets.item2));
             int w = image.getWidth();
             int h = image.getHeight();
-            Item i1 = new PassiveItem(randomX,randomY,2,w,h,typee,30,40,5,60);
+            Item i1 = new PassiveItem(randomX,randomY,2,w,h,typee,40,110,5,60);
             itemList.add(i1);
         }
 
@@ -139,8 +148,8 @@ public class Room{
 
     public void generateObstacles()throws IOException{
         for(int i = 0; i < 3 ; i++){
-            int randomX= ThreadLocalRandom.current().nextInt(0,1366);
-            int randomY = ThreadLocalRandom.current().nextInt(0,780);
+            int randomX= ThreadLocalRandom.current().nextInt(0,1000);
+            int randomY = ThreadLocalRandom.current().nextInt(0,600);
             BufferedImage image = ImageIO.read(new File(Assets.obstacle));
             int w = image.getWidth();
             int h = image.getHeight();
