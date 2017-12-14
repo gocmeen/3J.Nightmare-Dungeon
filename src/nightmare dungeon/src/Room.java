@@ -6,6 +6,7 @@ import org.lwjgl.Sys;
 
 
 import java.awt.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
 public class Room{
     //attributes
@@ -17,11 +18,14 @@ public class Room{
     private int width, height1;
     private ArrayList<Integer> collided;
     private long currTime;
+    private ArrayList<Integer> neighbours;
+    private boolean isBoss;
+    private Portal port;
 
 
 
     //constructor
-    public Room(int width, int height,int id){
+    public Room(int width, int height,int id,ArrayList<Integer> neighbours,boolean isBoss){
         this.width=width;
         this.height1=height;
         this.id = id;
@@ -32,10 +36,20 @@ public class Room{
         generateMonsters();
         generateItems();
         generateObstacles();
-        generateDoors();
+        port = null;
+
         currTime = System.currentTimeMillis(); //Game start time
+        this.neighbours = new ArrayList<>();
+        if(neighbours == null)
+            System.out.println("herrere");
+        for(int i = 0;i < neighbours.size();i++){
+            this.neighbours.add(neighbours.get(i));
+        }
+        generateDoors();
+        this.isBoss=isBoss;
 
     }
+
 
     public int getHeight() {
         return height1;
@@ -55,13 +69,24 @@ public class Room{
 
     //generating 3 monsters for now
     public void generateMonsters(){
+        int minX = 0;
+        int maxX = width;
+        int minY=0;
+        int maxY = height1;
 
-        Monster m1 = new Monster(200,600,1,30,44,0);
-        Monster m2 = new Monster(400,70,1,40,44,0);
-        Monster m3 = new Monster(400,400,1,93,125,1);
-        monsterList.add(m1);
-        monsterList.add(m2);
-        monsterList.add(m3);
+        for(int i = 0 ; i < 3; i++){
+           int randomX= ThreadLocalRandom.current().nextInt(0,1366);
+            int randomY = ThreadLocalRandom.current().nextInt(0,780);
+
+            Monster m1 = new Monster(randomX,randomY,1,30,44,ThreadLocalRandom.current().nextInt(0,2));
+            monsterList.add(m1);
+        }
+
+
+
+
+
+
         collided = new ArrayList<Integer>();
         for(int i = 0; i < monsterList.size(); i++ ){
             collided.add(0);
@@ -69,10 +94,16 @@ public class Room{
         //
     }
     public void generateDoors(){
-        Door d1 = new Door(100,0,4,30,30,0,1);
-        Door d2 = new Door(200,700,4,30,30,0,2);
-        doorList.add(d1);
-        doorList.add(d2);
+        int x = 100;
+        if(neighbours==null)
+            System.out.println("aaa");
+        else
+        for(int i = 0; i < neighbours.size();i++){
+            Door d1 = new Door(x,0,4,30,30,id,neighbours.get(i));
+            doorList.add(d1);
+            x+= 100;
+        }
+
 
 
     }
@@ -102,11 +133,15 @@ public class Room{
 
         }
     }
+
     //checks collision between characters and entities and returns collided object
     public Entity checkCollision(Character someone) {
         System.out.println("game time is" + System.currentTimeMillis());
 
         for (int i = 0; i < monsterList.size(); i++) {
+            //monstr projectile hit
+
+            //iterating over monster projectiles to check collision
 
             if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(monsterList.get(i).getCollisionRectangle(0, 0))
                     &&someone!=monsterList.get(i)){
@@ -180,11 +215,14 @@ public class Room{
         for (int i = 0; i < monsterList.size(); i++) {
             for(int j =0; j < monsterList.get(i).getProjectile().size();j++){
                 //collided creature
-                System.out.println(monsterList.get(i).getProjectile().get(j).getX());
-                System.out.println(monsterList.get(i).getProjectile().get(j).getY());
-                Entity creature = checkProjectileCollision(monsterList.get(i).getProjectile().get(j));
+               if( someone.getCollisionRectangle(0, 0).intersects(monsterList.get(i).getProjectile().get(j).getCollisionRectangle(0,0))) {
+                   someone.setHealth(-monsterList.get(i).getProjectile().get(j).getDamage());
+                   monsterList.get(i).removeProjectile(j);
+
+               }
                 //checking collision
                // if(checkProjectileCollision(monsterList.get(i).getProjectile().get(j))==null)
+                else
                     monsterList.get(i).updateProjectile(j);
                 /*else{
                     //if collided creature is monster
