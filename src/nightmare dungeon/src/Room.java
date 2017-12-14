@@ -12,6 +12,7 @@ public class Room{
     private ArrayList<Monster> monsterList;
     private ArrayList<Item> itemList;
     private ArrayList<Obstacle> obstacleList;
+    private ArrayList<Door> doorList;
     private int id;
     private int width, height1;
     private ArrayList<Integer> collided;
@@ -24,12 +25,14 @@ public class Room{
         this.width=width;
         this.height1=height;
         this.id = id;
+        doorList = new ArrayList<Door>();
         obstacleList = new ArrayList<Obstacle>();
         monsterList = new ArrayList<Monster>();
         itemList= new ArrayList<Item>();
         generateMonsters();
         generateItems();
         generateObstacles();
+        generateDoors();
         currTime = System.currentTimeMillis(); //Game start time
 
     }
@@ -45,6 +48,11 @@ public class Room{
     public int getWidth() {
         return width;
     }
+
+    public ArrayList<Door> getDoorList() {
+        return doorList;
+    }
+
     //generating 3 monsters for now
     public void generateMonsters(){
 
@@ -59,6 +67,14 @@ public class Room{
             collided.add(0);
         }
         //
+    }
+    public void generateDoors(){
+        Door d1 = new Door(100,0,4,30,30,0,1);
+        Door d2 = new Door(200,700,4,30,30,0,2);
+        doorList.add(d1);
+        doorList.add(d2);
+
+
     }
     //generates items inside the room
     public void generateItems(){
@@ -115,6 +131,10 @@ public class Room{
             if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(obstacleList.get(i).getCollisionRectangle(0, 0))
                     )
                 return obstacleList.get(i);
+        }
+        for(int i = 0; i < doorList.size();i++){
+            if(someone.getCollisionRectangle((int)someone.getDirectionX()*someone.getSpeed(),(int)someone.getDirectionY()*someone.getSpeed()).intersects(doorList.get(i).getCollisionRectangle(0,0)))
+                return doorList.get(i);
         }
 
         return null;

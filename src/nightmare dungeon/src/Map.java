@@ -34,6 +34,7 @@ public class Map {
 		roomArrayList.add(m2);
 		roomArrayList.add(m3);
 	}
+
 	public void setCurrentRoomID(int currentRoomID) {
 		this.currentRoomID = currentRoomID;
 	}
@@ -46,8 +47,12 @@ public class Map {
 		return width;
 	}
 
-	public int getHeight() {
+	public int getHeight()
+	{
 		return height1;
 	}
 
+	public int getCurrentRoomID() {
+		return currentRoomID;
+	}
 }

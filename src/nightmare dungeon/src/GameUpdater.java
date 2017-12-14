@@ -112,6 +112,13 @@ public class GameUpdater{
                 curr.removeItem((PassiveItem)colliededObject);
 
             }
+            else if(curr.checkCollision(someone).typeID==4){
+                Door collidedDoor = (Door) curr.checkCollision(someone);
+                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+                        mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                else
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+            }
             //setting directions
             uFlag=true;
             dFlag = false;
