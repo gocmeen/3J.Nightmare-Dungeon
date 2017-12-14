@@ -5,6 +5,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import java.io.IOException;
+
 public class Game extends StateBasedGame{
 	
 	public static final String gameName = "RPG game";
@@ -19,7 +21,7 @@ public class Game extends StateBasedGame{
 	public static final int pauseMenu = 8;
 
 
-	public Game(String gameName)throws SlickException {
+	public Game(String gameName)throws SlickException ,IOException{
 		super(gameName);
 		Settings x = new Settings(settings);
 
@@ -49,7 +51,7 @@ public class Game extends StateBasedGame{
 		this.enterState(startMenu);
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)throws IOException {
 		AppGameContainer agc;
 		try{
 			agc = new AppGameContainer(new Game(gameName));

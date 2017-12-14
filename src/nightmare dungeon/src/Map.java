@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public class Map {
 	private int height1;
 
 	//Constructor
-	public Map(int mapID, int width, int height){
+	public Map(int mapID, int width, int height)throws IOException{
 		this.mapID=mapID;
 		roomArrayList=new ArrayList<Room>();
 		currentRoomID=0;
@@ -27,7 +28,7 @@ public class Map {
 	}
 
 	//ths method generates the rooms
-	public void generateRooms(){
+	public void generateRooms()throws IOException{
 		ArrayList<Integer> neighbours1 = new ArrayList<Integer>();
 		neighbours1.add(1);
 		neighbours1.add(2);

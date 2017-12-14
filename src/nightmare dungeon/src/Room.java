@@ -5,7 +5,11 @@
 import org.lwjgl.Sys;
 
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.ArrayList;
 public class Room{
@@ -25,7 +29,7 @@ public class Room{
 
 
     //constructor
-    public Room(int width, int height,int id,ArrayList<Integer> neighbours,boolean isBoss){
+    public Room(int width, int height,int id,ArrayList<Integer> neighbours,boolean isBoss)throws IOException{
         this.width=width;
         this.height1=height;
         this.id = id;
@@ -68,17 +72,21 @@ public class Room{
     }
 
     //generating 3 monsters for now
-    public void generateMonsters(){
-        int minX = 0;
-        int maxX = width;
-        int minY=0;
-        int maxY = height1;
+    public void generateMonsters() throws IOException{
 
         for(int i = 0 ; i < 3; i++){
            int randomX= ThreadLocalRandom.current().nextInt(0,1366);
             int randomY = ThreadLocalRandom.current().nextInt(0,780);
-
-            Monster m1 = new Monster(randomX,randomY,1,30,44,ThreadLocalRandom.current().nextInt(0,2));
+            int typee = ThreadLocalRandom.current().nextInt(0,2);
+            BufferedImage image = null;
+            if(typee==0)
+                image = ImageIO.read(new File(Assets.monster1));
+            else if(typee==1)
+                image = ImageIO.read(new File(Assets.monster2));
+            int w = image.getWidth();
+            int h = image.getHeight();
+            //System.out.println(id+" w: "+w+",h: "+h);
+            Monster m1 = new Monster(randomX,randomY,1,w,h,typee);
             monsterList.add(m1);
         }
 
@@ -111,22 +119,35 @@ public class Room{
         return monsterList.size()==0;
     }
     //generates items inside the room
-    public void generateItems(){
+    public void generateItems()throws IOException{
+        for(int i = 0; i < 2; i++){
+            int randomX= ThreadLocalRandom.current().nextInt(0,1366);
+            int randomY = ThreadLocalRandom.current().nextInt(0,780);
+            int typee = ThreadLocalRandom.current().nextInt(0,2);
+            BufferedImage image = null;
+            if(typee==0)
+                image = ImageIO.read(new File(Assets.item1));
+            else if(typee==1)
+                image = ImageIO.read(new File(Assets.item2));
+            int w = image.getWidth();
+            int h = image.getHeight();
+            Item i1 = new PassiveItem(randomX,randomY,2,w,h,typee,30,40,5,60);
+            itemList.add(i1);
+        }
 
-        Item i1 = new PassiveItem(600,90,2,30,44,0,30,40,5,60);
-        Item i2 = new PassiveItem(400,400,2,30,44,1,30,40,4,60);
-        itemList.add(i1);
-        itemList.add(i2);
     }
 
-    public void generateObstacles(){
+    public void generateObstacles()throws IOException{
+        for(int i = 0; i < 3 ; i++){
+            int randomX= ThreadLocalRandom.current().nextInt(0,1366);
+            int randomY = ThreadLocalRandom.current().nextInt(0,780);
+            BufferedImage image = ImageIO.read(new File(Assets.obstacle));
+            int w = image.getWidth();
+            int h = image.getHeight();
+            Obstacle o1 = new Obstacle(randomX, randomY,3,39,27);
+            obstacleList.add(o1);
+        }
 
-        Obstacle o1 = new Obstacle(200, 400,3,39,27);
-        Obstacle o2 = new Obstacle(500, 100,3,39,27);
-        Obstacle o3 = new Obstacle(800, 600,3,39,27);
-        obstacleList.add(o1);
-        obstacleList.add(o2);
-        obstacleList.add(o3);
     }
     //removes items from the room
     public void removeItem(Item item){
@@ -139,7 +160,7 @@ public class Room{
 
     //checks collision between characters and entities and returns collided object
     public Entity checkCollision(Character someone) {
-        System.out.println("game time is" + System.currentTimeMillis());
+
 
         for (int i = 0; i < monsterList.size(); i++) {
             //monstr projectile hit
@@ -193,7 +214,7 @@ public class Room{
     }
 
     //this method makes monsters attack
-    public void attackMonsterProjectiles(Player someone){
+    public void attackMonsterProjectiles(Player someone)throws IOException{
 
         int x = someone.getX();
         int y = someone.getY();

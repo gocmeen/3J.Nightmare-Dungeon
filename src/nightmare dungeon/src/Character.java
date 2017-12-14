@@ -1,7 +1,11 @@
 
 
+import javax.imageio.ImageIO;
 import java.awt.Graphics; //these will be changed
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.concurrent.*;
@@ -171,18 +175,21 @@ public class Character extends Entity {
     * this method is used for attacking (shooting projectile)
     *
     * */
-    public boolean attack(long startTime,int x, int y, double dirX, double dirY) //x and y are directions
+    public boolean attack(long startTime,int x, int y, double dirX, double dirY) throws IOException //x and y are directions
     {
+        BufferedImage image = ImageIO.read(new File(Assets.playerAttack));
+        int w = image.getWidth();
+        int h = image.getHeight();
         //if there are no projectiles in the room
         if(lastAttacked==-1){
-            addProjectile(new Projectile(startTime,1,4,3,x,y,1,1,dirX,dirY));
+            addProjectile(new Projectile(startTime,1,4,3,x,y,w,h,dirX,dirY));
             lastAttacked=startTime;
         return true;
         }
         else //if there are projectiles
             //if the time differences between last projectile and this one is greater then half a second
             if(startTime-lastAttacked>1*1*1000) {
-                addProjectile(new Projectile(startTime, 1, 4, 3, x, y, 1, 1, dirX, dirY)); //add the projectile
+                addProjectile(new Projectile(startTime, 1, 4, 3, x, y, w, h, dirX, dirY)); //add the projectile
                 lastAttacked=startTime;
                 return true;
             }
