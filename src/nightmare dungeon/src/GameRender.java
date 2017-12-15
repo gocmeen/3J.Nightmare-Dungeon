@@ -31,7 +31,11 @@ public class GameRender{
             lastState = new Image("src/nightmare dungeon/res/backGround1.png");
             g.copyArea(lastState, 0, 0);
         }
-        g.drawImage(new org.newdawn.slick.Image(Assets.background), 0,0);
+        if(currentMapID == 0)
+        g.drawImage(new org.newdawn.slick.Image(Assets.floor1), 0,0);
+        else if (currentMapID == 1)
+            g.drawImage(new org.newdawn.slick.Image(Assets.floor2), 0,0);
+
         //  Rectangle healthbar = new Rectangle();
         g.setColor(org.newdawn.slick.Color.black);
 
