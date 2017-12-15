@@ -69,9 +69,9 @@ public class GameUpdater{
             }
 
             Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
-            //curr.moveMonsters(someone);
+            curr.moveMonsters(someone);
             //movement according to key presses W, A , S and D
-            //curr.attackMonsterProjectiles(someone);
+            curr.attackMonsterProjectiles(someone);
             if (Keyboard.isKeyDown(Keyboard.KEY_W) && Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
             {
                 //Setting the direction according to Input
