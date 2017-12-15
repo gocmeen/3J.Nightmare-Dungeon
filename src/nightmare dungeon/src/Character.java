@@ -24,6 +24,7 @@ public class Character extends Entity {
     protected String name;
     protected boolean vulnerable;
     protected long lastAttacked;
+
     //Constructor
     public Character(int x, int y, int typeID,int width, int height, int health , int speed, int attackDamage, int attackSpeed){
         //calling the constructor of Entity class
@@ -44,54 +45,64 @@ public class Character extends Entity {
     //changes the x and y coordinates of the player
     public void move(int roomWidth, int roomHeight){
 
+        roomHeight -= 44; // WIDTH OF PLAYER
+        roomWidth -= 33;
+
+        int xOffsetStart = 0;
+        int xOffsetEnd = roomWidth - 0;
+        int yOffsetStart = 0;
+        int yOffsetEnd = roomHeight - 0;
+
+        System.out.println("x: " + this.getX() + " y: " + this.getY());
+
         if(this instanceof Player) {
-            boolean inRangeWidthMin = (this.getX() > 0);
-            boolean inRangeWidthMax = (this.getX() < roomWidth);
-            boolean inRangeHeightMin = (this.getY() > 0);
-            boolean inRangeHeightMax = (this.getY() < roomHeight);
+            boolean inRangeWidthMin = (this.getX() > xOffsetStart);
+            boolean inRangeWidthMax = (this.getX() < xOffsetEnd);
+            boolean inRangeHeightMin = (this.getY() > yOffsetStart);
+            boolean inRangeHeightMax = (this.getY() < yOffsetEnd);
 
             System.out.println("x: " + this.getX() + " y: " + this.getY());
 
             if (inRangeWidthMin && inRangeWidthMax && inRangeHeightMin && inRangeHeightMax) {
                 this.setX(x + (int) (directionX * speed));
                 this.setY(y + (int) (directionY * speed));
-                System.out.println("x: " + this.getX() + " y: " + this.getY());
+                //System.out.println("x: " + this.getX() + " y: " + this.getY());
             } else if (inRangeWidthMax && inRangeWidthMin) {
                 if (!inRangeHeightMax) {
                     System.out.println("debug1");
-                    this.setY(roomHeight - 1);
+                    this.setY(yOffsetEnd - 1);
                 } else if (!inRangeHeightMin) {
                     System.out.println("debug2");
-                    this.setY(y + 1);
+                    this.setY(yOffsetStart + 1);
                 }
             } else if (inRangeHeightMax && inRangeHeightMin) {
                 if (!inRangeWidthMin) {
                     System.out.println("debug2");
-                    this.setX(x + 1);
+                    this.setX(xOffsetStart + 1);
                 } else if (!inRangeWidthMax) {
                     System.out.println("debug3");
-                    this.setX(roomWidth - 1);
+                    this.setX(xOffsetEnd - 1);
                 }
             }
         else if(!inRangeHeightMax && !inRangeWidthMin){
             //System.out.println("debug4");
-            this.setX(x+1);
-            this.setY(roomHeight-1);
+            this.setX(xOffsetStart+1);
+            this.setY(yOffsetEnd-1);
         }
         else if(!inRangeHeightMax && !inRangeWidthMax){
             //System.out.println("debug5");
-            this.setX(roomWidth+1);
-            this.setY(roomHeight-1);
+            this.setX(xOffsetEnd-1);
+            this.setY(yOffsetEnd-1);
         }
         else if(!inRangeHeightMin && !inRangeWidthMin){
             //System.out.println("debug6");
-            this.setX(x+1);
-            this.setY(y+1);
+            this.setX(xOffsetStart+1);
+            this.setY(yOffsetStart+1);
         }
         else if(!inRangeHeightMin && !inRangeWidthMax){
             //System.out.println("debug7");
-            this.setX(roomWidth-1);
-            this.setY(y+1);
+            this.setX(xOffsetEnd-1);
+            this.setY(yOffsetStart+1);
         }
         }else if(this instanceof Monster){
             x +=  (directionX * speed);
@@ -112,6 +123,7 @@ public class Character extends Entity {
     public int getMaxHealth(){
         return MAX_HEALTH;
     }
+
     public int getAttackDamage(){
         return attackDamage;
     }
@@ -189,7 +201,7 @@ public class Character extends Entity {
         else //if there are projectiles
             //if the time differences between last projectile and this one is greater then half a second
             if((double)startTime-lastAttacked>(50/(double)attackSpeed)*1*1000) {
-                System.out.println("AAAAA: "+ (double)(50/attackSpeed)*1*1000);
+                //wdSystem.out.println("AAAAA: "+ (double)(50/attackSpeed)*1*1000);
                 addProjectile(new Projectile(startTime, 1, 4, 3, x, y, w, h, dirX, dirY)); //add the projectile
                 lastAttacked=startTime;
                 return true;

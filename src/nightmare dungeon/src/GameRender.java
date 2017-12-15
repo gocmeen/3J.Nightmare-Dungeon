@@ -35,13 +35,13 @@ public class GameRender{
         //  Rectangle healthbar = new Rectangle();
         g.setColor(org.newdawn.slick.Color.black);
 
-        g.fillRect(10,50,someone.getMaxHealth(),30);
+        g.fillRect(10,20,someone.getMaxHealth(),30);
 
         g.setColor(org.newdawn.slick.Color.red);
-        g.fillRect(10,50,someone.getHealth(),30);
+        g.fillRect(10,20,someone.getHealth(),30);
 
         g.setColor(org.newdawn.slick.Color.white);
-        g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,55);
+        g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,25);
         //getting the current room from the Map
         Room curr = mapList.get(currentMapID).getCurrentRoom();
 

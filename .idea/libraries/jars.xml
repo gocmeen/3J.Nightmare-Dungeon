@@ -1,34 +1,8 @@
 <component name="libraryTable">
   <library name="jars">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/nightmare dungeon/lib/jars/slick.jar!/" />
-      <root url="jar://$PROJECT_DIR$/src/nightmare dungeon/lib/jars/lwjgl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jars/slick.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jars/lwjgl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/lwjgl-debug.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/laf-plugin-7.2.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/jinput.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/AppleJavaExtensions.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/laf-widget-7.2.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/log4j-api-2.0-beta9.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/asm-debug-all.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/lwjgl_test.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/lwjgl_util.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/lwjgl_util_applet.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/lzma.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/substance-7.2.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/trident-7.2.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/lwjgl_util.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/ibxm.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/jinput.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/tinylinepp.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/lwjgl_util_applet.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/slick-examples.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/jogg-0.0.7.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/jorbis-0.0.15.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/jnlp.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/slick.jar!/" />
-      <root url="jar://$PROJECT_DIR$/../slick/lib/lwjgl.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

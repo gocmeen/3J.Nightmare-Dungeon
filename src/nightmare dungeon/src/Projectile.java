@@ -25,7 +25,7 @@ public class Projectile extends Entity {
     {
         setX(x + (int)(directionX * speed)) ;
         setY(y + (int)(directionY * speed)) ;
-        System.out.println(this.getX());
+        //System.out.println(this.getX());
 
     }
 

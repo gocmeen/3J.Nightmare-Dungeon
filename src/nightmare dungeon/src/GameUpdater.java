@@ -11,15 +11,21 @@ public class GameUpdater{
     private ArrayList<Map> mapList; //holds the list of maps
     private Player someone; //Player object(Alice)
     private int currentMapID; //id of the current Map
-    private int width = 1366;
+    private int width = 1380;
     private int height = 780;
     private boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
+    private int playerID = 0;
+    private int minion = 0;
+    private int passiveItem = 2;
+    private int player = 0;
+    private int door = 4;
 
     public static boolean pausePressed = false;
 
     protected SoundManager soundmanager; // Sound Manager Object
 
     boolean sound_on,music_on; //flags for sound and music checks
+    private int width1;
 
     public GameUpdater()throws SlickException, IOException{//ArrayList<Map> mapList, int currentMapID,
                        //Player someone, int width, int height, SoundManager soundmanager,
@@ -73,14 +79,16 @@ public class GameUpdater{
                 someone.setDirectionY(-1);
                 //Move method is called
                 Entity colliededObject = curr.checkCollision(someone);
-                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                if (curr.checkCollision(someone) == null) {// && curr.checkRoomCollision(someone))
                     someone.move(width, height);
-                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    System.out.println("AAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
                     soundmanager.playSound(4);
 
@@ -114,14 +122,16 @@ public class GameUpdater{
                 someone.setDirectionX(1);
                 someone.setDirectionY(1);
                 Entity colliededObject = curr.checkCollision(someone);
-                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                if (curr.checkCollision(someone) == null){// && curr.checkRoomCollision(someone))
                     someone.move(width, height);
-                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    System.out.println("AAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
                     soundmanager.playSound(4);
 
@@ -153,14 +163,15 @@ public class GameUpdater{
                 someone.setDirectionX(-1);
                 someone.setDirectionY(-1);
                 Entity colliededObject = curr.checkCollision(someone);
-                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
-                    someone.move(width, height);
-                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                if (curr.checkCollision(someone) == null){// && curr.checkRoomCollision(someone))
+                    someone.move(width, height);System.out.println("AAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
                     soundmanager.playSound(4);
 
@@ -192,14 +203,16 @@ public class GameUpdater{
                 someone.setDirectionX(-1);
                 someone.setDirectionY(1);
                 Entity colliededObject = curr.checkCollision(someone);
-                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                if (curr.checkCollision(someone) == null) {// && curr.checkRoomCollision(someone))
                     someone.move(width, height);
-                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    System.out.println("AAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
                     soundmanager.playSound(4);
 
@@ -234,14 +247,16 @@ public class GameUpdater{
                 //Collision method of Room class is called in order to check collision
                 Entity colliededObject = curr.checkCollision(someone);
                 //move according to collision
-                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                if (curr.checkCollision(someone) == null) {// && curr.checkRoomCollision(someone))
                     someone.move(width, height);
-                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    System.out.println("AAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
                     soundmanager.playSound(4);
 
@@ -280,15 +295,17 @@ public class GameUpdater{
                 //Collision method of Room class is called in order to check collision
                 Entity colliededObject = curr.checkCollision(someone);
                 //move according to collision
-                if (colliededObject == null)//&& curr.checkRoomCollision(someone))
+                if (colliededObject == null) {//&& curr.checkRoomCollision(someone))
                     someone.move(width, height);
-                else if (colliededObject.typeID == 2)// && curr.checkRoomCollision(someone))
+                    System.out.println("AAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem)// && curr.checkRoomCollision(someone))
                 {
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
                     soundmanager.playSound(4);
 
@@ -327,14 +344,16 @@ public class GameUpdater{
                 //Collision method of Room class is called in order to check collision
                 Entity colliededObject = curr.checkCollision(someone);
                 //move according to collision
-                if (curr.checkCollision(someone) == null)
-                    someone.move(width, height);
-                else if (colliededObject.typeID == 2) {
+                if (curr.checkCollision(someone) == null) {
+                    someone.move(width, height);System.out.println("AAAAAAAAAA");
+                    System.out.println("AAAAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem) {
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
                     soundmanager.playSound(4);
 
@@ -373,14 +392,16 @@ public class GameUpdater{
                 //Collision method of Room class is called in order to check collision
                 Entity colliededObject = curr.checkCollision(someone);
                 //move according to collision
-                if (curr.checkCollision(someone) == null)
+                if (curr.checkCollision(someone) == null) {
                     someone.move(width, height);
-                else if (colliededObject.typeID == 2) {
+                    System.out.println("AAAAAAAAAA");
+                }
+                else if (colliededObject.typeID == passiveItem) {
                     curr.removeItem((PassiveItem) colliededObject);
                     someone.addPassive((PassiveItem) colliededObject);
 
 
-                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                     Door collidedDoor = (Door) curr.checkCollision(someone);
 
 
