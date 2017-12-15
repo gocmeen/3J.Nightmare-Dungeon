@@ -60,6 +60,9 @@ public class GameRender{
             else if(curr.getMonsterList().get(i).getMonsterType()==1){
                 g.drawImage(new org.newdawn.slick.Image(Assets.monster2), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
             }
+            else if(curr.getMonsterList().get(i).getMonsterType()==99){
+                g.drawImage(new org.newdawn.slick.Image(Assets.boss), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
+            }
         }
         //Looping through the itemList to get the coordinates the coordinates of the items inside the room
         for(int i = 0; i < curr.getItemList().size();i++){
@@ -82,12 +85,15 @@ public class GameRender{
             else
                 g.drawImage(new org.newdawn.slick.Image(Assets.door),curr.getDoorList().get(i).getX(),curr.getDoorList().get(i).getY());
         }
+        if(curr.getIsBoss()){
+
         if(curr.getPort()!=null)
         {
             if(curr.checkCleared())
                 g.drawImage(new org.newdawn.slick.Image(Assets.portalopen),curr.getPort().getX(),curr.getPort().getY());
             else
                 g.drawImage(new org.newdawn.slick.Image(Assets.portal),curr.getPort().getX(),curr.getPort().getY());
+        }
         }
         //changing the image of player according to the direction it goes and the chosen character
         if (ChooseCharacter.chosenCharacter == 1) {

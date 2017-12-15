@@ -32,4 +32,5 @@ public class Assets{
         public static String opendoor = "src/nightmare dungeon/res/opendoor.png";
         public static String portal = "src/nightmare dungeon/res/portal.png";
         public static String portalopen = "src/nightmare dungeon/res/portalopen.png";
+        public static String boss = "src/nightmare dungeon/res/boss.png";
 }

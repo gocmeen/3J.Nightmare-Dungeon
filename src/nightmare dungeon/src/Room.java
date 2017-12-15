@@ -23,11 +23,12 @@ public class Room{
     private int width, height1;
     private ArrayList<Integer> collided;
     private long currTime;
-
+    private int bossX;
+    private int bossY;
     private boolean isBoss;
     private Portal port;
-
-
+    private Monster boss;
+private Portal port2;
 
     //constructor
     public Room(int width, int height,int id,ArrayList<Door> neighbours,boolean isBoss,Portal porta)throws IOException{
@@ -55,15 +56,32 @@ public class Room{
         //generateDoors();
         this.isBoss=isBoss;
         if(isBoss){
-           this.port=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
-            System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
+            boss = new Monster(500,500,1,200,130,99);
+            monsterList.add(boss);
+            collided.add(0);
+            port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
+            //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
+
         }
         else
             this.port=null;
 
     }
 
+public boolean checkBossDied(){
+        if(isBoss){
+            for(int i = 0;  i < monsterList.size();i++){
+                if(monsterList.get(i).getMonsterType()==99)
+                    return false;
+            }
+            return true;
+        }
+        return false;
+}
+public void createPortal(){
+    port=new Portal(bossX,bossY,5,port2.getWidth(),port2.getHeight(),port2.getMapID1(),port2.getMapID2());
 
+}
 
     public int getHeight() {
         return height1;
@@ -309,13 +327,18 @@ public class Room{
                 //if collided creature is monster
                 if(creature.typeID==1){
                     //casting Entity to Creature
-                    Character abc = (Character)creature;
+                     Monster abc = (Monster) creature;
                     //decreasing monsters health by the damage of projectile
                     abc.setHealth(-someone.getProjectile().get(i).getDamage());
                     //if monster dies
                     if(abc.getHealth()<=0) {
                         //erasing the monster
+                        if(abc.getMonsterType()==99){
+                            bossX=abc.getX();
+                            bossY = abc.getY();
+                        }
                         monsterList.remove(creature);
+
 
                     }
                 }
@@ -338,7 +361,7 @@ public class Room{
         double angle;
         //looping through the monster
         for (int i = 0; i < monsterList.size(); i++) {
-            if (monsterList.get(i).getMonsterType() == 1){
+            if (monsterList.get(i).getMonsterType() == 1||monsterList.get(i).getMonsterType() == 99){
                 //calculating the angle between the monster and the player
                 angle = (float) Math.atan2((double) (y - monsterList.get(i).getY()), (x - monsterList.get(i).getX()));
                 //System.out.println(angle);
@@ -374,6 +397,10 @@ public class Room{
                 if (collided.get(i) == 80)
                     collided.set(i, 0);
             } else {
+                if(someone.getHealth()>0&&  System.currentTimeMillis()-currTime >  300){
+                    someone.setHealth(-monsterList.get(i).getAttackDamage());
+                    currTime = System.currentTimeMillis();
+                }
                 //if collides after colliding bounce back again
                 if (collided.get(i) < 100) {
                     monsterList.get(i).setDirectionY(-monsterList.get(i).getDirectionY());
@@ -419,6 +446,9 @@ public class Room{
 
     public ArrayList<Obstacle> getObstacleList() {
         return obstacleList;
+    }
+    public boolean getIsBoss(){
+        return isBoss;
     }
 
 }

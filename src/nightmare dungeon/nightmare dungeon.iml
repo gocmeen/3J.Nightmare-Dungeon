@@ -10,26 +10,17 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/Desktop/Slick2D/lib" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/Desktop/Slick2D/lib" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../../Slick2D/lib" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/tinylinepp.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/slick.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/tinylinepp.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -38,7 +29,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/slick-examples.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/slick.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -47,7 +38,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/natives-windows.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/slick-examples.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -56,7 +47,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/natives-mac.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/natives-windows.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -65,7 +56,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/natives-linux.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/natives-mac.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -74,7 +65,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/lwjgl_util_applet.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/natives-linux.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -83,7 +74,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/lwjgl_util.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/lwjgl_util_applet.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -92,7 +83,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/lwjgl.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/lwjgl_util.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -101,7 +92,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/jorbis-0.0.15.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/lwjgl.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -110,7 +101,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/jogg-0.0.7.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/jorbis-0.0.15.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -119,7 +110,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/jnlp.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/jogg-0.0.7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -128,7 +119,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/jinput.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/jnlp.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -137,7 +128,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Slick2D/lib/ibxm.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/jinput.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -146,20 +137,34 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/Desktop/Slick2D" />
+          <root url="jar://$MODULE_DIR$/../../../Slick2D/lib/ibxm.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../Slick2D" />
         </CLASSES>
         <JAVADOC>
-          <root url="file://$USER_HOME$/Desktop/Slick2D/javadoc" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D/javadoc" />
         </JAVADOC>
         <NATIVE>
-          <root url="file://$USER_HOME$/Desktop/Slick2D" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D" />
         </NATIVE>
         <SOURCES>
-          <root url="file://$USER_HOME$/Desktop/Slick2D/src" />
-          <root url="file://$USER_HOME$/Desktop/Slick2D/tools" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D/src" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D/tools" />
         </SOURCES>
-        <jarDirectory url="file://$USER_HOME$/Desktop/Slick2D" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../../Slick2D" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="slick" level="project" />
+    <orderEntry type="library" exported="" name="macosx1" level="project" />
+    <orderEntry type="library" exported="" name="jogg-0.0.73" level="project" />
+    <orderEntry type="library" exported="" name="jorbis-0.0.151" level="project" />
+    <orderEntry type="library" exported="" name="lwjgl4" level="project" />
   </component>
 </module>
