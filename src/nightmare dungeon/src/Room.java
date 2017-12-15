@@ -30,7 +30,7 @@ public class Room{
 
 
     //constructor
-    public Room(int width, int height,int id,ArrayList<Door> neighbours,boolean isBoss)throws IOException{
+    public Room(int width, int height,int id,ArrayList<Door> neighbours,boolean isBoss,Portal porta)throws IOException{
         this.width=width;
         this.height1=height;
         this.id = id;
@@ -54,8 +54,15 @@ public class Room{
         }
         //generateDoors();
         this.isBoss=isBoss;
+        if(isBoss){
+           this.port=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
+            System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
+        }
+        else
+            this.port=null;
 
     }
+
 
 
     public int getHeight() {
@@ -215,6 +222,9 @@ public class Room{
                 return doorList.get(i);
             }
             }
+            if(port!=null)
+                if(someone.getCollisionRectangle((int)someone.getDirectionX()*someone.getSpeed(),(int)someone.getDirectionY()*someone.getSpeed()).intersects(port.getCollisionRectangle(0,0)))
+                    return port;
 
         return null;
     }
@@ -393,6 +403,11 @@ public class Room{
 
 
     //getters
+
+
+    public Portal getPort() {
+        return port;
+    }
 
     public ArrayList<Item> getItemList() {
         return itemList;

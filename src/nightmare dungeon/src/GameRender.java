@@ -75,6 +75,13 @@ public class GameRender{
             else
                 g.drawImage(new org.newdawn.slick.Image(Assets.door),curr.getDoorList().get(i).getX(),curr.getDoorList().get(i).getY());
         }
+        if(curr.getPort()!=null)
+        {
+            if(curr.checkCleared())
+                g.drawImage(new org.newdawn.slick.Image(Assets.portalopen),curr.getPort().getX(),curr.getPort().getY());
+            else
+                g.drawImage(new org.newdawn.slick.Image(Assets.portal),curr.getPort().getX(),curr.getPort().getY());
+        }
         //changing the image of player according to the direction it goes and the chosen character
         if (ChooseCharacter.chosenCharacter == 1) {
             if (dFlag)

@@ -9,19 +9,21 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Map {
 	//Attributes
 	private ArrayList<Room> roomArrayList; //roomlist
-	private int currentRoomID; //current id of the room
+	private static int currentRoomID; //current id of the room
 	private int mapID; //id of the map
 	private int width;
 	private int height1;
-
+	private int neighbourID;
 	//Constructor
-	public Map(int mapID, int width, int height)throws IOException{
+	public Map(int mapID, int width, int height,int neighbourID1)throws IOException{
 		this.mapID=mapID;
 		roomArrayList=new ArrayList<Room>();
 		currentRoomID=0;
-		generateRooms(); // generating the rooms
+		 // generating the rooms
 		this.height1 = height;
 		this.width = width;
+		this.neighbourID = neighbourID1;
+		generateRooms();
 	}
 	// returns the current room
 	public Room getCurrentRoom(){
@@ -72,9 +74,11 @@ public class Map {
 
 
 
-		Room m1 = new Room( width, height1,0,positionsDoor,false);
-		Room m2 = new Room(width, height1,1,positionsDoor,false);
-		Room m3 = new Room(width, height1,2,positionsDoor,false);
+		Room m1 = new Room( width, height1,0,positionsDoor,false,null);
+		Room m2 = new Room(width, height1,1,positionsDoor,false,null);
+		Portal port = new Portal(0,0,5,40,40,mapID,neighbourID);
+		Room m3 = new Room(width, height1,2,positionsDoor,true,port);
+
 		roomArrayList.add(m1);
 		roomArrayList.add(m2);
 		roomArrayList.add(m3);

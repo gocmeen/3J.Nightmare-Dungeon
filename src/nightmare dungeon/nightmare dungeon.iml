@@ -311,5 +311,6 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="lwjgl1" level="project" />
     <orderEntry type="library" name="lwjgl2" level="project" />
+    <orderEntry type="library" exported="" name="lwjgl3" level="project" />
   </component>
 </module>

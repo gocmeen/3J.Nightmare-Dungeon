@@ -115,6 +115,23 @@ public class GameUpdater{
 
 
                 }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
+                    }
+                }
+
 
             } else if (Keyboard.isKeyDown(Keyboard.KEY_S) && Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
             {
@@ -154,6 +171,22 @@ public class GameUpdater{
                         if (someone.getY() == 740)
                             someone.setY(40);
                         System.out.println("ask3");
+                    }
+                }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
                     }
                 }
 
@@ -196,6 +229,22 @@ public class GameUpdater{
                         System.out.println("ask3");
                     }
                 }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
+                    }
+                }
 
             } else if (Keyboard.isKeyDown(Keyboard.KEY_S) && Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
             {
@@ -235,6 +284,22 @@ public class GameUpdater{
                         if (someone.getY() == 740)
                             someone.setY(40);
                         System.out.println("ask3");
+                    }
+                }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
                     }
                 }
 
@@ -279,6 +344,22 @@ public class GameUpdater{
                         if (someone.getY() == 740)
                             someone.setY(40);
                         System.out.println("ask3");
+                    }
+                }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
                     }
                 }
                 //setting directions
@@ -330,6 +411,22 @@ public class GameUpdater{
                         System.out.println("ask3");
                     }
                 }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
+                    }
+                }
                 //setting directions
                 uFlag = false;
                 dFlag = true;
@@ -378,6 +475,22 @@ public class GameUpdater{
                         System.out.println("ask3");
                     }
                 }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
+                    }
+                }
                 //setting directions
                 uFlag = false;
                 dFlag = false;
@@ -424,6 +537,22 @@ public class GameUpdater{
                         if (someone.getY() == 740)
                             someone.setY(40);
                         System.out.println("ask3");
+                    }
+                }
+                else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+
+                    Portal port = (Portal) curr.checkCollision(someone);
+
+                    if(currentMapID==port.getMapID1()){
+                        System.out.println("yakışıklı: "+currentMapID);
+                        currentMapID=port.getMapID2();
+                        System.out.println(currentMapID);
+                    }
+                    else{
+                        System.out.println("yakışıklı2: "+currentMapID);
+                        currentMapID=port.getMapID1();
+                        System.out.println(currentMapID);
+
                     }
                 }
                 //setting directions
@@ -517,9 +646,10 @@ public class GameUpdater{
     //generates maps(layers) inside the game
 
     public void generateMaps() throws IOException{
-        Map m1 = new Map(0,width,height);
-        Map m2 = new Map(1,width,height);
-        Map m3 = new Map(2,width,height);
+       //this neighbours are one directioned
+        Map m1 = new Map(0,width,height,1);
+        Map m2 = new Map(1,width,height,2);
+        Map m3 = new Map(2,width,height,-1);
         mapList.add(m1);
         mapList.add(m2);
         mapList.add(m3);
