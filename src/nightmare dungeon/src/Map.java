@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Map {
 	//Attributes
 	private ArrayList<Room> roomArrayList; //roomlist
-	private static int currentRoomID; //current id of the room
+	private int currentRoomID; //current id of the room
 	private int mapID; //id of the map
 	private int width;
 	private int height1;
