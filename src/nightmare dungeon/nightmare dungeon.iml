@@ -172,6 +172,6 @@
     <orderEntry type="library" exported="" name="jars" level="project" />
     <orderEntry type="library" exported="" name="jogg-0.0.72" level="project" />
     <orderEntry type="library" exported="" name="jorbis-0.0.15" level="project" />
-    <orderEntry type="library" name="lwjgl" level="project" />
+    <orderEntry type="library" exported="" name="lwjgl" level="project" />
   </component>
 </module>
