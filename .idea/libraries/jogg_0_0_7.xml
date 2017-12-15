@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="jogg-0.0.7">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/slick/lib/jogg-0.0.7.jar!/" />
-      <root url="jar://$USER_HOME$/Downloads/slick/lib/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../slick/lib/jogg-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../slick/lib/jorbis-0.0.15.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
