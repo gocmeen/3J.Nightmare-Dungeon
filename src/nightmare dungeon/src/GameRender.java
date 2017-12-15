@@ -35,6 +35,9 @@ public class GameRender{
         g.drawImage(new org.newdawn.slick.Image(Assets.floor1), 0,0);
         else if (currentMapID == 1)
             g.drawImage(new org.newdawn.slick.Image(Assets.floor2), 0,0);
+        else if (currentMapID == 2)
+            g.drawImage(new org.newdawn.slick.Image(Assets.floor3), 0,0);
+
 
         //  Rectangle healthbar = new Rectangle();
         g.setColor(org.newdawn.slick.Color.black);
