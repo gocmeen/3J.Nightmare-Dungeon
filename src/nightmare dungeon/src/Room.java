@@ -4,6 +4,7 @@
 
 import org.lwjgl.Sys;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 
 
 import javax.imageio.ImageIO;
@@ -269,11 +270,36 @@ public void createPortal(){
         long startTime = System.currentTimeMillis();
         double angle;
         for (int i = 0; i < monsterList.size(); i++) {
-            if(monsterList.get(i).getMonsterType()== 0) {
+            if(monsterList.get(i).getMonsterType()== 0 || monsterList.get(i).getMonsterType() == 99) {
 
                 angle = (float) Math.atan2(((double) y - monsterList.get(i).getY()), ((double) x - monsterList.get(i).getX()));
 
-                monsterList.get(i).attack(startTime, monsterList.get(i).getX(), monsterList.get(i).getY(), Math.cos(angle), Math.sin(angle));
+                if(monsterList.get(i).getMonsterType() == 99)
+                {
+
+                    long yeniTime = startTime;
+                    boolean flag = false;
+                    for(int j = 0; j< 30; j++)
+                    {
+                        if(monsterList.get(i).attack(startTime, monsterList.get(i).getX(), monsterList.get(i).getY(), randomWithRange(-1,1), randomWithRange(-1,1)) == false)
+                        {
+                            // monsterList.get(i).setLastAttacked(yeniTime);
+                            break;
+                        }
+                        else
+                            flag = true;
+
+                        startTime+=10000;
+                    }
+                    if(flag) {
+                        monsterList.get(i).setLastAttacked(yeniTime);
+                        SoundManager.playSound(6);
+                    }
+                    }
+
+                else
+                    monsterList.get(i).attack(startTime, monsterList.get(i).getX(), monsterList.get(i).getY(), Math.cos(angle), Math.sin(angle));
+
             }
         }
         moveProjectiles(someone);
@@ -453,4 +479,9 @@ public void createPortal(){
         return isBoss;
     }
 
+    public double randomWithRange(int min, int max)
+    {
+        double range = (max - min) + 1;
+        return (double)(Math.random() * range) + min;
+    }
 }

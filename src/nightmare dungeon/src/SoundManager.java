@@ -31,6 +31,7 @@ public class SoundManager {
         soundList.add(new Sound("src/nightmare dungeon/res/death.wav"));
         soundList.add(new Sound("src/nightmare dungeon/res/doorOpen.wav"));
         soundList.add(new Sound("src/nightmare dungeon/res/powerUp.wav"));
+        soundList.add(new Sound("src/nightmare dungeon/res/bossAttack.wav"));
         this.sound_on = sound_on;
         this.music_on = music_on;
     }
@@ -77,7 +78,10 @@ public class SoundManager {
             {
                 soundList.get(4).play();
             }
-
+            if(i == 6 )
+            {
+                soundList.get(5).play();
+            }
 
         }
 

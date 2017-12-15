@@ -13,7 +13,6 @@ public class GameRender{
 
     public static Image lastState;
     public GameRender(){
-
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g,
@@ -21,7 +20,7 @@ public class GameRender{
                        boolean dFlag, boolean uFlag, boolean lFlag, boolean rFlag) throws SlickException {
         /*if (gc.isPaused())
         {
-            g.drawString("asdfasdfasdfasdfasdfasdfasdfasdfdddddddddddddd", 500, 500);
+            g.drawString("asdfasdfasdfasdfasdfasdfasdfasdfdddddddddddddd", 500, 500);s
             Rectangle rect = new Rectangle (0, 0, 1300, 780);
             g.setColor(new Color(0xAABBCCDD));
             g.fillRect(300,300,300,300);

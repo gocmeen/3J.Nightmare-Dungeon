@@ -2,13 +2,11 @@ import org.lwjgl.Sys;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import java.awt.Rectangle;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Timer;
 import java.util.ArrayList;
 import java.util.concurrent.*;
-
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
@@ -25,14 +23,11 @@ public class GameManager extends BasicGameState {
     private int width = 1200;
     private int height = 720;
     boolean dFlag,rFlag,uFlag,lFlag; //up,downiright and left directions
-
     protected SoundManager soundmanager; // Sound Manager Object
     boolean sound_on,music_on; //flags for sound and music checks
     */
     GameRender renderer;
     GameUpdater updater;
-
-
     //Constructor
     public GameManager(int a, boolean sound_on, boolean music_on)throws SlickException,IOException{
         /*currentMapID = 0; //initial map is with id = 0
