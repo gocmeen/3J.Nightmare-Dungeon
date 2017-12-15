@@ -338,7 +338,7 @@ public class Room{
                 monsterList.get(i).setDirectionX(Math.cos(angle));
                 //y direction gets the sine of the angle
                 monsterList.get(i).setDirectionY(Math.sin(angle));
-                System.out.println("debuggg");
+                //System.out.println("debuggg");
             }
             //checking collision
             if ((checkCollision(monsterList.get(i)) == null) &&
