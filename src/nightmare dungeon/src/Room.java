@@ -397,10 +397,12 @@ public void createPortal(){
                 if (collided.get(i) == 80)
                     collided.set(i, 0);
             } else {
+                //checking if the collision is with player
+                if(monsterList.get(i).getCollisionRectangle((int) monsterList.get(i).getDirectionX() * someone.getSpeed(), (int) monsterList.get(i).getDirectionY() * someone.getSpeed()).intersects(someone.getCollisionRectangle(0, 0))){
                 if(someone.getHealth()>0&&  System.currentTimeMillis()-currTime >  300){
                     someone.setHealth(-monsterList.get(i).getAttackDamage());
                     currTime = System.currentTimeMillis();
-                }
+                }}
                 //if collides after colliding bounce back again
                 if (collided.get(i) < 100) {
                     monsterList.get(i).setDirectionY(-monsterList.get(i).getDirectionY());
