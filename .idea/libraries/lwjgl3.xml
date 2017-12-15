@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="lwjgl3">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../3J.Nightmare-Dungeon-asd/src/nightmare dungeon/lib/jars/lwjgl.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
