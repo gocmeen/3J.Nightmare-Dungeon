@@ -259,5 +259,7 @@ public class Character extends Entity {
 
      }
 
-
+    public void setLastAttacked(long lastAttacked) {
+        this.lastAttacked = lastAttacked;
+    }
 }

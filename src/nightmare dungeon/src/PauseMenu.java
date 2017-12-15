@@ -59,7 +59,7 @@ public class PauseMenu extends BasicGameState {
         //input from user is taken, when space is pressed it changes the states
         if (mainMenuActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
             sbg.enterState(0);
-        if (retryActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+            if (retryActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
             sbg.getState(7).init(gc,sbg);
             sbg.enterState(7);
         }
