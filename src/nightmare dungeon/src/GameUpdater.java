@@ -80,10 +80,33 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
+
+
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                            someone.setX(collidedDoor.getX());
+                            someone.setY(collidedDoor.getY());
+                            if(someone.getX()==0 ){
+                                someone.setX(1290);
+                                System.out.println("ask");}
+                            else if (someone.getX()==1330){
+                                someone.setX(40);
+                                System.out.println("ask1");}
+                            if(someone.getY()==0){
+                                someone.setY(700);
+                                System.out.println("ask2");
+                            }
+                            else{
+                                if(someone.getY()==740)
+                                    someone.setY(40);
+                                System.out.println("ask3");}
+
+
+
+
+
             }
 
         }
@@ -103,10 +126,28 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                someone.setX(collidedDoor.getX());
+                someone.setY(collidedDoor.getY());
+                if(someone.getX()==0 ){
+                    someone.setX(1290);
+                    System.out.println("ask");}
+                else if (someone.getX()==1330){
+                    someone.setX(40);
+                    System.out.println("ask1");}
+                if(someone.getY()==0){
+                    someone.setY(700);
+                    System.out.println("ask2");
+                }
+                else{
+                    if(someone.getY()==740)
+                        someone.setY(40);
+                    System.out.println("ask3");}
             }
 
         }
@@ -126,10 +167,28 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                someone.setX(collidedDoor.getX());
+                someone.setY(collidedDoor.getY());
+                if(someone.getX()==0 ){
+                    someone.setX(1290);
+                    System.out.println("ask");}
+                else if (someone.getX()==1330){
+                    someone.setX(40);
+                    System.out.println("ask1");}
+                if(someone.getY()==0){
+                    someone.setY(700);
+                    System.out.println("ask2");
+                }
+                else{
+                    if(someone.getY()==740)
+                        someone.setY(40);
+                    System.out.println("ask3");}
             }
 
         }
@@ -149,10 +208,28 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                someone.setX(collidedDoor.getX());
+                someone.setY(collidedDoor.getY());
+                if(someone.getX()==0 ){
+                    someone.setX(1290);
+                    System.out.println("ask");}
+                else if (someone.getX()==1330){
+                    someone.setX(40);
+                    System.out.println("ask1");}
+                if(someone.getY()==0){
+                    someone.setY(700);
+                    System.out.println("ask2");
+                }
+                else{
+                    if(someone.getY()==740)
+                        someone.setY(40);
+                    System.out.println("ask3");}
             }
 
         }
@@ -175,10 +252,28 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
-                        mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                someone.setX(collidedDoor.getX());
+                someone.setY(collidedDoor.getY());
+                if(someone.getX()==0 ){
+                    someone.setX(1290);
+                    System.out.println("ask");}
+                else if (someone.getX()==1330){
+                    someone.setX(40);
+                    System.out.println("ask1");}
+                if(someone.getY()==0){
+                    someone.setY(700);
+                    System.out.println("ask2");
+                }
+                else{
+                    if(someone.getY()==740)
+                        someone.setY(40);
+                    System.out.println("ask3");}
             }
             //setting directions
             uFlag=true;
@@ -206,10 +301,28 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                someone.setX(collidedDoor.getX());
+                someone.setY(collidedDoor.getY());
+                if(someone.getX()==0 ){
+                    someone.setX(1290);
+                    System.out.println("ask");}
+                else if (someone.getX()==1330){
+                    someone.setX(40);
+                    System.out.println("ask1");}
+                if(someone.getY()==0){
+                    someone.setY(700);
+                    System.out.println("ask2");
+                }
+                else{
+                    if(someone.getY()==740)
+                        someone.setY(40);
+                    System.out.println("ask3");}
             }
             //setting directions
             uFlag=false;
@@ -236,10 +349,28 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                someone.setX(collidedDoor.getX());
+                someone.setY(collidedDoor.getY());
+                if(someone.getX()==0 ){
+                    someone.setX(1290);
+                    System.out.println("ask");}
+                else if (someone.getX()==1330){
+                    someone.setX(40);
+                    System.out.println("ask1");}
+                if(someone.getY()==0){
+                    someone.setY(700);
+                    System.out.println("ask2");
+                }
+                else{
+                    if(someone.getY()==740)
+                        someone.setY(40);
+                    System.out.println("ask3");}
             }
             //setting directions
             uFlag=false;
@@ -267,10 +398,28 @@ public class GameUpdater{
             }
             else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
                 Door collidedDoor = (Door) curr.checkCollision(someone);
-                if(mapList.get(currentMapID).getCurrentRoomID()==collidedDoor.getRoomID1())
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-                else
-                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+
+                someone.setX(collidedDoor.getX());
+                someone.setY(collidedDoor.getY());
+                if(someone.getX()==0 ){
+                    someone.setX(1290);
+                    System.out.println("ask");}
+                else if (someone.getX()==1330){
+                    someone.setX(40);
+                    System.out.println("ask1");}
+                if(someone.getY()==0){
+                    someone.setY(700);
+                    System.out.println("ask2");
+                }
+                else{
+                    if(someone.getY()==740)
+                        someone.setY(40);
+                    System.out.println("ask3");}
             }
             //setting directions
             uFlag=false;
