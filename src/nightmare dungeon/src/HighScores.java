@@ -22,18 +22,18 @@ public class HighScores extends BasicGameState{
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		//images are drawn
-		g.drawImage(new Image("src/nightmare dungeon/res/highScore.png"), 250, 100);
-		g.drawString(fm.highScores[0], 250, 200);
-		g.drawString(fm.highScores[1], 250, 250);
-		g.drawString(fm.highScores[2], 250, 300);
-		g.drawString(fm.highScores[3], 250, 350);
-		g.drawString(fm.highScores[4], 250, 400);
-		g.drawString(fm.highScores[5], 250, 450);
-		g.drawString(fm.highScores[6], 250, 500);
-		g.drawString(fm.highScores[7], 250, 550);
-		g.drawString(fm.highScores[8], 250, 600);
-		g.drawString(fm.highScores[9], 250, 650);
-		g.drawString("Press Esc to go back", 50, 800);
+		g.drawImage(new Image("src/nightmare dungeon/res/highScore.png"), 450, 100);
+		g.drawString(fm.highScores[0], 600, 250);
+		g.drawString(fm.highScores[1], 600, 300);
+		g.drawString(fm.highScores[2], 600, 350);
+		g.drawString(fm.highScores[3], 600, 400);
+		g.drawString(fm.highScores[4], 600, 450);
+		g.drawString(fm.highScores[5], 600, 500);
+		g.drawString(fm.highScores[6], 600, 550);
+		g.drawString(fm.highScores[7], 600, 600);
+		g.drawString(fm.highScores[8], 600, 650);
+		g.drawString(fm.highScores[9], 600, 700);
+		g.drawString("Press Esc to go back", 50, 700);
 	}
 
 	
