@@ -176,15 +176,39 @@ public void createPortal(){
     }
 
     public void generateObstacles()throws IOException{
+        int offset = 50;
+
         for(int i = 0; i < 3 ; i++){
-            int randomX= ThreadLocalRandom.current().nextInt(0,1000);
-            int randomY = ThreadLocalRandom.current().nextInt(0,600);
+            int randomX= ThreadLocalRandom.current().nextInt(51 + 27,1279);
+            int randomY = ThreadLocalRandom.current().nextInt(67 + 39,673);
+
             BufferedImage image = ImageIO.read(new File(Assets.obstacle));
             int w = image.getWidth();
             int h = image.getHeight();
             Obstacle o1 = new Obstacle(randomX, randomY,3,39,27);
+            //obstacleList.add(o1);
+/*
+            System.out.println("random x: " + randomX + ", random y: " + randomY);
+
+            for(int n = 0; n < doorList.size(); n++) {
+                Rectangle r1 = new Rectangle(doorList.get(n).getX()- 50,doorList.get(n).getY(), 50,50);
+                Rectangle r2 = new Rectangle(doorList.get(n).getX() + 39 ,doorList.get(n).getY(), 50,50);
+                Rectangle r3 = new Rectangle(doorList.get(n).getX(),doorList.get(n).getY()- 50, 50,50);
+                Rectangle r4 = new Rectangle(doorList.get(n).getX(),doorList.get(n).getY()- 27, 50,50);
+                while (o1.getCollisionRectangle(0,0).intersects(r1) || o1.getCollisionRectangle(0,0).intersects(r2)
+                        ||o1.getCollisionRectangle(0,0).intersects(r3)||o1.getCollisionRectangle(0,0).intersects(r4)){
+                    randomX= ThreadLocalRandom.current().nextInt(0,1000);
+                    randomY = ThreadLocalRandom.current().nextInt(0,600);
+                    System.out.println("random x: " + randomX + ", random y: " + randomY);
+                    System.out.println("in");
+                }
+                System.out.println("out");
+                o1 = new Obstacle(randomX, randomY,3,39,27);
+            }
+*/
             obstacleList.add(o1);
         }
+
 
     }
     //removes items from the room

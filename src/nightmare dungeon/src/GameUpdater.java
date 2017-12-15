@@ -100,19 +100,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
 
@@ -160,19 +160,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
                 }
@@ -216,19 +216,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
                 }
@@ -273,19 +273,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
                 }
@@ -333,19 +333,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
                 }
@@ -398,19 +398,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
                 }
@@ -462,19 +462,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
                 }
@@ -526,19 +526,19 @@ public class GameUpdater{
 
                     someone.setX(collidedDoor.getX());
                     someone.setY(collidedDoor.getY());
-                    if (someone.getX() == 0) {
-                        someone.setX(1290);
+                    if (someone.getX() == 0 + 1) {
+                        someone.setX(1290 - 1);
                         System.out.println("ask");
-                    } else if (someone.getX() == 1330) {
-                        someone.setX(40);
+                    } else if (someone.getX() == 1330- 1) {
+                        someone.setX(40 + 1);
                         System.out.println("ask1");
                     }
-                    if (someone.getY() == 0) {
-                        someone.setY(700);
+                    if (someone.getY() == 0 + 17) {
+                        someone.setY(700 - 17);
                         System.out.println("ask2");
                     } else {
-                        if (someone.getY() == 740)
-                            someone.setY(40);
+                        if (someone.getY() == 740 - 17)
+                            someone.setY(40 + 17);
                         System.out.println("ask3");
                     }
                 }

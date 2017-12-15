@@ -43,27 +43,30 @@ public class Map {
 				Door d1;
 				Door d2;
 				if(selectFrom4==0){
-					d1 = new Door(0,randomY,4,30,30,i,j);
-					d2 = new Door ( 1330,randomY,4,30,30,j,i);
+					d1 = new Door(0 + 1,randomY,4,30,30,i,j);
+					d2 = new Door ( 1330 - 1,randomY,4,30,30,j,i);
 
 				}
 				else if(selectFrom4==1){
-					d1 = new Door(1330,randomY,4,30,30,i,j);
+					d1 = new Door(1330 - 1,randomY,4,30,30,i,j);
 
-					d2 = new Door(0,randomY,4,30,30,j,i);
+					d2 = new Door(0 + 1,randomY,4,30,30,j,i);
 				}
 				else if(selectFrom4==2){
-					d1 = new Door(randomX,0,4,30,30,i,j);
+					d1 = new Door(randomX,0 + 17,4,30,30,i,j);
 
-					d2 = new Door ( randomX,740,4,30,30,j,i);
+					d2 = new Door ( randomX,740 - 17,4,30,30,j,i);
 				}
 				else{
-					d1 = new Door(randomX,740,4,30,30,i,j);
-					d2 = new Door(randomX,0,4,30,30,j,i);
+					d1 = new Door(randomX,740-17,4,30,30,i,j);
+					d2 = new Door(randomX,0+17,4,30,30,j,i);
 
 				}
 				positionsDoor.add(d1);
 				positionsDoor.add(d2);
+
+				System.out.println("Door: " + positionsDoor.get(0).x + " -- " + positionsDoor.get(0).y);
+				System.out.println("Door: " + positionsDoor.get(1).x + " -- " +positionsDoor.get(1).y);
 
 			}
 

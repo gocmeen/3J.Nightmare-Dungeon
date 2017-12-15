@@ -48,12 +48,12 @@ public class Character extends Entity {
         roomHeight -= 44; // WIDTH OF PLAYER
         roomWidth -= 33;
 
-        int xOffsetStart = 0;
-        int xOffsetEnd = roomWidth - 0;
-        int yOffsetStart = 0;
-        int yOffsetEnd = roomHeight - 0;
+        int xOffsetStart = 46;
+        int xOffsetEnd = roomWidth - 46;
+        int yOffsetStart = 60;
+        int yOffsetEnd = roomHeight - 60;
 
-        System.out.println("x: " + this.getX() + " y: " + this.getY());
+        //System.out.println("x: " + this.getX() + " y: " + this.getY());
 
         if(this instanceof Player) {
             boolean inRangeWidthMin = (this.getX() > xOffsetStart);
@@ -61,13 +61,14 @@ public class Character extends Entity {
             boolean inRangeHeightMin = (this.getY() > yOffsetStart);
             boolean inRangeHeightMax = (this.getY() < yOffsetEnd);
 
-            System.out.println("x: " + this.getX() + " y: " + this.getY());
+            //System.out.println("x: " + this.getX() + " y: " + this.getY());
 
             if (inRangeWidthMin && inRangeWidthMax && inRangeHeightMin && inRangeHeightMax) {
                 this.setX(x + (int) (directionX * speed));
                 this.setY(y + (int) (directionY * speed));
                 //System.out.println("x: " + this.getX() + " y: " + this.getY());
-            } else if (inRangeWidthMax && inRangeWidthMin) {
+
+            }else if (inRangeWidthMax && inRangeWidthMin) {
                 if (!inRangeHeightMax) {
                     System.out.println("debug1");
                     this.setY(yOffsetEnd - 1);
