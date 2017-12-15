@@ -234,8 +234,17 @@ public class Character extends Entity {
         this.health+= health;
     }
 
+     public boolean getAlive()
+     {return alive ;}
 
+     public boolean isAlive()
+     {
+         if( getHealth() > 0)
+             return true;
+         else
+             return false;
 
+     }
 
 
 }

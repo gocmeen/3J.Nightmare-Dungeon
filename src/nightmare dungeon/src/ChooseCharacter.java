@@ -13,7 +13,7 @@ public class ChooseCharacter extends BasicGameState {
     public static int chosenCharacter; //the chosen character can be accessed from all classes
 
     //different states as booleans for forming the translation between them
-    private boolean aliceActivated = true;
+    private boolean aliceActivated = false;
     private boolean lazarusActivated = false;
     private boolean judasActivated = false;
 
@@ -24,7 +24,13 @@ public class ChooseCharacter extends BasicGameState {
 
     }
 
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
+    {
+          aliceActivated = true;
+          lazarusActivated = false;
+          judasActivated = false;
+
+
 
     }
 
@@ -63,7 +69,10 @@ public class ChooseCharacter extends BasicGameState {
                 chosenCharacter = 2;
             else if (judasActivated)
                 chosenCharacter = 3;
+            spacePressed = 0;
+            sbg.getState(1).init(gc,sbg);
             sbg.enterState(1);
+
         }
         if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
             sbg.enterState(0);

@@ -3,6 +3,7 @@
  */
 
 import org.lwjgl.Sys;
+import org.newdawn.slick.SlickException;
 
 
 import javax.imageio.ImageIO;
@@ -171,7 +172,7 @@ public class Room{
     }
 
     //checks collision between characters and entities and returns collided object
-    public Entity checkCollision(Character someone) {
+    public Entity checkCollision(Character someone)throws SlickException {
 
 
         for (int i = 0; i < monsterList.size(); i++) {
@@ -186,6 +187,7 @@ public class Room{
                 if(someone.getHealth() > 0 && System.currentTimeMillis()-currTime >  300) {  //.Checks time delay between attacks. Cant get hit for like 0.3 second after first hit.
                     someone.setHealth(-(monsterList.get(i).getAttackDamage()));
                     currTime = System.currentTimeMillis();
+                    SoundManager.playSound(2);
                 }
                 return monsterList.get(i);
             }
@@ -194,9 +196,12 @@ public class Room{
 
         for (int i = 0; i < itemList.size(); i++) {
             if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(itemList.get(i).getCollisionRectangle(0, 0))
-                    )
+                    ) {
                 return itemList.get(i);
-        }
+
+            }
+
+            }
 
         for (int i = 0; i < obstacleList.size(); i++) {
             if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(obstacleList.get(i).getCollisionRectangle(0, 0))
@@ -204,9 +209,12 @@ public class Room{
                 return obstacleList.get(i);
         }
         for(int i = 0; i < doorList.size();i++){
-            if(someone.getCollisionRectangle((int)someone.getDirectionX()*someone.getSpeed(),(int)someone.getDirectionY()*someone.getSpeed()).intersects(doorList.get(i).getCollisionRectangle(0,0)))
+            if(someone.getCollisionRectangle((int)someone.getDirectionX()*someone.getSpeed(),(int)someone.getDirectionY()*someone.getSpeed()).intersects(doorList.get(i).getCollisionRectangle(0,0))) {
+
+                //SoundManager.playSound(4);
                 return doorList.get(i);
-        }
+            }
+            }
 
         return null;
     }
@@ -226,7 +234,7 @@ public class Room{
     }
 
     //this method makes monsters attack
-    public void attackMonsterProjectiles(Player someone)throws IOException{
+    public void attackMonsterProjectiles(Player someone)throws IOException, SlickException{
 
         int x = someone.getX();
         int y = someone.getY();
@@ -246,7 +254,7 @@ public class Room{
     /*this method is used for moving the projectiles inside the room
    *
    * */
-    public void moveProjectiles(Player someone){
+    public void moveProjectiles(Player someone)throws SlickException{
 
         for (int i = 0; i < monsterList.size(); i++) {
             for(int j =0; j < monsterList.get(i).getProjectile().size();j++){
@@ -254,7 +262,7 @@ public class Room{
                if( someone.getCollisionRectangle(0, 0).intersects(monsterList.get(i).getProjectile().get(j).getCollisionRectangle(0,0))) {
                    someone.setHealth(-monsterList.get(i).getProjectile().get(j).getDamage());
                    monsterList.get(i).removeProjectile(j);
-
+                   SoundManager.playSound(2);
                }
                 //checking collision
                // if(checkProjectileCollision(monsterList.get(i).getProjectile().get(j))==null)
@@ -312,7 +320,7 @@ public class Room{
     * When they collide to an Entity they bounce back for some distance
     *
     * */
-    public void moveMonsters(Player someone){
+    public void moveMonsters(Player someone)throws SlickException{
         //getting the coordinates of the user
         int x = someone.getX();
         int y = someone.getY();

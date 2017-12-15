@@ -1,3 +1,5 @@
+import org.newdawn.slick.SlickException;
+
 import java.util.ArrayList;
 
 /**
@@ -32,13 +34,13 @@ public class Player extends Character {
      //public void useActive(Item it){}
     //public void updatelifecount()[]
     //removePassive()
-    public void addPassive(PassiveItem item){
+    public void addPassive(PassiveItem item)throws SlickException{
          items.add(item);
          this.speed += item.getSpeedUp();
          this.attackDamage+= item.getAttackDamageUp();
          this.attackSpeed+= item.getAttackSpeedUp();
          this.health+= item.getHealthUp();
-
+        SoundManager.playSound(5);
 
     }
     //updateActive()

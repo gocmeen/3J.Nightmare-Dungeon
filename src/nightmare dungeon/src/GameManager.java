@@ -127,19 +127,21 @@ public class GameManager extends BasicGameState {
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
+        try {
+            updater.init(gc, sbg);
+        } catch (IOException e) {
+            System.out.println("asd");
+        }
 
-        updater.init(gc,sbg);
 
     }
-
-
     /*
      * This method is called repetetively as the game continues
      * Inside this method Controller manipulates Model according to the user Input
      * This method manages the movement and attack of the player
      *
      * */
-    public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+    public void update(GameContainer gc, StateBasedGame sbg, int delta)throws SlickException {
 try{
         updater.update(gc,sbg,delta);}catch (IOException e){
     System.out.print("asd");

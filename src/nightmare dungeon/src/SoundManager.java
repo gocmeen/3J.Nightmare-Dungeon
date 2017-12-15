@@ -27,9 +27,12 @@ public class SoundManager {
         soundList = new ArrayList<Sound>();
         music = new Music("src/nightmare dungeon/res/MainMenu.ogg");
         soundList.add(new Sound("src/nightmare dungeon/res/PlayerAttack.wav"));
+        soundList.add(new Sound("src/nightmare dungeon/res/damageTaken.wav"));
+        soundList.add(new Sound("src/nightmare dungeon/res/death.wav"));
+        soundList.add(new Sound("src/nightmare dungeon/res/doorOpen.wav"));
+        soundList.add(new Sound("src/nightmare dungeon/res/powerUp.wav"));
         this.sound_on = sound_on;
         this.music_on = music_on;
-       soundList.add(new Sound("src/nightmare dungeon/res/PlayerAttack.wav"));
     }
 
 
@@ -40,7 +43,7 @@ public class SoundManager {
     {
         if(music_on)
         {
-            music.loop();;
+            music.loop();
         }
         if(!music_on && music.playing())
         {
@@ -50,7 +53,7 @@ public class SoundManager {
 
 
     //sound effects
-    public void playSound(int i)throws SlickException
+    public static void playSound(int i)throws SlickException
     {
         if(sound_on)
         {
@@ -58,6 +61,24 @@ public class SoundManager {
             {
                 soundList.get(0).play();
             }
+            if(i == 2 )
+            {
+                soundList.get(1).play();
+            }
+            if(i == 3 )
+            {
+                soundList.get(2).play();
+            }
+            if(i == 4 )
+            {
+                soundList.get(3).play();
+            }
+            if(i == 5 )
+            {
+                soundList.get(4).play();
+            }
+
+
         }
 
     }

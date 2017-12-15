@@ -13,11 +13,11 @@ public class Settings extends BasicGameState{
 	private boolean prevDown = false; // used for taking single input from user
 
 	//different states as booleans for forming the translation between them
-	private boolean prevSwitch = false;
-	private boolean effectSoundOn = false;
-	private boolean effectActive = true;
-	private boolean musicSoundOn = false;
-	private boolean musicActive = false;
+	private boolean prevSwitch;
+	private boolean effectSoundOn;
+	private boolean effectActive;
+	private boolean musicSoundOn;
+	private boolean musicActive;
 
 	private long spacePressed = 0; //To not capture the KEY_SPACE press of the main menu.
 
@@ -29,7 +29,11 @@ public class Settings extends BasicGameState{
 
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
 	{
-
+		prevSwitch = false;
+		effectSoundOn = false;
+		effectActive = true;
+		musicSoundOn = false;
+		musicActive = false;
 	}
 
 
@@ -80,7 +84,6 @@ public class Settings extends BasicGameState{
 			{
 				effectSoundOn = true;
 				SoundManager.sound_on = true;
-
 			}
 			if (musicSoundOn && musicActive)
 			{

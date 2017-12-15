@@ -34,19 +34,20 @@ public class GameUpdater{
         this.sound_on = sound_on;
         this.music_on = music_on;*/
         //renderer = new GameRender();
+        soundmanager = new SoundManager(sound_on,music_on);
+
+
+    }
+
+    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException, IOException {
 
         currentMapID = 0; //initial map is with id = 0
         someone= new Player(300,300,0,50, 50); //initializing Alice
         mapList = new ArrayList<Map>();
         generateMaps(); //Basically generates the maps and rooms and entities inside the Rooms
-        soundmanager = new SoundManager(sound_on,music_on);
+
         this.sound_on = sound_on;
         this.music_on = music_on;
-
-    }
-
-    public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-
         soundmanager.playMusic();
 
     }
@@ -54,471 +55,440 @@ public class GameUpdater{
     public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException,IOException{
         /*if (gc.getInput().isKeyPressed(Keyboard.KEY_P))
             gc.setPaused(!gc.isPaused());*/
-        if (gc.getInput().isKeyPressed(Keyboard.KEY_P)) {
-            pausePressed = true;
-            sbg.enterState(8);
-        }
+        if(someone.isAlive()) {
 
-        Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
-        curr.moveMonsters(someone);
-        //movement according to key presses W, A , S and D
-        curr.attackMonsterProjectiles(someone);
-        if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(1);
-            someone.setDirectionY(-1);
-            //Move method is called
-            Entity colliededObject = curr.checkCollision(someone);
-            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
-                someone.move(width,height);
-            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
-
-
+            if (gc.getInput().isKeyPressed(Keyboard.KEY_P)) {
+                pausePressed = true;
+                sbg.enterState(8);
             }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
+
+            Room curr = mapList.get(currentMapID).getCurrentRoom(); // current room that is from the Map class
+            curr.moveMonsters(someone);
+            //movement according to key presses W, A , S and D
+            curr.attackMonsterProjectiles(someone);
+            if (Keyboard.isKeyDown(Keyboard.KEY_W) && Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(1);
+                someone.setDirectionY(-1);
+                //Move method is called
+                Entity colliededObject = curr.checkCollision(someone);
+                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(4);
+
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
+
+
+                }
+
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_S) && Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(1);
+                someone.setDirectionY(1);
+                Entity colliededObject = curr.checkCollision(someone);
+                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(4);
+
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
+                }
+
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_W) && Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(-1);
+                someone.setDirectionY(-1);
+                Entity colliededObject = curr.checkCollision(someone);
+                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(4);
+
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
+                }
+
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_S) && Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(-1);
+                someone.setDirectionY(1);
+                Entity colliededObject = curr.checkCollision(someone);
+                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(4);
+
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
+                }
+
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_W))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(0);
+                someone.setDirectionY(-1);
+
+                //Collision method of Room class is called in order to check collision
+                Entity colliededObject = curr.checkCollision(someone);
+                //move according to collision
+                if (curr.checkCollision(someone) == null)// && curr.checkRoomCollision(someone))
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2) {// && curr.checkRoomCollision(someone)){
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(4);
+
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
+                }
+                //setting directions
+                uFlag = true;
+                dFlag = false;
+                rFlag = false;
+                lFlag = false;
+
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_S))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(0);
+                someone.setDirectionY(1);
+                //Collision method of Room class is called in order to check collision
+                Entity colliededObject = curr.checkCollision(someone);
+                //move according to collision
+                if (colliededObject == null)//&& curr.checkRoomCollision(someone))
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2)// && curr.checkRoomCollision(someone))
+                {
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(4);
+
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
+                }
+                //setting directions
+                uFlag = false;
+                dFlag = true;
+                rFlag = false;
+                lFlag = false;
+
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(-1);
+                someone.setDirectionY(0);
+                //Collision method of Room class is called in order to check collision
+                Entity colliededObject = curr.checkCollision(someone);
+                //move according to collision
+                if (curr.checkCollision(someone) == null)
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2) {
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(4);
+
+                    mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+
+
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
+                }
+                //setting directions
+                uFlag = false;
+                dFlag = false;
+                rFlag = false;
+                lFlag = true;
+
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
+            {
+                //Setting the direction according to Input
+                someone.setDirectionX(1);
+                someone.setDirectionY(0);
+                //Collision method of Room class is called in order to check collision
+                Entity colliededObject = curr.checkCollision(someone);
+                //move according to collision
+                if (curr.checkCollision(someone) == null)
+                    someone.move(width, height);
+                else if (colliededObject.typeID == 2) {
+                    curr.removeItem((PassiveItem) colliededObject);
+                    someone.addPassive((PassiveItem) colliededObject);
+
+
+                } else if (curr.checkCollision(someone).typeID == 4 && curr.checkCleared()) {
+                    Door collidedDoor = (Door) curr.checkCollision(someone);
 
 
                     mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
 
 
-
-                            someone.setX(collidedDoor.getX());
-                            someone.setY(collidedDoor.getY());
-                            if(someone.getX()==0 ){
-                                someone.setX(1290);
-                                System.out.println("ask");}
-                            else if (someone.getX()==1330){
-                                someone.setX(40);
-                                System.out.println("ask1");}
-                            if(someone.getY()==0){
-                                someone.setY(700);
-                                System.out.println("ask2");
-                            }
-                            else{
-                                if(someone.getY()==740)
-                                    someone.setY(40);
-                                System.out.println("ask3");}
-
-
-
-
-
-            }
-
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(1);
-            someone.setDirectionY(1);
-            Entity colliededObject = curr.checkCollision(someone);
-            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
-                someone.move(width,height);
-            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
-
-
-            }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
-
-
-                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-
-
-
-                someone.setX(collidedDoor.getX());
-                someone.setY(collidedDoor.getY());
-                if(someone.getX()==0 ){
-                    someone.setX(1290);
-                    System.out.println("ask");}
-                else if (someone.getX()==1330){
-                    someone.setX(40);
-                    System.out.println("ask1");}
-                if(someone.getY()==0){
-                    someone.setY(700);
-                    System.out.println("ask2");
+                    someone.setX(collidedDoor.getX());
+                    someone.setY(collidedDoor.getY());
+                    if (someone.getX() == 0) {
+                        someone.setX(1290);
+                        System.out.println("ask");
+                    } else if (someone.getX() == 1330) {
+                        someone.setX(40);
+                        System.out.println("ask1");
+                    }
+                    if (someone.getY() == 0) {
+                        someone.setY(700);
+                        System.out.println("ask2");
+                    } else {
+                        if (someone.getY() == 740)
+                            someone.setY(40);
+                        System.out.println("ask3");
+                    }
                 }
-                else{
-                    if(someone.getY()==740)
-                        someone.setY(40);
-                    System.out.println("ask3");}
-            }
-
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_W)&&Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(-1);
-            someone.setDirectionY(-1);
-            Entity colliededObject = curr.checkCollision(someone);
-            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
-                someone.move(width,height);
-            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
-
+                //setting directions
+                uFlag = false;
+                dFlag = false;
+                rFlag = true;
+                lFlag = false;
 
             }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
+            //Detescts user inputs for attack and shoots projectiles
+            if (Keyboard.isKeyDown(Keyboard.KEY_LEFT) && Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+                //gets current time to set time intervals between projectiles
+                long startTime = System.currentTimeMillis();
+
+                if (someone.attack(startTime, someone.getX(), someone.getY(), -1, -1))
+                    soundmanager.playSound(1);
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT) && Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
+                long startTime = System.currentTimeMillis();
+
+                if (someone.attack(startTime, someone.getX(), someone.getY(), -1, 1))
+                    soundmanager.playSound(1);
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT) && Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+                long startTime = System.currentTimeMillis();
+
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 1, -1))
+                    soundmanager.playSound(1);
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT) && Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
+                long startTime = System.currentTimeMillis();
+
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 1, 1))
+                    soundmanager.playSound(1);
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
 
 
-                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+                long startTime = System.currentTimeMillis();
+
+                if (someone.attack(startTime, someone.getX(), someone.getY(), -1, 0))
+
+                    soundmanager.playSound(1);
 
 
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
 
-                someone.setX(collidedDoor.getX());
-                someone.setY(collidedDoor.getY());
-                if(someone.getX()==0 ){
-                    someone.setX(1290);
-                    System.out.println("ask");}
-                else if (someone.getX()==1330){
-                    someone.setX(40);
-                    System.out.println("ask1");}
-                if(someone.getY()==0){
-                    someone.setY(700);
-                    System.out.println("ask2");
-                }
-                else{
-                    if(someone.getY()==740)
-                        someone.setY(40);
-                    System.out.println("ask3");}
-            }
-
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_S)&&Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(-1);
-            someone.setDirectionY(1);
-            Entity colliededObject = curr.checkCollision(someone);
-            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
-                someone.move(width,height);
-            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
+                long startTime = System.currentTimeMillis();
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 1, 0))
 
 
-            }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
+                    soundmanager.playSound(1);
 
 
-                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
 
 
+                long startTime = System.currentTimeMillis();
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 0, -1))
 
-                someone.setX(collidedDoor.getX());
-                someone.setY(collidedDoor.getY());
-                if(someone.getX()==0 ){
-                    someone.setX(1290);
-                    System.out.println("ask");}
-                else if (someone.getX()==1330){
-                    someone.setX(40);
-                    System.out.println("ask1");}
-                if(someone.getY()==0){
-                    someone.setY(700);
-                    System.out.println("ask2");
-                }
-                else{
-                    if(someone.getY()==740)
-                        someone.setY(40);
-                    System.out.println("ask3");}
-            }
+                    soundmanager.playSound(1);
 
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_W))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(0);
-            someone.setDirectionY(-1);
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
 
-            //Collision method of Room class is called in order to check collision
-            Entity colliededObject = curr.checkCollision(someone);
-            //move according to collision
-            if(curr.checkCollision(someone)==null)// && curr.checkRoomCollision(someone))
-                someone.move(width,height);
-            else if(colliededObject.typeID==2){// && curr.checkRoomCollision(someone)){
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
 
+                long startTime = System.currentTimeMillis();
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 0, 1))
+
+
+                    soundmanager.playSound(1);
 
             }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
 
+            curr.moveProjectiles(someone);
 
-                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
 
+            //projectile move
+            sound_on = SoundManager.sound_on;  //for pause menu
+            music_on = SoundManager.music_on;  //for pause menu
+            //sound on kısmı yok
 
-
-                someone.setX(collidedDoor.getX());
-                someone.setY(collidedDoor.getY());
-                if(someone.getX()==0 ){
-                    someone.setX(1290);
-                    System.out.println("ask");}
-                else if (someone.getX()==1330){
-                    someone.setX(40);
-                    System.out.println("ask1");}
-                if(someone.getY()==0){
-                    someone.setY(700);
-                    System.out.println("ask2");
-                }
-                else{
-                    if(someone.getY()==740)
-                        someone.setY(40);
-                    System.out.println("ask3");}
-            }
-            //setting directions
-            uFlag=true;
-            dFlag = false;
-            rFlag = false;
-            lFlag = false;
-
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_S))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(0);
-            someone.setDirectionY(1);
-            //Collision method of Room class is called in order to check collision
-            Entity colliededObject = curr.checkCollision(someone);
-            //move according to collision
-            if(colliededObject==null )//&& curr.checkRoomCollision(someone))
-                someone.move(width,height);
-            else if(colliededObject.typeID==2)// && curr.checkRoomCollision(someone))
-            {
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
-
-
-            }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
-
-
-                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-
-
-
-                someone.setX(collidedDoor.getX());
-                someone.setY(collidedDoor.getY());
-                if(someone.getX()==0 ){
-                    someone.setX(1290);
-                    System.out.println("ask");}
-                else if (someone.getX()==1330){
-                    someone.setX(40);
-                    System.out.println("ask1");}
-                if(someone.getY()==0){
-                    someone.setY(700);
-                    System.out.println("ask2");
-                }
-                else{
-                    if(someone.getY()==740)
-                        someone.setY(40);
-                    System.out.println("ask3");}
-            }
-            //setting directions
-            uFlag=false;
-            dFlag = true;
-            rFlag = false;
-            lFlag = false;
-
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(-1);
-            someone.setDirectionY(0);
-            //Collision method of Room class is called in order to check collision
-            Entity colliededObject = curr.checkCollision(someone);
-            //move according to collision
-            if(curr.checkCollision(someone)==null )
-                someone.move(width,height);
-            else if(colliededObject.typeID==2 ){
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
-
-
-            }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
-
-
-                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-
-
-
-                someone.setX(collidedDoor.getX());
-                someone.setY(collidedDoor.getY());
-                if(someone.getX()==0 ){
-                    someone.setX(1290);
-                    System.out.println("ask");}
-                else if (someone.getX()==1330){
-                    someone.setX(40);
-                    System.out.println("ask1");}
-                if(someone.getY()==0){
-                    someone.setY(700);
-                    System.out.println("ask2");
-                }
-                else{
-                    if(someone.getY()==740)
-                        someone.setY(40);
-                    System.out.println("ask3");}
-            }
-            //setting directions
-            uFlag=false;
-            dFlag = false;
-            rFlag = false;
-            lFlag = true;
-
-        }
-
-        else if (Keyboard.isKeyDown(Keyboard.KEY_D))//&& curr.checkRoomCollision(someone))
-        {
-            //Setting the direction according to Input
-            someone.setDirectionX(1);
-            someone.setDirectionY(0);
-            //Collision method of Room class is called in order to check collision
-            Entity colliededObject = curr.checkCollision(someone);
-            //move according to collision
-            if(curr.checkCollision(someone)==null )
-                someone.move(width,height);
-            else if(colliededObject.typeID==2 ){
-                curr.removeItem((PassiveItem)colliededObject);
-                someone.addPassive((PassiveItem)colliededObject);
-
-
-            }
-            else if(curr.checkCollision(someone).typeID==4&&curr.checkCleared()){
-                Door collidedDoor = (Door) curr.checkCollision(someone);
-
-
-                mapList.get(currentMapID).setCurrentRoomID(collidedDoor.getRoomID2());
-
-
-
-                someone.setX(collidedDoor.getX());
-                someone.setY(collidedDoor.getY());
-                if(someone.getX()==0 ){
-                    someone.setX(1290);
-                    System.out.println("ask");}
-                else if (someone.getX()==1330){
-                    someone.setX(40);
-                    System.out.println("ask1");}
-                if(someone.getY()==0){
-                    someone.setY(700);
-                    System.out.println("ask2");
-                }
-                else{
-                    if(someone.getY()==740)
-                        someone.setY(40);
-                    System.out.println("ask3");}
-            }
-            //setting directions
-            uFlag=false;
-            dFlag = false;
-            rFlag = true;
-            lFlag = false;
-
-        }
-        //Detescts user inputs for attack and shoots projectiles
-        if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)&&Keyboard.isKeyDown(Keyboard.KEY_UP)){
-            //gets current time to set time intervals between projectiles
-            long startTime = System.currentTimeMillis();
-
-            if(someone.attack(startTime, someone.getX(), someone.getY(), -1, -1))
-                soundmanager.playSound(1);
-        }
-        else if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)&&Keyboard.isKeyDown(Keyboard.KEY_DOWN)){
-            long startTime = System.currentTimeMillis();
-
-            if(someone.attack(startTime, someone.getX(), someone.getY(), -1, 1))
-                soundmanager.playSound(1);
-        }
-        else if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)&&Keyboard.isKeyDown(Keyboard.KEY_UP)){
-            long startTime = System.currentTimeMillis();
-
-            if(someone.attack(startTime, someone.getX(), someone.getY(), 1, -1))
-                soundmanager.playSound(1);
-        }
-        else if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)&&Keyboard.isKeyDown(Keyboard.KEY_DOWN)){
-            long startTime = System.currentTimeMillis();
-
-            if(someone.attack(startTime, someone.getX(), someone.getY(), 1, 1))
-                soundmanager.playSound(1);
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
-
-
-            long startTime = System.currentTimeMillis();
-
-            if(someone.attack(startTime, someone.getX(), someone.getY(), -1, 0))
-
-                soundmanager.playSound(1);
-
-
-
-
-
-
-        }
-        else if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
-        {
-
-            long startTime = System.currentTimeMillis();
-            if(someone.attack(startTime,someone.getX(), someone.getY(), 1, 0))
-
-
-                soundmanager.playSound(1);
-
-
-
-        }
-
-        else if (Keyboard.isKeyDown(Keyboard.KEY_UP))
-        {
-
-
-            long startTime = System.currentTimeMillis();
-            if( someone.attack(startTime,someone.getX(), someone.getY(), 0, -1))
-
-                soundmanager.playSound(1);
-
-        }
-
-
-        else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
-        {
-
-
-
-            long startTime = System.currentTimeMillis();
-            if(someone.attack(startTime,someone.getX(), someone.getY(), 0, 1))
-
-
-                soundmanager.playSound(1);
-
-        }
-
-        curr.moveProjectiles(someone);
-
-
-        //projectile move
-        sound_on = SoundManager.sound_on;  //for pause menu
-        music_on = SoundManager.music_on;  //for pause menu
-        //sound on kısmı yok
-
-        //if(!music_on)
+            //if(!music_on)
             //soundmanager.getMusic().stop();
-
-    }
+        }
+        else {
+            SoundManager.playSound(3);
+            sbg.getState(0).init(gc, sbg);
+            sbg.enterState(0);
+        }
+        }
 
     public Map getCurrentMap(){
         return mapList.get(currentMapID);

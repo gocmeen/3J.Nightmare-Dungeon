@@ -25,8 +25,9 @@ public class Menu extends BasicGameState{
 	}
 
 	
-	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		
+	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
+	{
+
 	}
 
 	
@@ -71,9 +72,11 @@ public class Menu extends BasicGameState{
 		//input from user is taken, when space is pressed it changes the states
 		if (settingsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			sbg.enterState(2);
-		if (playActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		if (playActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+	        sbg.getState(7).init(gc,sbg);
 			sbg.enterState(7);
-		if (highScoresActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		}
+			if (highScoresActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			sbg.enterState(3);
 		if (helpActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
 			sbg.enterState(4);
