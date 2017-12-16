@@ -203,7 +203,7 @@ public class Character extends Entity {
             //if the time differences between last projectile and this one is greater then half a second
             if((double)startTime-lastAttacked>(50/(double)attackSpeed)*1*1000) {
                 //wdSystem.out.println("AAAAA: "+ (double)(50/attackSpeed)*1*1000);
-                addProjectile(new Projectile(startTime, 1, 4, 7, x, y, w, h, dirX, dirY)); //add the projectile
+                addProjectile(new Projectile(startTime, 1, 5, 7, x, y, w, h, dirX, dirY)); //add the projectile
                 lastAttacked=startTime;
                 return true;
             }

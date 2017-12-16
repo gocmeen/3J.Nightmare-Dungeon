@@ -62,7 +62,8 @@ private Portal port2;
             collided.add(0);
             port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
             //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
-            boss.setAttackDamage(10);
+            boss.setAttackDamage(7);
+            boss.setHealth(50);
         }
         if(isBoss && porta.getMapID1() == 1){
             boss = new Monster(500,500,1,200,130,98);
@@ -71,7 +72,8 @@ private Portal port2;
             port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
             //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
             boss.setAttackSpeed(300);
-            boss.setAttackDamage(15);
+            boss.setAttackDamage(12);
+            boss.setHealth(60);
         }
         if(isBoss && porta.getMapID1() == 2){
             boss = new Monster(500,500,1,200,130,97);
@@ -80,7 +82,8 @@ private Portal port2;
             port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
             //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
             boss.setSpeed(20);
-            boss.setAttackDamage(30);
+            boss.setAttackDamage(20);
+            boss.setHealth(70);
         }
 
         else
@@ -189,7 +192,7 @@ public void createPortal(){
                 image = ImageIO.read(new File(Assets.item2));
             int w = image.getWidth();
             int h = image.getHeight();
-            Item i1 = new PassiveItem(randomX,randomY,2,w,h,typee,40,110,5,60);
+            Item i1 = new PassiveItem(randomX,randomY,2,w,h,typee,40,2,1,10);
             itemList.add(i1);
         }
 
@@ -256,7 +259,7 @@ public void createPortal(){
         if(someone instanceof Monster)
             check = (Monster)someone;
 
-if(check==null||check.getMonsterType()!=97||check.getMonsterType()!=98) {
+if(check==null||(check.getMonsterType()!=97&&check.getMonsterType()!=98)) {
     for (int i = 0; i < monsterList.size(); i++) {
         //monstr projectile hit
 
@@ -416,7 +419,7 @@ if(check==null||check.getMonsterType()!=97||check.getMonsterType()!=98) {
                     //casting Entity to Creature
                      Monster abc = (Monster) creature;
                     //decreasing monsters health by the damage of projectile
-                    abc.setHealth(-someone.getProjectile().get(i).getDamage());
+                    abc.setHealth(-someone.getAttackDamage());
                     //if monster dies
                     if(abc.getHealth()<=0) {
                         if (abc.getMonsterType() == 99)
