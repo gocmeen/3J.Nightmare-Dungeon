@@ -83,6 +83,9 @@ public class GamePresenter extends BasicGameState {
 
         g.fillRect(10,20,someone.getMaxHealth(),30);
 
+        g.setColor(org.newdawn.slick.Color.white);
+        g.drawString("Point: " + someone.getPoint(), 650, 15);
+
         g.setColor(org.newdawn.slick.Color.red);
         g.fillRect(10,20,someone.getHealth(),30);
 
@@ -307,9 +310,10 @@ try{
             else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                 curr.removeItem((PassiveItem) colliededObject);
                 someone.addPassive((PassiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
 
-
-            } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
+            }
+            else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                 Door collidedDoor = (Door) curr.checkCollision(someone);
                 soundmanager.playSound(4);
 
@@ -363,6 +367,7 @@ try{
             else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                 curr.removeItem((PassiveItem) colliededObject);
                 someone.addPassive((PassiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
 
 
             } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
@@ -420,7 +425,7 @@ try{
             else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                 curr.removeItem((PassiveItem) colliededObject);
                 someone.addPassive((PassiveItem) colliededObject);
-
+                someone.setPoint(someone.getPoint() + 200);
 
             } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                 Door collidedDoor = (Door) curr.checkCollision(someone);
@@ -480,7 +485,7 @@ try{
             else if (colliededObject.typeID == passiveItem) {// && curr.checkRoomCollision(someone)){
                 curr.removeItem((PassiveItem) colliededObject);
                 someone.addPassive((PassiveItem) colliededObject);
-
+                someone.setPoint(someone.getPoint() + 200);
 
             } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                 Door collidedDoor = (Door) curr.checkCollision(someone);
@@ -545,7 +550,7 @@ try{
             {
                 curr.removeItem((PassiveItem) colliededObject);
                 someone.addPassive((PassiveItem) colliededObject);
-
+                someone.setPoint(someone.getPoint() + 200);
 
             } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                 Door collidedDoor = (Door) curr.checkCollision(someone);
@@ -609,7 +614,7 @@ try{
             else if (colliededObject.typeID == passiveItem) {
                 curr.removeItem((PassiveItem) colliededObject);
                 someone.addPassive((PassiveItem) colliededObject);
-
+                someone.setPoint(someone.getPoint() + 200);
 
             } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                 Door collidedDoor = (Door) curr.checkCollision(someone);
@@ -673,7 +678,7 @@ try{
             else if (colliededObject.typeID == passiveItem) {
                 curr.removeItem((PassiveItem) colliededObject);
                 someone.addPassive((PassiveItem) colliededObject);
-
+                someone.setPoint(someone.getPoint() + 200);
 
             } else if (curr.checkCollision(someone).typeID == door && curr.checkCleared()) {
                 Door collidedDoor = (Door) curr.checkCollision(someone);
