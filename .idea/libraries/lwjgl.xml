@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="lwjgl">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/jars/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../masaüstü/3J.Nightmare-Dungeon/doc/Contributions/Hakan Sarp Aydemir/menu/lib/jars/lwjgl.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
