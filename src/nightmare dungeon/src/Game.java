@@ -26,7 +26,7 @@ public class Game extends StateBasedGame{
 		Settings x = new Settings(settings);
 
 		this.addState(new Menu(startMenu));
-		this.addState(new GameManager(game,x.isSoundOn(),x.isMusicOn()));
+		this.addState(new GamePresenter(game,x.isSoundOn(),x.isMusicOn()));
 		this.addState(x);
 		this.addState(new HighScores(highScores));
 		this.addState(new Help(help));
