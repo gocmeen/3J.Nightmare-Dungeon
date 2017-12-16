@@ -33,6 +33,9 @@ public class HighScores extends BasicGameState{
 		g.drawString(fm.highScores[7], 600, 600);
 		g.drawString(fm.highScores[8], 600, 650);
 		g.drawString(fm.highScores[9], 600, 700);
+
+		g.drawString(fm.names[0], 200, 250);
+		g.drawString(fm.scores[0], 200, 350);
 		g.drawString("Press Esc to go back", 50, 700);
 	}
 

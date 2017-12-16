@@ -7,6 +7,8 @@ import java.io.BufferedReader;
 
 public class FileManager {
     public String[] highScores = new String[10];
+    public String[] scores = new String[10];
+    public String[] names = new String[10];
     BufferedReader br = null;
     FileReader fr = null;
 
@@ -21,6 +23,8 @@ public class FileManager {
             String currentLine;
             int i = 0;
             while ((currentLine = br.readLine()) != null) {
+                names[i] = currentLine.substring(currentLine.indexOf(")") + 1, currentLine.indexOf("."));
+                scores[i] = currentLine.substring(currentLine.lastIndexOf(".") + 1);
                 highScores[i] = currentLine;
                 i++;
             }
