@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/lib/jars/slick.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jars/lwjgl.jar!/" />
       <root url="jar://$PROJECT_DIR$/../lwjgl-2.9.3/jar/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jars/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jars/jogg-0.0.7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
