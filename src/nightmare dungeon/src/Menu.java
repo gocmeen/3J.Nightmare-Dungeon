@@ -79,9 +79,12 @@ public class Menu extends BasicGameState{
 		spacePressed += delta; //To not capture the KEY_SPACE press of the main menu.
 
 		//input from user is taken, when space is pressed it changes the states
-		if (settingsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE) && (spacePressed >= 1000))
+		if (settingsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE) && (spacePressed >= 1000)) {
+			FileManager.readFromFile("src/nightmare dungeon/res/highScores.txt");
 			sbg.enterState(2);
+		}
 		if (playActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000)) {
+			FileManager.readFromFile("src/nightmare dungeon/res/highScores.txt");
 	        sbg.getState(7).init(gc,sbg);
 			sbg.enterState(7);
 		}
@@ -89,12 +92,18 @@ public class Menu extends BasicGameState{
 			FileManager.readFromFile("src/nightmare dungeon/res/highScores.txt");
 			sbg.enterState(3);
 		}
-		if (helpActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
+		if (helpActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000)) {
+			FileManager.readFromFile("src/nightmare dungeon/res/highScores.txt");
 			sbg.enterState(4);
-		if (creditsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
+		}
+		if (creditsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000)) {
+			FileManager.readFromFile("src/nightmare dungeon/res/highScores.txt");
 			sbg.enterState(5);
-		if (exitActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
+		}
+		if (exitActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000)) {
+			FileManager.readFromFile("src/nightmare dungeon/res/highScores.txt");
 			gc.exit();
+		}
 		
 		//boolean logic of changing buttons
 		if (Keyboard.isKeyDown(Keyboard.KEY_DOWN) && prevDown == false){
