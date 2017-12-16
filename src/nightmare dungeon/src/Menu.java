@@ -9,6 +9,9 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Menu extends BasicGameState{
+
+	private long spacePressed = 0; //To not capture the KEY_SPACE press of the main menu.
+
 	private boolean prevDown = false; // used for taking single input from user
 	private boolean prevUp = false; // used for taking single input from user
 	
@@ -68,21 +71,23 @@ public class Menu extends BasicGameState{
 	
 	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		
+
+		spacePressed += delta; //To not capture the KEY_SPACE press of the main menu.
+
 		//input from user is taken, when space is pressed it changes the states
-		if (settingsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		if (settingsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE) && (spacePressed >= 1000))
 			sbg.enterState(2);
-		if (playActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
+		if (playActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000)) {
 	        sbg.getState(7).init(gc,sbg);
 			sbg.enterState(7);
 		}
-			if (highScoresActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		if (highScoresActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
 			sbg.enterState(3);
-		if (helpActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		if (helpActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
 			sbg.enterState(4);
-		if (creditsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		if (creditsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
 			sbg.enterState(5);
-		if (exitActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+		if (exitActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
 			gc.exit();
 		
 		//boolean logic of changing buttons
