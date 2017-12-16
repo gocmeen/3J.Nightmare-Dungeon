@@ -25,6 +25,8 @@ public class FileManager {
                 scores[i] = currentLine.substring(currentLine.lastIndexOf(".") + 1);
                 highScores[i] = currentLine;
                 i++;
+                if (i == 9)
+                    FileManager.scores[10] = String.valueOf(FileManager.scores[i]);
             }
         } catch (IOException e) {
             e.printStackTrace();
