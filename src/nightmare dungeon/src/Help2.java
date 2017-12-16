@@ -36,6 +36,7 @@ public class Help2 extends BasicGameState{
 		g.drawImage(new Image("src/nightmare dungeon/res/monster1.png"), 390, 525);
 		g.drawImage(new Image("src/nightmare dungeon/res/Judas.png"), 440, 485);
 		g.drawString("Active Items:", 800, 450);
+		g.drawImage(new Image("src/nightmare dungeon/res/activeItem.png"), 850,485);
 	}
 
 	
