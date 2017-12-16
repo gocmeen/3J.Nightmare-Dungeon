@@ -194,7 +194,8 @@ public class GamePresenter extends BasicGameState {
 
         //looping through the projectileList to draw projectiles inside the room.
         for (int i = 0; i < someone.getProjectile().size();i++) {
-
+            //DUZELTILECEK SINIRLARI AŞINCA SİLECEK
+            if(someone.getX()<1366-76&& someone.getX()>31&&someone.getY()<780-67&&someone.getY()>67)
             g.drawImage(new org.newdawn.slick.Image(Assets.playerAttack), someone.getProjectile().get(i).getX(),someone.getProjectile().get(i).getY());
             //aSystem.out.println("drawn");
 

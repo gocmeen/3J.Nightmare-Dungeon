@@ -1,5 +1,6 @@
 import org.newdawn.slick.SlickException;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -29,13 +30,24 @@ public class Player extends Character {
 
      public void useActive(){
          if(this.activeItem != null){
-             activeItem.toggleActive();
+             long copyLastAttacked = getLastAttacked();
+             long startTime = System.currentTimeMillis();
+            try {
+                attack(startTime, x, y, 1, 0);
+                attack(startTime+10000, x, y, 1, 0);
+                attack(startTime+20000, x, y, -1, 0);
+                attack(startTime+30000, x, y, 0, -1);
+                attack(startTime+40000, x, y, 0, 1);
+                setLastAttacked(copyLastAttacked);
+                activeItem=null;
+            }
+            catch(IOException e){}
+
          }
      }
 
      public boolean isActiveValid(){
-         if(this.activeItem != null)
-            return this.activeItem.isItemActive();
+
          return false;
      }
     //public void updatelifecount()[]

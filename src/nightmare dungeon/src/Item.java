@@ -10,7 +10,6 @@ public class Item extends Entity{
     protected int attackDamageUp;
     protected int speedUp;
     protected int healthUp;
-    
     protected int itemID; //the ID of the item
     
     //constructor
