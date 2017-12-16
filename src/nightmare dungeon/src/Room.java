@@ -62,7 +62,7 @@ private Portal port2;
             collided.add(0);
             port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
             //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
-            boss.setAttackDamage(100);
+            boss.setAttackDamage(10);
         }
         if(isBoss && porta.getMapID1() == 1){
             boss = new Monster(500,500,1,200,130,98);
@@ -80,7 +80,7 @@ private Portal port2;
             port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
             //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
             boss.setSpeed(20);
-            boss.setAttackDamage(20);
+            boss.setAttackDamage(30);
         }
 
         else
@@ -252,8 +252,11 @@ public void createPortal(){
 
     //checks collision between characters and entities and returns collided object
     public Entity checkCollision(Character someone)throws SlickException {
-Monster check = (Monster)someone;
-if(check.getMonsterType()!=97) {
+        Monster check=null;
+        if(someone instanceof Monster)
+            check = (Monster)someone;
+
+if(check==null||check.getMonsterType()!=97||check.getMonsterType()!=98) {
     for (int i = 0; i < monsterList.size(); i++) {
         //monstr projectile hit
 
@@ -371,7 +374,7 @@ if(check.getMonsterType()!=97) {
             for(int j =0; j < monsterList.get(i).getProjectile().size();j++){
                 //collided creature
                if( someone.getCollisionRectangle(0, 0).intersects(monsterList.get(i).getProjectile().get(j).getCollisionRectangle(0,0))) {
-                   someone.setHealth(-monsterList.get(i).getProjectile().get(j).getDamage());
+                   someone.setHealth(-monsterList.get(i).getAttackDamage());
                    monsterList.get(i).removeProjectile(j);
                    SoundManager.playSound(2);
                    someone.setPoint(someone.getPoint() - 20 * monsterList.get(i).getAttackDamage());
