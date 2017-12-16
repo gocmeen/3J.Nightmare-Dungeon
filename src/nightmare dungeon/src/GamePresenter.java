@@ -204,10 +204,15 @@ public class GamePresenter extends BasicGameState {
         for(int i = 0; i < curr.getMonsterList().size();i++) {
             for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
                 if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1366-37&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0+31
-                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<780 -67&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>+67)
+                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<780 -67&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>+67) {
+                    if(curr.getMonsterList().get(i).getMonsterType()==99)
+                        g.drawImage(new Image(Assets.spiderkid), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
+                    else if(curr.getMonsterList().get(i).getMonsterType()==98)
+                        g.drawImage(new Image(Assets.knife), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
+else
                     g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
 
-
+                }
             }
             //System.out.println("aaa");
         }

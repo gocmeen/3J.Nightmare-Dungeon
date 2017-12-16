@@ -36,4 +36,6 @@ public class Assets{
         public static String boss = "src/nightmare dungeon/res/boss.png";
         public static String boss1 = "src/nightmare dungeon/res/boss1.png";
         public static String boss2 = "src/nightmare dungeon/res/boss2.png";
+        public static String spiderkid = "src/nightmare dungeon/res/spiderkid.png";
+        public static String knife = "src/nightmare dungeon/res/knife.png";
 }

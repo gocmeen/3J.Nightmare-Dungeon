@@ -12,10 +12,10 @@ public class Player extends Character {
     private ArrayList<PassiveItem> items;
     //private Projectile projectileList;
     private long lastChangedRoom;
-    private static final int   SPEED = 5;
+    private static final int   SPEED = 3;
     final protected int MAX_HEALTH = 300;
     private static final int   HEALTH = 200;
-    private static final int   ATTACK_DAMAGE = 50;
+    private static final int   ATTACK_DAMAGE = 4;
     private static final int   ATTACK_SPEED = 70;
     private int point;
 
@@ -54,6 +54,7 @@ public class Player extends Character {
     //removePassive()
     public void addPassive(PassiveItem item)throws SlickException{
          items.add(item);
+         if(speed<12)
          this.speed += item.getSpeedUp();
          this.attackDamage+= item.getAttackDamageUp();
          this.attackSpeed+= item.getAttackSpeedUp();
