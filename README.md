@@ -1,11 +1,7 @@
 
-Youtube Link:
-
-<<<<<<< HEAD
-https://m.youtube.com/watch?v=pvkK399cohY
-=======
+Inıtıal work Youtube Link:
 https://m.youtube.com/watch?v=pvkK399cohY 
->>>>>>> master
+
 
 # Nightmare Dungeon.
 
