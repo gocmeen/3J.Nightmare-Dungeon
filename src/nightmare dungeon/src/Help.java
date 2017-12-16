@@ -22,12 +22,19 @@ public class Help extends BasicGameState{
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		//images are drawn
-		g.drawString("Movement:", 225, 250);
-		g.drawImage(new Image("res/arrowControls.png"), 100, 300);
-		g.drawImage(new Image("res/help.png"), 400, 100);
-		g.drawString("Press Esc to go back", 50, 800);
-		g.drawString("Press           to continue help", 650, 800);
-		g.drawImage(new Image("res/rightButton.png"), 650, 745);
+		g.drawString("Movement:", 275, 250);
+		g.drawImage(new Image("src/nightmare dungeon/res/arrowControls.png"), 150, 300);
+		g.drawString("Shooting:", 625, 250);
+		g.drawImage(new Image("src/nightmare dungeon/res/help.png"), 565, 100);
+		g.drawImage(new Image("src/nightmare dungeon/res/shootControls.png"), 500, 300 );
+		g.drawString("Activate Item:", 950, 250);
+		g.drawImage(new Image("src/nightmare dungeon/res/spaceBar.png"), 890, 270);
+		g.drawString("Pause Button:", 950, 390);
+		g.drawImage(new Image("src/nightmare dungeon/res/pauseButton.png"), 890, 400);
+		g.drawString("Press Esc to go back", 50, 700);
+		g.drawString("Press           to continue help", 1050, 700);
+		g.drawImage(new Image("src/nightmare dungeon/res/rightButton.png"), 1050, 645);
+
 	}
 
 	

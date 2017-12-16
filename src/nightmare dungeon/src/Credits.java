@@ -21,12 +21,12 @@ public class Credits extends BasicGameState{
 	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		//images are drawn
-		g.drawImage(new Image("res/credits.png"), 340, 100);
-		g.drawString("Mehmet Oguz Gocmen", 440, 300);
-		g.drawString("Berk Mandiracioglu", 440, 400);
-		g.drawString("Huseyin Emre Basar", 440, 500);
-		g.drawString("Hakan Sarp Aydemir", 440, 600);
-		g.drawString("Press Esc to go back", 50, 800);
+		g.drawImage(new Image("src/nightmare dungeon/res/credits.png"), 500, 100);
+		g.drawString("Mehmet Oguz Gocmen", 580, 300);
+		g.drawString("Berk Mandiracioglu", 580, 400);
+		g.drawString("Huseyin Emre Basar", 580, 500);
+		g.drawString("Hakan Sarp Aydemir", 580, 600);
+		g.drawString("Press Esc to go back", 50, 700);
 	}
 
 	

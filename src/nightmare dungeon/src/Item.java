@@ -10,21 +10,20 @@ public class Item extends Entity{
     protected int attackDamageUp;
     protected int speedUp;
     protected int healthUp;
-    
     protected int itemID; //the ID of the item
     
     //constructor
-    public Item(int x, int y, int typeID,int width, int height,int itemID, int attackSpeedUp, int attackDamageUp, int speedUp, int healthUp){
+    public Item(int x, int y, int typeID,int width, int height,int itemID){
         super(x,y,typeID,width,height);
         this.itemID=itemID;
-        this.healthUp=healthUp;
-        this.speedUp=speedUp;
-        this.attackDamageUp=attackDamageUp;
-        this.attackSpeedUp=attackSpeedUp;
+        //this.healthUp=healthUp;
+        //this.speedUp=speedUp;
+        //this.attackDamageUp=attackDamageUp;
+        //this.attackSpeedUp=attackSpeedUp;
     }
     
     //getters
-    public int getAttackDamageUp() {
+    /*public int getAttackDamageUp() {
         return attackDamageUp;
     }
 
@@ -42,5 +41,5 @@ public class Item extends Entity{
 
     public int getSpeedUp() {
         return speedUp;
-    }
+    }*/
 }

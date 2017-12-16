@@ -294,10 +294,10 @@ Heap after GC invocations=300 (full 0):
 
 Deoptimization events (10 events):
 Event: 38.932 Thread 0x00007fa2a3036800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000001101e39d4 method=java.lang.ref.Finalizer.remove()V @ 10
-Event: 43.997 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000001101ecd8c method=GameManager.update(Lorg/newdawn/slick/GameContainer;Lorg/newdawn/slick/state/StateBasedGame;I)V @ 164
+Event: 43.997 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000001101ecd8c method=GamePresenter.update(Lorg/newdawn/slick/GameContainer;Lorg/newdawn/slick/state/StateBasedGame;I)V @ 164
 Event: 44.495 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x0000000110200adc method=org.lwjgl.input.Keyboard.readNext(Lorg/lwjgl/input/Keyboard$KeyEvent;)Z @ 73
 Event: 44.577 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000001101e4a58 method=org.lwjgl.input.Keyboard.readNext(Lorg/lwjgl/input/Keyboard$KeyEvent;)Z @ 73
-Event: 88.552 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010ffc7634 method=GameManager.update(Lorg/newdawn/slick/GameContainer;Lorg/newdawn/slick/state/StateBasedGame;I)V @ 121
+Event: 88.552 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010ffc7634 method=GamePresenter.update(Lorg/newdawn/slick/GameContainer;Lorg/newdawn/slick/state/StateBasedGame;I)V @ 121
 Event: 102.778 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x00000001101f6358 method=org.lwjgl.opengl.MacOSXDisplay.update()V @ 86
 Event: 102.778 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000011003e74c method=org.newdawn.slick.Input.poll(II)V @ 1039
 Event: 102.795 Thread 0x00007fa2a3004000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010ff0f4cc method=org.lwjgl.input.Mouse.next()Z @ 28
