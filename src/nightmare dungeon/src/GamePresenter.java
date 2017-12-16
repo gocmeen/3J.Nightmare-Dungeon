@@ -106,6 +106,12 @@ public class GamePresenter extends BasicGameState {
             else if(curr.getMonsterList().get(i).getMonsterType()==99){
                 g.drawImage(new org.newdawn.slick.Image(Assets.boss), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
             }
+            else if(curr.getMonsterList().get(i).getMonsterType()==98){
+                g.drawImage(new org.newdawn.slick.Image(Assets.boss1), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
+            }
+            else if(curr.getMonsterList().get(i).getMonsterType()==97){
+                g.drawImage(new org.newdawn.slick.Image(Assets.boss2), curr.getMonsterList().get(i).getX(),curr.getMonsterList().get(i).getY());
+            }
         }
         //Looping through the itemList to get the coordinates the coordinates of the items inside the room
         for(int i = 0; i < curr.getItemList().size();i++){

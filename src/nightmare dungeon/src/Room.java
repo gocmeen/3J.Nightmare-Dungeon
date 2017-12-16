@@ -29,7 +29,7 @@ public class Room{
     private boolean isBoss;
     private Portal port;
     private Monster boss;
-private Portal port2;
+    private Portal port2;
 
     //constructor
     public Room(int width, int height,int id,ArrayList<Door> neighbours,boolean isBoss,Portal porta)throws IOException{
@@ -46,7 +46,7 @@ private Portal port2;
         port = null;
 
         currTime = System.currentTimeMillis(); //Game start time
-       doorList= new ArrayList<Door>();
+        doorList= new ArrayList<Door>();
 
         for(int i = 0;i < neighbours.size();i++){
             if(neighbours.get(i).getRoomID1()==id){
@@ -56,14 +56,33 @@ private Portal port2;
         }
         //generateDoors();
         this.isBoss=isBoss;
-        if(isBoss){
+        if(isBoss && porta.getMapID1() == 0){
             boss = new Monster(500,500,1,200,130,99);
             monsterList.add(boss);
             collided.add(0);
             port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
             //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
-
+            boss.setAttackDamage(10);
         }
+        if(isBoss && porta.getMapID1() == 1){
+            boss = new Monster(500,500,1,200,130,98);
+            monsterList.add(boss);
+            collided.add(0);
+            port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
+            //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
+            boss.setAttackSpeed(300);
+            boss.setAttackDamage(15);
+        }
+        if(isBoss && porta.getMapID1() == 2){
+            boss = new Monster(500,500,1,200,130,97);
+            monsterList.add(boss);
+            collided.add(0);
+            port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
+            //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
+            boss.setSpeed(20);
+            boss.setAttackDamage(20);
+        }
+
         else
             this.port=null;
 
@@ -116,6 +135,7 @@ public void createPortal(){
             int h = image.getHeight();
             //System.out.println(id+" w: "+w+",h: "+h);
             Monster m1 = new Monster(randomX,randomY,1,w,h,typee);
+            m1.setAttackDamage(2);
             monsterList.add(m1);
         }
 
@@ -294,7 +314,7 @@ public void createPortal(){
         long startTime = System.currentTimeMillis();
         double angle;
         for (int i = 0; i < monsterList.size(); i++) {
-            if(monsterList.get(i).getMonsterType()== 0 || monsterList.get(i).getMonsterType() == 99) {
+            if(monsterList.get(i).getMonsterType()== 0 || monsterList.get(i).getMonsterType() == 99 || monsterList.get(i).getMonsterType() == 98) {
 
                 angle = (float) Math.atan2(((double) y - monsterList.get(i).getY()), ((double) x - monsterList.get(i).getX()));
 
@@ -320,6 +340,10 @@ public void createPortal(){
                         SoundManager.playSound(6);
                     }
                     }
+                else if(monsterList.get(i).getMonsterType() == 98)
+                {
+                    monsterList.get(i).attack(startTime, monsterList.get(i).getX(), monsterList.get(i).getY(), Math.cos(angle), Math.sin(angle));
+                }
 
                 else
                     monsterList.get(i).attack(startTime, monsterList.get(i).getX(), monsterList.get(i).getY(), Math.cos(angle), Math.sin(angle));
@@ -338,7 +362,7 @@ public void createPortal(){
             for(int j =0; j < monsterList.get(i).getProjectile().size();j++){
                 //collided creature
                if( someone.getCollisionRectangle(0, 0).intersects(monsterList.get(i).getProjectile().get(j).getCollisionRectangle(0,0))) {
-                   someone.setHealth(-monsterList.get(i).getProjectile().get(j).getDamage());
+                   someone.setHealth(-monsterList.get(i).getAttackDamage());
                    monsterList.get(i).removeProjectile(j);
                    SoundManager.playSound(2);
                    someone.setPoint(someone.getPoint() - 20 * monsterList.get(i).getAttackDamage());
@@ -419,7 +443,7 @@ public void createPortal(){
         double angle;
         //looping through the monster
         for (int i = 0; i < monsterList.size(); i++) {
-            if (monsterList.get(i).getMonsterType() == 1||monsterList.get(i).getMonsterType() == 99){
+            if (monsterList.get(i).getMonsterType() == 1||monsterList.get(i).getMonsterType() == 99 || monsterList.get(i).getMonsterType() == 98 || monsterList.get(i).getMonsterType()==97){
                 //calculating the angle between the monster and the player
                 angle = (float) Math.atan2((double) (y - monsterList.get(i).getY()), (x - monsterList.get(i).getX()));
                 //System.out.println(angle);
