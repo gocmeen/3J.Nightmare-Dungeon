@@ -341,6 +341,7 @@ public void createPortal(){
                    someone.setHealth(-monsterList.get(i).getProjectile().get(j).getDamage());
                    monsterList.get(i).removeProjectile(j);
                    SoundManager.playSound(2);
+                   someone.setPoint(someone.getPoint() - 20 * monsterList.get(i).getAttackDamage());
                }
                 //checking collision
                // if(checkProjectileCollision(monsterList.get(i).getProjectile().get(j))==null)
@@ -382,13 +383,20 @@ public void createPortal(){
                     abc.setHealth(-someone.getProjectile().get(i).getDamage());
                     //if monster dies
                     if(abc.getHealth()<=0) {
+                        if (abc.getMonsterType() == 99)
+                            someone.setPoint(someone.getPoint() + 100);
+                        if (abc.getMonsterType() == 0)
+                            someone.setPoint(someone.getPoint() + 10);
+                        if (abc.getMonsterType() == 1)
+                            someone.setPoint(someone.getPoint() + 40);
+
                         //erasing the monster
                         if(abc.getMonsterType()==99){
                             bossX=abc.getX();
                             bossY = abc.getY();
                         }
-                        monsterList.remove(creature);
 
+                        monsterList.remove(creature);
 
                     }
                 }
@@ -452,6 +460,7 @@ public void createPortal(){
                 if(someone.getHealth()>0&&  System.currentTimeMillis()-currTime >  300){
                     someone.setHealth(-monsterList.get(i).getAttackDamage());
                     currTime = System.currentTimeMillis();
+                    someone.setPoint(someone.getPoint() - 20 * monsterList.get(i).getAttackDamage());
                 }}
                 //if collides after colliding bounce back again
                 if (collided.get(i) < 100) {
