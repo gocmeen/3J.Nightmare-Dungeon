@@ -203,6 +203,7 @@ public class GamePresenter extends BasicGameState {
             //System.out.println("aaa");
         }
         } catch(ArrayIndexOutOfBoundsException exc){
+            FileManager.scores[10] = String.valueOf(someone.getPoint());
             sbg.enterState(9);
         }
 

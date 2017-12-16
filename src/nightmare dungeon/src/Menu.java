@@ -85,8 +85,10 @@ public class Menu extends BasicGameState{
 	        sbg.getState(7).init(gc,sbg);
 			sbg.enterState(7);
 		}
-		if (highScoresActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
+		if (highScoresActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000)) {
+			FileManager.readFromFile("src/nightmare dungeon/res/highScores.txt");
 			sbg.enterState(3);
+		}
 		if (helpActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))
 			sbg.enterState(4);
 		if (creditsActivated && Keyboard.isKeyDown(Keyboard.KEY_SPACE)&& (spacePressed >= 1000))

@@ -1,22 +1,20 @@
-import java.io.BufferedReader;
+import java.io.*;
 import java.io.FileReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.BufferedReader;
 
 public class FileManager {
-    public String[] highScores = new String[10];
-    public String[] scores = new String[10];
-    public String[] names = new String[10];
-    BufferedReader br = null;
-    FileReader fr = null;
+    public static String[] highScores = new String[11];
+    public static String[] scores = new String[11];
+    public static String[] names = new String[11];
+    static BufferedReader br = null;
+    static FileReader fr = null;
+    static PrintWriter writer = null;
 
-    public FileManager(String filename){
-        readFromFile(filename);
+    public FileManager(){
+
     }
 
-    public void readFromFile(String filename){
+    public static void readFromFile(String filename){
         try {
             fr = new FileReader(filename);
             br = new BufferedReader(fr);
@@ -40,5 +38,24 @@ public class FileManager {
                 ex.printStackTrace();
             }
         }
+    }
+
+    public static void writeToFile(String filename){
+        try {
+            writer = new PrintWriter(filename);
+        }catch(FileNotFoundException exc){
+            System.out.println("File not found");
+        }
+        writer.println(names[0] + "...." + scores[0]);
+        writer.println(names[1] + "...." + scores[1]);
+        writer.println(names[2] + "...." + scores[2]);
+        writer.println(names[3] + "...." + scores[3]);
+        writer.println(names[4] + "...." + scores[4]);
+        writer.println(names[5] + "...." + scores[5]);
+        writer.println(names[6] + "...." + scores[6]);
+        writer.println(names[7] + "...." + scores[7]);
+        writer.println(names[8] + "...." + scores[8]);
+        writer.println(names[9] + "...." + scores[9]);
+        writer.close();
     }
 }
