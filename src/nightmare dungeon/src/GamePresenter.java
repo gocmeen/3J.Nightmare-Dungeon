@@ -92,7 +92,8 @@ public class GamePresenter extends BasicGameState {
         g.setColor(org.newdawn.slick.Color.white);
         g.drawString( someone.getHealth() + "/" + someone.getMaxHealth() ,10,25);
         //getting the current room from the Map
-        Room curr = mapList.get(currentMapID).getCurrentRoom();
+        try{
+            Room curr = mapList.get(currentMapID).getCurrentRoom();
 
 
         //Looping through the monsterList to get the coordinates the coordinates of the monsters inside the room
@@ -194,6 +195,9 @@ public class GamePresenter extends BasicGameState {
 
             }
             //System.out.println("aaa");
+        }
+        } catch(ArrayIndexOutOfBoundsException exc){
+            sbg.enterState(9);
         }
 
     }

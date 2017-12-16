@@ -3,6 +3,7 @@
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class Game extends StateBasedGame{
 	public static final int help2 = 6;
 	public static final int chooseCharacter = 7;
 	public static final int pauseMenu = 8;
+	public static final int endGame = 9;
 
 
 	public Game(String gameName)throws SlickException ,IOException{
@@ -34,6 +36,7 @@ public class Game extends StateBasedGame{
 		this.addState(new Help2(help2));
 		this.addState(new ChooseCharacter(chooseCharacter));
 		this.addState(new PauseMenu(pauseMenu));
+		this.addState(new EndGame(endGame));
 
 	}
 
@@ -48,6 +51,7 @@ public class Game extends StateBasedGame{
 		this.getState(help2).init(gc, this);
 		this.getState(chooseCharacter).init(gc, this);
 		this.getState(pauseMenu).init(gc, this);
+		this.getState(endGame).init(gc, this);
 		this.enterState(startMenu);
 	}
 	
