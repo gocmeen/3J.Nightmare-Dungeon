@@ -56,6 +56,7 @@ public class Player extends Character {
          items.add(item);
          if(speed<12)
          this.speed += item.getSpeedUp();
+         if(attackDamage<15)
          this.attackDamage+= item.getAttackDamageUp();
          this.attackSpeed+= item.getAttackSpeedUp();
          this.health+= item.getHealthUp();
