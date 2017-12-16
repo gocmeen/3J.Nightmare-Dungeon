@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Player extends Character {
     private int lifecount;
-    //private ActiveItem activeItem;
+    private ActiveItem activeItem = null;
     private ArrayList<PassiveItem> items;
     //private Projectile projectileList;
     private long lastChangedRoom;
@@ -25,13 +25,11 @@ public class Player extends Character {
      }
 
 
-
-
-
-
-
-
-     //public void useActive(Item it){}
+     public void useActive(){
+         if(this.activeItem != null){
+             activeItem.toggleActive();
+         }
+     }
     //public void updatelifecount()[]
     //removePassive()
     public void addPassive(PassiveItem item)throws SlickException{
@@ -43,7 +41,13 @@ public class Player extends Character {
         SoundManager.playSound(5);
 
     }
-    //updateActive()
+
+    public void addActive(ActiveItem item){
+         this.activeItem = item;
+    }
+    public void updateActive(){
+
+    }
 
 
 
