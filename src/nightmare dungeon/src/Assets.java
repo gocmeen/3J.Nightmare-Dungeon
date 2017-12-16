@@ -21,6 +21,7 @@ public class Assets{
         public static String monster1 = "src/nightmare dungeon/res/monster1.png";
         public static String item1 = "src/nightmare dungeon/res/item1.png";
         public static String item2 = "src/nightmare dungeon/res/item2.png";
+        public static String activeItem = "src/nightmare dungeon/res/activeItem.png";
         public static String playerAttack="src/nightmare dungeon/res/AliceAttack.png";
         public static String monsterAttack="src/nightmare dungeon/res/MonsterAttack.png";
         public static String monster2="src/nightmare dungeon/res/Judas.png";

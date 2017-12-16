@@ -163,17 +163,7 @@
         <jarDirectory url="file://$MODULE_DIR$/../../../Slick2D" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="slick" level="project" />
-    <orderEntry type="library" exported="" name="macosx1" level="project" />
-    <orderEntry type="library" exported="" name="jogg-0.0.73" level="project" />
-    <orderEntry type="library" exported="" name="jorbis-0.0.151" level="project" />
-    <orderEntry type="library" exported="" name="macosx" level="project" />
-    <orderEntry type="library" exported="" name="jogg-0.0.71" level="project" />
-    <orderEntry type="library" exported="" name="jars" level="project" />
-    <orderEntry type="library" exported="" name="jogg-0.0.72" level="project" />
-    <orderEntry type="library" exported="" name="jorbis-0.0.15" level="project" />
-    <orderEntry type="library" exported="" name="lwjgl" level="project" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/../../lib" />
@@ -322,20 +312,25 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$USER_HOME$/Desktop/Slick2D" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D" />
         </CLASSES>
         <JAVADOC>
-          <root url="file://$USER_HOME$/Desktop/Slick2D/javadoc" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D/javadoc" />
         </JAVADOC>
         <NATIVE>
-          <root url="file://$USER_HOME$/Desktop/Slick2D" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D" />
         </NATIVE>
         <SOURCES>
-          <root url="file://$USER_HOME$/Desktop/Slick2D/src" />
-          <root url="file://$USER_HOME$/Desktop/Slick2D/tools" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D/src" />
+          <root url="file://$MODULE_DIR$/../../../Slick2D/tools" />
         </SOURCES>
-        <jarDirectory url="file://$USER_HOME$/Desktop/Slick2D" recursive="false" />
+        <jarDirectory url="file://$MODULE_DIR$/../../../Slick2D" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="slick" level="project" />
+    <orderEntry type="library" exported="" name="macosx" level="project" />
+    <orderEntry type="library" exported="" name="lwjgl" level="project" />
+    <orderEntry type="library" exported="" name="jogg-0.0.7" level="project" />
+    <orderEntry type="library" exported="" name="jorbis-0.0.15" level="project" />
   </component>
 </module>

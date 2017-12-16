@@ -29,7 +29,7 @@ public class Room{
     private boolean isBoss;
     private Portal port;
     private Monster boss;
-    private Portal port2;
+private Portal port2;
 
     //constructor
     public Room(int width, int height,int id,ArrayList<Door> neighbours,boolean isBoss,Portal porta)throws IOException{
@@ -46,7 +46,7 @@ public class Room{
         port = null;
 
         currTime = System.currentTimeMillis(); //Game start time
-        doorList= new ArrayList<Door>();
+       doorList= new ArrayList<Door>();
 
         for(int i = 0;i < neighbours.size();i++){
             if(neighbours.get(i).getRoomID1()==id){
@@ -56,7 +56,7 @@ public class Room{
         }
         //generateDoors();
         this.isBoss=isBoss;
-        if(isBoss && porta.getMapID1() == 0){
+        if(isBoss&&porta.getMapID1()==0){
             boss = new Monster(500,500,1,200,130,99);
             monsterList.add(boss);
             collided.add(0);
@@ -80,7 +80,7 @@ public class Room{
             port2=new Portal(500,500,5,porta.getWidth(),porta.getHeight(),porta.getMapID1(),porta.getMapID2());
             //System.out.println("Hayattan soğudum: "+this.port.getMapID1()+", "+ this.port.getMapID2());
             boss.setSpeed(20);
-            boss.setAttackDamage(20);
+            boss.setAttackDamage(30);
         }
 
         else
@@ -91,7 +91,7 @@ public class Room{
 public boolean checkBossDied(){
         if(isBoss){
             for(int i = 0;  i < monsterList.size();i++){
-                if(monsterList.get(i).getMonsterType()==99)
+                if(monsterList.get(i).getMonsterType()==99||monsterList.get(i).getMonsterType()==98||monsterList.get(i).getMonsterType()==97)
                     return false;
             }
             return true;
@@ -135,7 +135,6 @@ public void createPortal(){
             int h = image.getHeight();
             //System.out.println(id+" w: "+w+",h: "+h);
             Monster m1 = new Monster(randomX,randomY,1,w,h,typee);
-            m1.setAttackDamage(2);
             monsterList.add(m1);
         }
 
@@ -194,6 +193,16 @@ public void createPortal(){
             itemList.add(i1);
         }
 
+        int randomX= ThreadLocalRandom.current().nextInt(51 + 27,1279);
+        int randomY = ThreadLocalRandom.current().nextInt(67 + 39,673);
+        //int typee = ThreadLocalRandom.current().nextInt(0,2);
+        BufferedImage image = null;
+        image = ImageIO.read(new File(Assets.activeItem));
+        int w = image.getWidth();
+        int h = image.getHeight();
+        Item i1 = new ActiveItem(randomX,randomY,3,w,h,0,false, 1000);
+        itemList.add(i1);
+        System.out.println( itemList.get(itemList.size()-1).typeID);
     }
 
     public void generateObstacles()throws IOException{
@@ -206,7 +215,7 @@ public void createPortal(){
             BufferedImage image = ImageIO.read(new File(Assets.obstacle));
             int w = image.getWidth();
             int h = image.getHeight();
-            Obstacle o1 = new Obstacle(randomX, randomY,3,39,27);
+            Obstacle o1 = new Obstacle(randomX, randomY,6,39,27);
             //obstacleList.add(o1);
 /*
             System.out.println("random x: " + randomX + ", random y: " + randomY);
@@ -243,52 +252,56 @@ public void createPortal(){
 
     //checks collision between characters and entities and returns collided object
     public Entity checkCollision(Character someone)throws SlickException {
+        Monster check=null;
+        if(someone instanceof Monster)
+            check = (Monster)someone;
+
+if(check==null||check.getMonsterType()!=97||check.getMonsterType()!=98) {
+    for (int i = 0; i < monsterList.size(); i++) {
+        //monstr projectile hit
+
+        //iterating over monster projectiles to check collision
+
+        if (someone.getCollisionRectangle((int) someone.getDirectionX() * someone.getSpeed(), (int) someone.getDirectionY() * someone.getSpeed()).intersects(monsterList.get(i).getCollisionRectangle(0, 0))
+                && someone != monsterList.get(i)) {
 
 
-        for (int i = 0; i < monsterList.size(); i++) {
-            //monstr projectile hit
-
-            //iterating over monster projectiles to check collision
-
-            if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(monsterList.get(i).getCollisionRectangle(0, 0))
-                    &&someone!=monsterList.get(i)){
-
-
-                if(someone.getHealth() > 0 && System.currentTimeMillis()-currTime >  300) {  //.Checks time delay between attacks. Cant get hit for like 0.3 second after first hit.
-                    someone.setHealth(-(monsterList.get(i).getAttackDamage()));
-                    currTime = System.currentTimeMillis();
-                    SoundManager.playSound(2);
-                }
-                return monsterList.get(i);
+            if (someone.getHealth() > 0 && System.currentTimeMillis() - currTime > 300) {  //.Checks time delay between attacks. Cant get hit for like 0.3 second after first hit.
+                someone.setHealth(-(monsterList.get(i).getAttackDamage()));
+                currTime = System.currentTimeMillis();
+                SoundManager.playSound(2);
             }
+
+            return monsterList.get(i);
+        }
+
+    }
+
+    for (int i = 0; i < itemList.size(); i++) {
+        if (someone.getCollisionRectangle((int) someone.getDirectionX() * someone.getSpeed(), (int) someone.getDirectionY() * someone.getSpeed()).intersects(itemList.get(i).getCollisionRectangle(0, 0))
+                ) {
+            return itemList.get(i);
 
         }
 
-        for (int i = 0; i < itemList.size(); i++) {
-            if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(itemList.get(i).getCollisionRectangle(0, 0))
-                    ) {
-                return itemList.get(i);
+    }
 
-            }
+    for (int i = 0; i < obstacleList.size(); i++) {
+        if (someone.getCollisionRectangle((int) someone.getDirectionX() * someone.getSpeed(), (int) someone.getDirectionY() * someone.getSpeed()).intersects(obstacleList.get(i).getCollisionRectangle(0, 0))
+                )
+            return obstacleList.get(i);
+    }
+    for (int i = 0; i < doorList.size(); i++) {
+        if (someone.getCollisionRectangle((int) someone.getDirectionX() * someone.getSpeed(), (int) someone.getDirectionY() * someone.getSpeed()).intersects(doorList.get(i).getCollisionRectangle(0, 0))) {
 
-            }
-
-        for (int i = 0; i < obstacleList.size(); i++) {
-            if (someone.getCollisionRectangle((int)someone.getDirectionX() * someone.getSpeed(), (int)someone.getDirectionY() * someone.getSpeed()).intersects(obstacleList.get(i).getCollisionRectangle(0, 0))
-                    )
-                return obstacleList.get(i);
+            //SoundManager.playSound(4);
+            return doorList.get(i);
         }
-        for(int i = 0; i < doorList.size();i++){
-            if(someone.getCollisionRectangle((int)someone.getDirectionX()*someone.getSpeed(),(int)someone.getDirectionY()*someone.getSpeed()).intersects(doorList.get(i).getCollisionRectangle(0,0))) {
-
-                //SoundManager.playSound(4);
-                return doorList.get(i);
-            }
-            }
-            if(port!=null)
-                if(someone.getCollisionRectangle((int)someone.getDirectionX()*someone.getSpeed(),(int)someone.getDirectionY()*someone.getSpeed()).intersects(port.getCollisionRectangle(0,0)))
-                    return port;
-
+    }
+    if (port != null)
+        if (someone.getCollisionRectangle((int) someone.getDirectionX() * someone.getSpeed(), (int) someone.getDirectionY() * someone.getSpeed()).intersects(port.getCollisionRectangle(0, 0)))
+            return port;
+}
         return null;
     }
 
@@ -339,7 +352,7 @@ public void createPortal(){
                         monsterList.get(i).setLastAttacked(yeniTime);
                         SoundManager.playSound(6);
                     }
-                    }
+                }
                 else if(monsterList.get(i).getMonsterType() == 98)
                 {
                     monsterList.get(i).attack(startTime, monsterList.get(i).getX(), monsterList.get(i).getY(), Math.cos(angle), Math.sin(angle));
@@ -352,7 +365,6 @@ public void createPortal(){
         }
         moveProjectiles(someone);
     }
-
     /*this method is used for moving the projectiles inside the room
    *
    * */
@@ -415,7 +427,7 @@ public void createPortal(){
                             someone.setPoint(someone.getPoint() + 40);
 
                         //erasing the monster
-                        if(abc.getMonsterType()==99){
+                        if(abc.getMonsterType()==99||abc.getMonsterType()==98||abc.getMonsterType()==97){
                             bossX=abc.getX();
                             bossY = abc.getY();
                         }
@@ -447,59 +459,60 @@ public void createPortal(){
                 //calculating the angle between the monster and the player
                 angle = (float) Math.atan2((double) (y - monsterList.get(i).getY()), (x - monsterList.get(i).getX()));
                 //System.out.println(angle);
-            //set directions of the monster so that monster follows player
-            if (collided.get(i) == 0) {
-                //x direction gets the cosine of the angle
-                monsterList.get(i).setDirectionX(Math.cos(angle));
-                //y direction gets the sine of the angle
-                monsterList.get(i).setDirectionY(Math.sin(angle));
-                //System.out.println("debuggg");
-            }
-            //checking collision
-            if ((checkCollision(monsterList.get(i)) == null) &&
-                    !monsterList.get(i).getCollisionRectangle((int) monsterList.get(i).getDirectionX() * someone.getSpeed(), (int) monsterList.get(i).getDirectionY() * someone.getSpeed()).intersects(someone.getCollisionRectangle(0, 0))
-                    ) {
-                if (collided.get(i) > 0) {
+                //set directions of the monster so that monster follows player
+                if (collided.get(i) == 0) {
+                    //x direction gets the cosine of the angle
+                    monsterList.get(i).setDirectionX(Math.cos(angle));
+                    //y direction gets the sine of the angle
+                    monsterList.get(i).setDirectionY(Math.sin(angle));
+                    //System.out.println("debuggg");
+                }
+                //checking collision
 
-                    collided.set(i, collided.get(i) + 1);
-                    //bouncing back when collided
-                    if (collided.get(i) == 25) {
-                        monsterList.get(i).setDirectionY(monsterList.get(i).getDirectionY());
-                        monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
+                if ((checkCollision(monsterList.get(i)) == null  &&
+                        !monsterList.get(i).getCollisionRectangle((int) monsterList.get(i).getDirectionX() * someone.getSpeed(), (int) monsterList.get(i).getDirectionY() * someone.getSpeed()).intersects(someone.getCollisionRectangle(0, 0))
+                )) {
+                    if (collided.get(i) > 0) {
+
+                        collided.set(i, collided.get(i) + 1);
+                        //bouncing back when collided
+                        if (collided.get(i) == 25) {
+                            monsterList.get(i).setDirectionY(monsterList.get(i).getDirectionY());
+                            monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
+                        }
+                        //still bouncing but this time towards another direction
+                        if (collided.get(i) == 40) {
+                            monsterList.get(i).setDirectionY(0 * monsterList.get(i).getDirectionY());
+                            monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
+                        }
+
                     }
-                    //still bouncing but this time towards another direction
-                    if (collided.get(i) == 40) {
-                        monsterList.get(i).setDirectionY(0 * monsterList.get(i).getDirectionY());
+                    //moving the monster
+                    monsterList.get(i).move(width,height1);
+                    if (collided.get(i) == 80)
+                        collided.set(i, 0);
+                } else {
+                    //checking if the collision is with player
+                    if(monsterList.get(i).getCollisionRectangle((int) monsterList.get(i).getDirectionX() * someone.getSpeed(), (int) monsterList.get(i).getDirectionY() * someone.getSpeed()).intersects(someone.getCollisionRectangle(0, 0))){
+                        if(someone.getHealth()>0&&  System.currentTimeMillis()-currTime >  300){
+                            someone.setHealth(-monsterList.get(i).getAttackDamage());
+                            currTime = System.currentTimeMillis();
+                            someone.setPoint(someone.getPoint() - 20 * monsterList.get(i).getAttackDamage());
+                        }}
+                    //if collides after colliding bounce back again
+                    if (collided.get(i) < 100) {
+                        monsterList.get(i).setDirectionY(-monsterList.get(i).getDirectionY());
                         monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
+
                     }
+                    //if collided for the first time
+                    if (collided.get(i) == 0)
+                        collided.set(i, collided.get(i) + 1);
+
+                    monsterList.get(i).move(width,height1);
 
                 }
-                //moving the monster
-                monsterList.get(i).move(width,height1);
-                if (collided.get(i) == 80)
-                    collided.set(i, 0);
-            } else {
-                //checking if the collision is with player
-                if(monsterList.get(i).getCollisionRectangle((int) monsterList.get(i).getDirectionX() * someone.getSpeed(), (int) monsterList.get(i).getDirectionY() * someone.getSpeed()).intersects(someone.getCollisionRectangle(0, 0))){
-                if(someone.getHealth()>0&&  System.currentTimeMillis()-currTime >  300){
-                    someone.setHealth(-monsterList.get(i).getAttackDamage());
-                    currTime = System.currentTimeMillis();
-                    someone.setPoint(someone.getPoint() - 20 * monsterList.get(i).getAttackDamage());
-                }}
-                //if collides after colliding bounce back again
-                if (collided.get(i) < 100) {
-                    monsterList.get(i).setDirectionY(-monsterList.get(i).getDirectionY());
-                    monsterList.get(i).setDirectionX(-monsterList.get(i).getDirectionX());
-
-                }
-                //if collided for the first time
-                if (collided.get(i) == 0)
-                    collided.set(i, collided.get(i) + 1);
-
-                monsterList.get(i).move(width,height1);
-
             }
-        }
 
 
         }

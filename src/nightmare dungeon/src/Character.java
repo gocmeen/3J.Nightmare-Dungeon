@@ -195,7 +195,7 @@ public class Character extends Entity {
         int h = image.getHeight();
         //if there are no projectiles in the room
         if(lastAttacked==-1){
-            addProjectile(new Projectile(startTime,1,4,3,x,y,w,h,dirX,dirY));
+            addProjectile(new Projectile(startTime,1,4,7,x,y,w,h,dirX,dirY));
             lastAttacked=startTime;
         return true;
         }
@@ -203,10 +203,11 @@ public class Character extends Entity {
             //if the time differences between last projectile and this one is greater then half a second
             if((double)startTime-lastAttacked>(50/(double)attackSpeed)*1*1000) {
                 //wdSystem.out.println("AAAAA: "+ (double)(50/attackSpeed)*1*1000);
-                addProjectile(new Projectile(startTime, 1, 4, 3, x, y, w, h, dirX, dirY)); //add the projectile
+                addProjectile(new Projectile(startTime, 1, 4, 7, x, y, w, h, dirX, dirY)); //add the projectile
                 lastAttacked=startTime;
                 return true;
             }
+        System.out.println("fired");
     return false;
     }
     public void addProjectile(Projectile p)
@@ -261,5 +262,9 @@ public class Character extends Entity {
 
     public void setLastAttacked(long lastAttacked) {
         this.lastAttacked = lastAttacked;
+    }
+
+    public long getLastAttacked() {
+        return lastAttacked;
     }
 }
