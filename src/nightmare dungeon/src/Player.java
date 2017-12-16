@@ -16,12 +16,14 @@ public class Player extends Character {
     private static final int   HEALTH = 200;
     private static final int   ATTACK_DAMAGE = 50;
     private static final int   ATTACK_SPEED = 70;
+    private int point;
 
      public Player(int x, int y, int typeID,int width, int height)
      {
           super(x,  y,  typeID, width,  height,  HEALTH ,  SPEED, ATTACK_DAMAGE,ATTACK_SPEED);
           items = new ArrayList<PassiveItem>();
           lastChangedRoom = -1;
+          point = 30000;
      }
 
 
@@ -49,9 +51,15 @@ public class Player extends Character {
 
     }
 
+    public int getPoint(){
+        if (point > 0)
+            return point;
+        else
+            return 0;
+    }
 
-
-
-
+    public void setPoint(int point){
+        this.point = point;
+    }
 
 }
