@@ -35,8 +35,11 @@ public class GamePresenter extends BasicGameState {
     private int playerID = 0;
     private int minion = 0;
     private int passiveItem = 2;
-    private int player = 0;
+    private int activeItem = 3;
     private int door = 4;
+    private int portal = 5;
+    private int obstacle = 6;
+
 
     public static boolean pausePressed = false;
     public static Image lastState;
@@ -116,10 +119,15 @@ public class GamePresenter extends BasicGameState {
         //Looping through the itemList to get the coordinates the coordinates of the items inside the room
         for(int i = 0; i < curr.getItemList().size();i++){
 
-            if(curr.getItemList().get(i).itemID==0)
-                g.drawImage(new org.newdawn.slick.Image(Assets.item1),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
-            else if(curr.getItemList().get(i).itemID==1)
-                g.drawImage(new org.newdawn.slick.Image(Assets.item2),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
+            if(curr.getItemList().get(i).typeID==activeItem)
+                g.drawImage(new org.newdawn.slick.Image(Assets.activeItem),curr.getItemList().get(i).getX(),curr.getItemList().get(i).getY());
+            else if(curr.getItemList().get(i).typeID==passiveItem) {
+                
+                if (curr.getItemList().get(i).itemID == 0)
+                    g.drawImage(new org.newdawn.slick.Image(Assets.item1), curr.getItemList().get(i).getX(), curr.getItemList().get(i).getY());
+                else if (curr.getItemList().get(i).itemID == 1)
+                    g.drawImage(new org.newdawn.slick.Image(Assets.item2), curr.getItemList().get(i).getX(), curr.getItemList().get(i).getY());
+            }
 
         }
 
@@ -188,14 +196,14 @@ public class GamePresenter extends BasicGameState {
         for (int i = 0; i < someone.getProjectile().size();i++) {
 
             g.drawImage(new org.newdawn.slick.Image(Assets.playerAttack), someone.getProjectile().get(i).getX(),someone.getProjectile().get(i).getY());
-
+            //aSystem.out.println("drawn");
 
         }
 
         for(int i = 0; i < curr.getMonsterList().size();i++) {
             for (int j = 0; j < curr.getMonsterList().get(i).getProjectile().size(); j++) {
-                if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1366&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0
-                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<780&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>0)
+                if(curr.getMonsterList().get(i).getProjectile().get(j).getX()<1366-37&&curr.getMonsterList().get(i).getProjectile().get(j).getX()>0+31
+                        &&curr.getMonsterList().get(i).getProjectile().get(j).getY()<780 -67&&curr.getMonsterList().get(i).getProjectile().get(j).getY()>+67)
                     g.drawImage(new Image(Assets.monsterAttack), curr.getMonsterList().get(i).getProjectile().get(j).getX(), curr.getMonsterList().get(i).getProjectile().get(j).getY());
 
 
@@ -289,7 +297,7 @@ try{
 
 
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -298,12 +306,19 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
+            }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
             }
 
 
@@ -348,7 +363,7 @@ try{
                     System.out.println("ask3");
                 }
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -357,12 +372,19 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
+            }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
             }
 
         } else if (Keyboard.isKeyDown(Keyboard.KEY_W) && Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
@@ -405,7 +427,7 @@ try{
                     System.out.println("ask3");
                 }
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -414,12 +436,19 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
+            }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
             }
 
         } else if (Keyboard.isKeyDown(Keyboard.KEY_S) && Keyboard.isKeyDown(Keyboard.KEY_A))//&& curr.checkRoomCollision(someone))
@@ -462,7 +491,7 @@ try{
                     System.out.println("ask3");
                 }
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -471,12 +500,19 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
+            }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
             }
 
         } else if (Keyboard.isKeyDown(Keyboard.KEY_W))//&& curr.checkRoomCollision(someone))
@@ -522,7 +558,7 @@ try{
                     System.out.println("ask3");
                 }
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -531,12 +567,19 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
+            }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
             }
             //setting directions
             uFlag = true;
@@ -587,7 +630,7 @@ try{
                     System.out.println("ask3");
                 }
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -596,13 +639,21 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
             }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
+            }
+
             //setting directions
             uFlag = false;
             dFlag = true;
@@ -651,7 +702,7 @@ try{
                     System.out.println("ask3");
                 }
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -660,12 +711,19 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
+            }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
             }
             //setting directions
             uFlag = false;
@@ -715,7 +773,7 @@ try{
                     System.out.println("ask3");
                 }
             }
-            else if(curr.checkCollision(someone).typeID == 5&&curr.checkCleared()){
+            else if(curr.checkCollision(someone).typeID == portal&&curr.checkCleared()){
 
                 Portal port = (Portal) curr.checkCollision(someone);
 
@@ -724,12 +782,19 @@ try{
                     currentMapID=port.getMapID2();
                     System.out.println(currentMapID);
                 }
-                else{
+                 else{
                     System.out.println("yakışıklı2: "+currentMapID);
                     currentMapID=port.getMapID1();
                     System.out.println(currentMapID);
 
                 }
+            }
+            else if (colliededObject.typeID == activeItem)// && curr.checkRoomCollision(someone))
+            {
+                curr.removeItem((ActiveItem) colliededObject);
+                someone.addActive((ActiveItem) colliededObject);
+                someone.setPoint(someone.getPoint() + 200);
+
             }
             //setting directions
             uFlag = false;
@@ -738,63 +803,133 @@ try{
             lFlag = false;
 
         }
+        if(Keyboard.isKeyDown(Keyboard.KEY_SPACE))
+            someone.useActive();
+
         //Detescts user inputs for attack and shoots projectiles
-        if (Keyboard.isKeyDown(Keyboard.KEY_LEFT) && Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+        else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT) && Keyboard.isKeyDown(Keyboard.KEY_UP)) {
             //gets current time to set time intervals between projectiles
             long startTime = System.currentTimeMillis();
 
-            if (someone.attack(startTime, someone.getX(), someone.getY(), -1, -1))
+            if(someone.isActiveValid() ){
+
+            if (someone.getActiveItem().activate(someone,startTime))
+
                 soundmanager.playSound(1);
+
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), -1, -1))
+
+                    soundmanager.playSound(1);
+            }
+
         } else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT) && Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
             long startTime = System.currentTimeMillis();
 
-            if (someone.attack(startTime, someone.getX(), someone.getY(), -1, 1))
-                soundmanager.playSound(1);
+            if(someone.isActiveValid() ){
+
+                if (someone.getActiveItem().activate(someone,startTime))
+
+                    soundmanager.playSound(1);
+
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), -1, 1))
+
+                    soundmanager.playSound(1);
+            }
+
         } else if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT) && Keyboard.isKeyDown(Keyboard.KEY_UP)) {
             long startTime = System.currentTimeMillis();
 
-            if (someone.attack(startTime, someone.getX(), someone.getY(), 1, -1))
-                soundmanager.playSound(1);
+            if(someone.isActiveValid() ){
+
+                if (someone.getActiveItem().activate(someone,startTime))
+
+                    soundmanager.playSound(1);
+
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 1, -1))
+
+                    soundmanager.playSound(1);
+            }
         } else if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT) && Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
             long startTime = System.currentTimeMillis();
 
-            if (someone.attack(startTime, someone.getX(), someone.getY(), 1, 1))
-                soundmanager.playSound(1);
+            if(someone.isActiveValid() ){
+
+                if (someone.getActiveItem().activate(someone,startTime))
+
+                    soundmanager.playSound(1);
+
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 1, 1))
+
+                    soundmanager.playSound(1);
+            }
         } else if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
 
 
             long startTime = System.currentTimeMillis();
 
-            if (someone.attack(startTime, someone.getX(), someone.getY(), -1, 0))
+            if(someone.isActiveValid() ){
+                System.out.println("lefttt");
+                if (someone.getActiveItem().activate(someone,startTime))
 
-                soundmanager.playSound(1);
+                    soundmanager.playSound(1);
 
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), -1, 0))
+
+                    soundmanager.playSound(1);
+            }
 
         } else if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
 
             long startTime = System.currentTimeMillis();
-            if (someone.attack(startTime, someone.getX(), someone.getY(), 1, 0))
+            if(someone.isActiveValid() ){
 
+                if (someone.getActiveItem().activate(someone,startTime))
 
-                soundmanager.playSound(1);
+                    soundmanager.playSound(1);
 
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 1, 0))
+
+                    soundmanager.playSound(1);
+            }
 
         } else if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
 
 
             long startTime = System.currentTimeMillis();
-            if (someone.attack(startTime, someone.getX(), someone.getY(), 0, -1))
 
-                soundmanager.playSound(1);
+            if(someone.isActiveValid() ){
+
+                if (someone.getActiveItem().activate(someone,startTime))
+
+                    soundmanager.playSound(1);
+
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 0, -1))
+
+                    soundmanager.playSound(1);
+            }
 
         } else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
 
 
             long startTime = System.currentTimeMillis();
-            if (someone.attack(startTime, someone.getX(), someone.getY(), 0, 1))
+            if(someone.isActiveValid() ){
 
+                if (someone.getActiveItem().activate(someone,startTime))
 
-                soundmanager.playSound(1);
+                    soundmanager.playSound(1);
+
+            }else{
+                if (someone.attack(startTime, someone.getX(), someone.getY(), 0, 1))
+
+                    soundmanager.playSound(1);
+            }
 
         }
 

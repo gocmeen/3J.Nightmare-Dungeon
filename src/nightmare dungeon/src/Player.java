@@ -32,6 +32,12 @@ public class Player extends Character {
              activeItem.toggleActive();
          }
      }
+
+     public boolean isActiveValid(){
+         if(this.activeItem != null)
+            return this.activeItem.isItemActive();
+         return false;
+     }
     //public void updatelifecount()[]
     //removePassive()
     public void addPassive(PassiveItem item)throws SlickException{
@@ -60,6 +66,10 @@ public class Player extends Character {
 
     public void setPoint(int point){
         this.point = point;
+    }
+
+    public ActiveItem getActiveItem(){
+        return activeItem;
     }
 
 }
