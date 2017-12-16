@@ -196,8 +196,8 @@ public void createPortal(){
             itemList.add(i1);
         }
 
-        int randomX= ThreadLocalRandom.current().nextInt(51 + 27,1279);
-        int randomY = ThreadLocalRandom.current().nextInt(67 + 39,673);
+        int randomX= ThreadLocalRandom.current().nextInt(51 + 27,1000);
+        int randomY = ThreadLocalRandom.current().nextInt(67 + 39,600);
         //int typee = ThreadLocalRandom.current().nextInt(0,2);
         BufferedImage image = null;
         image = ImageIO.read(new File(Assets.activeItem));
@@ -212,8 +212,8 @@ public void createPortal(){
         int offset = 50;
 
         for(int i = 0; i < 3 ; i++){
-            int randomX= ThreadLocalRandom.current().nextInt(51 + 27,1279);
-            int randomY = ThreadLocalRandom.current().nextInt(67 + 39,673);
+            int randomX= ThreadLocalRandom.current().nextInt(51 + 27,1100);
+            int randomY = ThreadLocalRandom.current().nextInt(67 + 39,600);
 
             BufferedImage image = ImageIO.read(new File(Assets.obstacle));
             int w = image.getWidth();

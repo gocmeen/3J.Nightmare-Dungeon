@@ -48,10 +48,10 @@ public class Character extends Entity {
         roomHeight -= 44; // WIDTH OF PLAYER
         roomWidth -= 33;
 
-        int xOffsetStart = 46;
-        int xOffsetEnd = roomWidth - 46;
-        int yOffsetStart = 60;
-        int yOffsetEnd = roomHeight - 60;
+        int xOffsetStart = 0;
+        int xOffsetEnd = roomWidth - 0;
+        int yOffsetStart = 0;
+        int yOffsetEnd = roomHeight - 0;
 
         //System.out.println("x: " + this.getX() + " y: " + this.getY());
 

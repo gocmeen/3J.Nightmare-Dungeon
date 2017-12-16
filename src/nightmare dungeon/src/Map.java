@@ -37,8 +37,8 @@ public class Map {
 		for(int i = 0; i  < 3; i++){
 			for(int j = i+1; j<3;j++){
 
-				int randomX= ThreadLocalRandom.current().nextInt(0,1330);
-				int randomY = ThreadLocalRandom.current().nextInt(0,740);
+				int randomX= ThreadLocalRandom.current().nextInt(0,1330-31);
+				int randomY = ThreadLocalRandom.current().nextInt(0,740-31);
 				int selectFrom4 = ThreadLocalRandom.current().nextInt(0,4);
 				Door d1;
 				Door d2;
