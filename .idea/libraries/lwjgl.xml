@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lwjgl">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../masaüstü/3J.Nightmare-Dungeon/doc/Contributions/Hakan Sarp Aydemir/menu/lib/jars/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jars/jogg-0.0.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jars/jorbis-0.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jars/slick.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jars/lwjgl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="jar://$PROJECT_DIR$/lib/jars/lwjgl.jar!/" recursive="false" />
+  </library>
+</component>

@@ -1,0 +1,621 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007fff95f590dd, pid=1315, tid=0x0000000000000713
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_121-b13) (build 1.8.0_121-b13)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.121-b13 mixed mode bsd-amd64 compressed oops)
+# Problematic frame:
+# C  [libobjc.A.dylib+0x10dd]  objc_msgSend+0x1d
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fcc558ab800):  JavaThread "AppKit Thread" daemon [_thread_in_native, id=1811, stack(0x00007fff551ae000,0x00007fff559ae000)]
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x0000000000000018
+
+Registers:
+RAX=0x00007fcc53cbe2f0, RBX=0x00007fff559a8ee8, RCX=0x0000000000000000, RDX=0x00007fcc53cf7f80
+RSP=0x00007fff559a8d08, RBP=0x00007fff559a8d10, RSI=0x00007fff916ef41e, RDI=0x00007fcc53cbe2f0
+R8 =0x00007fff559a8cf0, R9 =0x0000000000000062, R10=0x00007fff916ef41e, R11=0x0000000000000000
+R12=0x00007fcc53d1c2c0, R13=0x00000000000f42fd, R14=0x00007fcc53f83060, R15=0x00007fff559a8e48
+RIP=0x00007fff95f590dd, EFLAGS=0x0000000000010246, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007fff559a8d08)
+0x00007fff559a8d08:   00007fff8d34245c 00007fff559a9070
+0x00007fff559a8d18:   00007fff8d232444 00007fff559a8d9c
+0x00007fff559a8d28:   00007fff559a8da0 00007fff559a8da4
+0x00007fff559a8d38:   00007fff7a5d0e00 ffffffffffffffff
+0x00007fff559a8d48:   0000000000000930 00007fff7a5d0e18
+0x00007fff559a8d58:   00007fcc53f83060 0000000000000000
+0x00007fff559a8d68:   00007fff559a8e40 0000000000000000
+0x00007fff559a8d78:   00007fcc53e54cc0 00007fff559a8ec0
+0x00007fff559a8d88:   0000000000000062 00000000000f42ff
+0x00007fff559a8d98:   00007fcc53cf7f80 00007fcc53e2d590
+0x00007fff559a8da8:   00007fcc53d1c2c0 0000000000000001
+0x00007fff559a8db8:   00000000000f42fd 00007fcc53d1c2b0
+0x00007fff559a8dc8:   00007fff92addc05 0000000153c1fff0
+0x00007fff559a8dd8:   00007fff7a6540d0 0000000042000000
+0x00007fff559a8de8:   00007fff92ae4e63 00007fff7a59b240
+0x00007fff559a8df8:   00007fff559a8ec8 0000000000000000
+0x00007fff559a8e08:   00007fff7ac9e8c8 0000000000000000
+0x00007fff559a8e18:   000000000000000e 0006f30300000001
+0x00007fff559a8e28:   00007fcc53d1c2e4 0000000000000000
+0x00007fff559a8e38:   000000000041af01 00007fcc53e54d40
+0x00007fff559a8e48:   00007fcc53f83060 0000000000000000
+0x00007fff559a8e58:   00007fff91728458 00007fff559a8f00
+0x00007fff559a8e68:   00007fff94cc7483 00007fff559a8ee4
+0x00007fff559a8e78:   000000000041b001 00000000ffffffff
+0x00007fff559a8e88:   00007fff7ac9e8c8 000000000041b000
+0x00007fff559a8e98:   00007fff00000000 00007fff559a8f90
+0x00007fff559a8ea8:   00007fff8f8e2770 00007fff7ac9e8e8
+0x00007fff559a8eb8:   00007fff91728458 0000000000000051
+0x00007fff559a8ec8:   0000000000000000 00000000000f42e2
+0x00007fff559a8ed8:   0000000000000053 0000000000000000
+0x00007fff559a8ee8:   00000000000f42fd 00007fff559a8f64
+0x00007fff559a8ef8:   000000000041bc01 00000000ffffffff 
+
+Instructions: (pc=0x00007fff95f590dd)
+0x00007fff95f590bd:   00 00 00 48 85 ff 2e 74 7a 40 f6 c7 01 2e 75 7e
+0x00007fff95f590cd:   49 bb f8 ff ff ff ff 7f 00 00 4c 23 1f 49 89 f2
+0x00007fff95f590dd:   45 23 53 18 49 c1 e2 04 4d 03 53 10 49 3b 32 75
+0x00007fff95f590ed:   04 41 ff 62 08 49 83 3a 00 74 6a 4d 3b 53 10 74 
+
+Register to memory mapping:
+
+RAX=0x00007fcc53cbe2f0 is an unknown value
+RBX=0x00007fff559a8ee8 is pointing into the stack for thread: 0x00007fcc558ab800
+RCX=0x0000000000000000 is an unknown value
+RDX=0x00007fcc53cf7f80 is an unknown value
+RSP=0x00007fff559a8d08 is pointing into the stack for thread: 0x00007fcc558ab800
+RBP=0x00007fff559a8d10 is pointing into the stack for thread: 0x00007fcc558ab800
+RSI=0x00007fff916ef41e: -[NSTitlebarContainerView transparent]+0x5e312 in /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit at 0x00007fff90cee000
+RDI=0x00007fcc53cbe2f0 is an unknown value
+R8 =0x00007fff559a8cf0 is pointing into the stack for thread: 0x00007fcc558ab800
+R9 =0x0000000000000062 is an unknown value
+R10=0x00007fff916ef41e: -[NSTitlebarContainerView transparent]+0x5e312 in /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit at 0x00007fff90cee000
+R11=0x0000000000000000 is an unknown value
+R12=0x00007fcc53d1c2c0 is an unknown value
+R13=0x00000000000f42fd is an unknown value
+R14=0x00007fcc53f83060 is an unknown value
+R15=0x00007fff559a8e48 is pointing into the stack for thread: 0x00007fcc558ab800
+
+
+Stack: [0x00007fff551ae000,0x00007fff559ae000],  sp=0x00007fff559a8d08,  free space=8171k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libobjc.A.dylib+0x10dd]  objc_msgSend+0x1d
+C  [CoreFoundation+0x10444]  _CFXNotificationPost+0xc44
+C  [Foundation+0x7af1]  -[NSNotificationCenter postNotificationName:object:userInfo:]+0x42
+C  [AppKit+0x439c2]  -[NSSurface _disposeSurface]+0x98
+C  [AppKit+0x43426]  -[NSSurface setWindow:]+0x42
+C  [AppKit+0x33910]  -[NSView _setWindow:]+0xa33
+C  [AppKit+0x6af91]  -[NSView removeFromSuperview]+0x1c5
+C  [AppKit+0x14bd99]  -[NSView removeFromSuperviewWithoutNeedingDisplay]+0x26
+C  [liblwjgl.dylib+0xa205]  +[MacOSXKeyableWindow destroyWindow]+0xb5
+C  [Foundation+0x92e20]  __NSThreadPerformPerform+0x125
+C  [CoreFoundation+0x80821]  __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__+0x11
+C  [CoreFoundation+0x729ad]  __CFRunLoopDoSources0+0x10d
+C  [CoreFoundation+0x71fdf]  __CFRunLoopRun+0x39f
+C  [CoreFoundation+0x719f8]  CFRunLoopRunSpecific+0x128
+C  [HIToolbox+0x3256f]  RunCurrentEventLoopInMode+0xeb
+C  [HIToolbox+0x322ea]  ReceiveNextEventCommon+0x1af
+C  [HIToolbox+0x3212b]  _BlockUntilNextEventMatchingListInModeWithFilter+0x47
+C  [AppKit+0x918ab]  _DPSNextEvent+0x3d2
+C  [AppKit+0x90e58]  -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:]+0x15a
+C  [libosxapp.dylib+0x23aa]  -[NSApplicationAWT nextEventMatchingMask:untilDate:inMode:dequeue:]+0x7c
+C  [AppKit+0x86af3]  -[NSApplication run]+0x252
+C  [libosxapp.dylib+0x214d]  +[NSApplicationAWT runAWTLoopWithApp:]+0x9c
+C  [libawt_lwawt.dylib+0x45ff7]  -[AWTStarter starter:]+0x389
+C  [Foundation+0x92e20]  __NSThreadPerformPerform+0x125
+C  [CoreFoundation+0x80821]  __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__+0x11
+C  [CoreFoundation+0x729ad]  __CFRunLoopDoSources0+0x10d
+C  [CoreFoundation+0x71fdf]  __CFRunLoopRun+0x39f
+C  [CoreFoundation+0x719f8]  CFRunLoopRunSpecific+0x128
+C  [java+0x6465]  CreateExecutionEnvironment+0x367
+C  [java+0x218c]  JLI_Launch+0x7a0
+C  [java+0x84c2]  main+0x65
+C  [java+0x19e4]  start+0x34
+C  0x0000000000000007
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fcc540af800 JavaThread "AWT-Shutdown" [_thread_blocked, id=63803, stack(0x00000001eaa0c000,0x00000001eab0c000)]
+  0x00007fcc5431a000 JavaThread "Java2D Queue Flusher" daemon [_thread_blocked, id=13723, stack(0x00000001e952a000,0x00000001e962a000)]
+  0x00007fcc544c8000 JavaThread "Java2D Disposer" daemon [_thread_blocked, id=65567, stack(0x00000001ee8be000,0x00000001ee9be000)]
+=>0x00007fcc558ab800 JavaThread "AppKit Thread" daemon [_thread_in_native, id=1811, stack(0x00007fff551ae000,0x00007fff559ae000)]
+  0x00007fcc5406c000 JavaThread "Service Thread" daemon [_thread_blocked, id=18691, stack(0x00000001e3ed0000,0x00000001e3fd0000)]
+  0x00007fcc548a0000 JavaThread "C1 CompilerThread2" daemon [_thread_blocked, id=18179, stack(0x00000001e3dcd000,0x00000001e3ecd000)]
+  0x00007fcc5489f800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=17667, stack(0x00000001e3cca000,0x00000001e3dca000)]
+  0x00007fcc5484b000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=17155, stack(0x00000001e3b68000,0x00000001e3c68000)]
+  0x00007fcc55021000 JavaThread "Monitor Ctrl-Break" daemon [_thread_in_native, id=16643, stack(0x00000001e3a65000,0x00000001e3b65000)]
+  0x00007fcc5401a800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=12303, stack(0x00000001e3826000,0x00000001e3926000)]
+  0x00007fcc5581b800 JavaThread "Finalizer" daemon [_thread_blocked, id=11523, stack(0x00000001e1e08000,0x00000001e1f08000)]
+  0x00007fcc54844000 JavaThread "Reference Handler" daemon [_thread_blocked, id=11011, stack(0x00000001e1d05000,0x00000001e1e05000)]
+  0x00007fcc55803000 JavaThread "main" [_thread_in_native, id=4867, stack(0x000000010bba3000,0x000000010bca3000)]
+
+Other Threads:
+  0x00007fcc5400e000 VMThread [stack: 0x00000001e1c02000,0x00000001e1d02000] [id=10499]
+  0x00007fcc55047800 WatcherThread [stack: 0x00000001e3fd3000,0x00000001e40d3000] [id=19203]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 24576K, used 12509K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 50% used [0x0000000170980000,0x00000001715576e8,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172680000,0x00000001726e0000,0x0000000172700000)
+  to   space 512K, 0% used [0x0000000172600000,0x0000000172600000,0x0000000172680000)
+ ParOldGen       total 87552K, used 74457K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcb6600,0x0000000120980000)
+ Metaspace       used 10995K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1131K, capacity 1213K, committed 1280K, reserved 1048576K
+
+Card table byte_map: [0x000000019b400000,0x000000019b801000] byte_map_base: 0x000000019ab26000
+
+Marking Bits: (ParMarkBitMap*) 0x000000010b4f0d30
+ Begin Bits: [0x000000019bdb5000, 0x000000019ddb5000)
+ End Bits:   [0x000000019ddb5000, 0x000000019fdb5000)
+
+Polling page: 0x000000010a3ab000
+
+CodeCache: size=245760Kb used=6735Kb max_used=7229Kb free=239024Kb
+ bounds [0x000000010bcb8000, 0x000000010c488000, 0x000000011acb8000]
+ total_blobs=2055 nmethods=1526 adapters=443
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 97.079 Thread 0x00007fcc5489f800 1898       4       org.newdawn.slick.GameContainer::updateFPS (48 bytes)
+Event: 97.082 Thread 0x00007fcc5489f800 nmethod 1898 0x000000010c0c2050 code [0x000000010c0c21a0, 0x000000010c0c2298]
+Event: 97.095 Thread 0x00007fcc5484b000 1899   !   4       org.newdawn.slick.AppGameContainer::gameLoop (81 bytes)
+Event: 97.095 Thread 0x00007fcc5489f800 1900   !   4       org.lwjgl.opengl.Display::isVisible (38 bytes)
+Event: 97.098 Thread 0x00007fcc5489f800 nmethod 1900 0x000000010c0793d0 code [0x000000010c079520, 0x000000010c079778]
+Event: 97.098 Thread 0x00007fcc5489f800 1901       4       org.newdawn.slick.Music::poll (54 bytes)
+Event: 97.098 Thread 0x00007fcc5489f800 nmethod 1901 0x000000010c087fd0 code [0x000000010c088120, 0x000000010c088198]
+Event: 97.102 Thread 0x00007fcc5484b000 nmethod 1899 0x000000010c0e8b90 code [0x000000010c0e8d40, 0x000000010c0e9568]
+Event: 97.361 Thread 0x00007fcc548a0000 1902   !   3       org.lwjgl.input.Mouse::isButtonDown (61 bytes)
+Event: 97.362 Thread 0x00007fcc548a0000 nmethod 1902 0x000000010bf1d210 code [0x000000010bf1d3c0, 0x000000010bf1d9b8]
+
+GC Heap History (10 events):
+Event: 86.474 GC heap before
+{Heap before GC invocations=150 (full 0):
+ PSYoungGen      total 24576K, used 24448K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 100% used [0x0000000170980000,0x0000000172100000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172600000,0x0000000172660000,0x0000000172680000)
+  to   space 512K, 0% used [0x0000000172680000,0x0000000172680000,0x0000000172700000)
+ ParOldGen       total 87552K, used 74393K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 84% used [0x000000011b400000,0x000000011fca6600,0x0000000120980000)
+ Metaspace       used 10984K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+Event: 86.477 GC heap after
+Heap after GC invocations=150 (full 0):
+ PSYoungGen      total 24576K, used 384K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 0% used [0x0000000170980000,0x0000000170980000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172680000,0x00000001726e0000,0x0000000172700000)
+  to   space 512K, 0% used [0x0000000172600000,0x0000000172600000,0x0000000172680000)
+ ParOldGen       total 87552K, used 74409K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 84% used [0x000000011b400000,0x000000011fcaa600,0x0000000120980000)
+ Metaspace       used 10984K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+}
+Event: 89.191 GC heap before
+{Heap before GC invocations=151 (full 0):
+ PSYoungGen      total 24576K, used 24448K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 100% used [0x0000000170980000,0x0000000172100000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172680000,0x00000001726e0000,0x0000000172700000)
+  to   space 512K, 0% used [0x0000000172600000,0x0000000172600000,0x0000000172680000)
+ ParOldGen       total 87552K, used 74409K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 84% used [0x000000011b400000,0x000000011fcaa600,0x0000000120980000)
+ Metaspace       used 10984K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+Event: 89.194 GC heap after
+Heap after GC invocations=151 (full 0):
+ PSYoungGen      total 24576K, used 352K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 0% used [0x0000000170980000,0x0000000170980000,0x0000000172100000)
+  from space 512K, 68% used [0x0000000172600000,0x0000000172658000,0x0000000172680000)
+  to   space 512K, 0% used [0x0000000172680000,0x0000000172680000,0x0000000172700000)
+ ParOldGen       total 87552K, used 74425K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcae600,0x0000000120980000)
+ Metaspace       used 10984K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+}
+Event: 91.893 GC heap before
+{Heap before GC invocations=152 (full 0):
+ PSYoungGen      total 24576K, used 24416K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 100% used [0x0000000170980000,0x0000000172100000,0x0000000172100000)
+  from space 512K, 68% used [0x0000000172600000,0x0000000172658000,0x0000000172680000)
+  to   space 512K, 0% used [0x0000000172680000,0x0000000172680000,0x0000000172700000)
+ ParOldGen       total 87552K, used 74425K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcae600,0x0000000120980000)
+ Metaspace       used 10984K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+Event: 91.896 GC heap after
+Heap after GC invocations=152 (full 0):
+ PSYoungGen      total 24576K, used 384K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 0% used [0x0000000170980000,0x0000000170980000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172680000,0x00000001726e0000,0x0000000172700000)
+  to   space 512K, 0% used [0x0000000172600000,0x0000000172600000,0x0000000172680000)
+ ParOldGen       total 87552K, used 74441K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcb2600,0x0000000120980000)
+ Metaspace       used 10984K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+}
+Event: 94.610 GC heap before
+{Heap before GC invocations=153 (full 0):
+ PSYoungGen      total 24576K, used 24448K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 100% used [0x0000000170980000,0x0000000172100000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172680000,0x00000001726e0000,0x0000000172700000)
+  to   space 512K, 0% used [0x0000000172600000,0x0000000172600000,0x0000000172680000)
+ ParOldGen       total 87552K, used 74441K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcb2600,0x0000000120980000)
+ Metaspace       used 10989K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+Event: 94.613 GC heap after
+Heap after GC invocations=153 (full 0):
+ PSYoungGen      total 24576K, used 384K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 0% used [0x0000000170980000,0x0000000170980000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172600000,0x0000000172660000,0x0000000172680000)
+  to   space 512K, 0% used [0x0000000172680000,0x0000000172680000,0x0000000172700000)
+ ParOldGen       total 87552K, used 74441K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcb2600,0x0000000120980000)
+ Metaspace       used 10989K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+}
+Event: 97.295 GC heap before
+{Heap before GC invocations=154 (full 0):
+ PSYoungGen      total 24576K, used 24448K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 100% used [0x0000000170980000,0x0000000172100000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172600000,0x0000000172660000,0x0000000172680000)
+  to   space 512K, 0% used [0x0000000172680000,0x0000000172680000,0x0000000172700000)
+ ParOldGen       total 87552K, used 74441K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcb2600,0x0000000120980000)
+ Metaspace       used 10989K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+Event: 97.298 GC heap after
+Heap after GC invocations=154 (full 0):
+ PSYoungGen      total 24576K, used 384K [0x0000000170980000, 0x0000000172700000, 0x000000019b400000)
+  eden space 24064K, 0% used [0x0000000170980000,0x0000000170980000,0x0000000172100000)
+  from space 512K, 75% used [0x0000000172680000,0x00000001726e0000,0x0000000172700000)
+  to   space 512K, 0% used [0x0000000172600000,0x0000000172600000,0x0000000172680000)
+ ParOldGen       total 87552K, used 74457K [0x000000011b400000, 0x0000000120980000, 0x0000000170980000)
+  object space 87552K, 85% used [0x000000011b400000,0x000000011fcb6600,0x0000000120980000)
+ Metaspace       used 10989K, capacity 11149K, committed 11264K, reserved 1058816K
+  class space    used 1130K, capacity 1213K, committed 1280K, reserved 1048576K
+}
+
+Deoptimization events (10 events):
+Event: 67.643 Thread 0x00007fcc55803000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010bfee5f4 method=java.awt.image.ComponentColorModel.extractComponent(Ljava/lang/Object;II)I @ 497
+Event: 67.654 Thread 0x00007fcc55803000 Uncommon trap: reason=speculate_class_check action=maybe_recompile pc=0x000000010be8dae0 method=java.awt.image.Raster.<init>(Ljava/awt/image/SampleModel;Ljava/awt/image/DataBuffer;Ljava/awt/Rectangle;Ljava/awt/Point;Ljava/awt/image/Raster;)V @ 207
+Event: 67.665 Thread 0x00007fcc55803000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010c2a7460 method=sun.awt.image.ByteComponentRaster.verify()V @ 281
+Event: 67.681 Thread 0x00007fcc55803000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010bffe38c method=Room.checkCollision(LCharacter;)LEntity; @ 33
+Event: 67.772 Thread 0x00007fcc54844000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010c219b38 method=java.lang.ref.Reference.tryHandlePending(Z)Z @ 104
+Event: 69.999 Thread 0x00007fcc55803000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010bf2ec70 method=java.lang.AbstractStringBuilder.append(I)Ljava/lang/AbstractStringBuilder; @ 16
+Event: 69.999 Thread 0x00007fcc55803000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010c347724 method=java.lang.Integer.getChars(II[C)V @ 7
+Event: 71.394 Thread 0x00007fcc55931800 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010c33fcb0 method=sun.awt.AppContext.get(Ljava/lang/Object;)Ljava/lang/Object; @ 21
+Event: 95.811 Thread 0x00007fcc55803000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010bee4778 method=org.newdawn.slick.Input.poll(II)V @ 1039
+Event: 98.629 Thread 0x00007fcc55803000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000010c0e94e0 method=org.newdawn.slick.AppGameContainer.gameLoop()V @ 60
+
+Internal exceptions (10 events):
+Event: 0.461 Thread 0x00007fcc55803000 Exception <a 'java/lang/NoSuchFieldError': method resolution failed> (0x0000000170f0ff70) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/methodHandles.cpp, line 1146]
+Event: 1.008 Thread 0x00007fcc55803000 Exception <a 'java/io/FileNotFoundException'> (0x0000000170fb2b08) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 1.008 Thread 0x00007fcc55803000 Exception <a 'java/io/FileNotFoundException'> (0x0000000170fb3690) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jni.cpp, line 709]
+Event: 1.101 Thread 0x00007fcc55803000 Exception <a 'java/security/PrivilegedActionException'> (0x0000000171210e60) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 1.101 Thread 0x00007fcc55803000 Exception <a 'java/security/PrivilegedActionException'> (0x0000000171212a48) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 1.101 Thread 0x00007fcc55803000 Exception <a 'java/security/PrivilegedActionException'> (0x0000000171213b68) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 1.102 Thread 0x00007fcc55803000 Exception <a 'java/security/PrivilegedActionException'> (0x0000000171219260) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 1.102 Thread 0x00007fcc55803000 Exception <a 'java/security/PrivilegedActionException'> (0x0000000171219eb8) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 1.102 Thread 0x00007fcc55803000 Exception <a 'java/security/PrivilegedActionException'> (0x000000017121aae0) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 4.856 Thread 0x00007fcc55803000 Exception <a 'java/lang/NoClassDefFoundError': net/java/games/input/ControllerEnvironment> (0x000000017219e2e8) thrown at [/Users/java_re/workspace/8-2-build-macosx-x86_64/jdk8u121/8372/hotspot/src/share/vm/classfile/systemDictionary.cpp, line 199]
+
+Events (10 events):
+Event: 97.242 Executing VM operation: RevokeBias done
+Event: 97.242 Thread 0x00007fcc540af800 Thread exited: 0x00007fcc540af800
+Event: 97.295 Executing VM operation: ParallelGCFailedAllocation
+Event: 97.298 Executing VM operation: ParallelGCFailedAllocation done
+Event: 97.332 Thread 0x00007fcc540af800 Thread added: 0x00007fcc540af800
+Event: 98.629 Thread 0x00007fcc55803000 Uncommon trap: trap_request=0xffffff65 fr.pc=0x000000010c0e94e0
+Event: 98.629 Thread 0x00007fcc55803000 DEOPT PACKING pc=0x000000010c0e94e0 sp=0x000000010bca2830
+Event: 98.629 Thread 0x00007fcc55803000 DEOPT UNPACKING pc=0x000000010bcbd229 sp=0x000000010bca27f8 mode 2
+Event: 98.634 loading class org/lwjgl/opengl/CallbackUtil
+Event: 98.634 loading class org/lwjgl/opengl/CallbackUtil done
+
+
+Dynamic libraries:
+0x0000000008c8b000 	/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa
+0x0000000008c8b000 	/System/Library/Frameworks/Security.framework/Versions/A/Security
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices
+0x0000000008c8b000 	/usr/lib/libz.1.dylib
+0x0000000008c8b000 	/usr/lib/libSystem.B.dylib
+0x0000000008c8b000 	/usr/lib/libobjc.A.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+0x0000000008c8b000 	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation
+0x0000000008c8b000 	/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+0x0000000008c8b000 	/System/Library/Frameworks/CoreData.framework/Versions/A/CoreData
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/RemoteViewServices.framework/Versions/A/RemoteViewServices
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/UIFoundation.framework/Versions/A/UIFoundation
+0x0000000008c8b000 	/System/Library/Frameworks/IOSurface.framework/Versions/A/IOSurface
+0x0000000008c8b000 	/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox
+0x0000000008c8b000 	/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/DataDetectorsCore.framework/Versions/A/DataDetectorsCore
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/DesktopServicesPriv
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox
+0x0000000008c8b000 	/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SpeechRecognition.framework/Versions/A/SpeechRecognition
+0x0000000008c8b000 	/usr/lib/libauto.dylib
+0x0000000008c8b000 	/usr/lib/libicucore.A.dylib
+0x0000000008c8b000 	/usr/lib/libxml2.2.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreUI.framework/Versions/A/CoreUI
+0x0000000008c8b000 	/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio
+0x0000000008c8b000 	/System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration
+0x0000000008c8b000 	/usr/lib/liblangid.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/MultitouchSupport.framework/Versions/A/MultitouchSupport
+0x0000000008c8b000 	/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+0x0000000008c8b000 	/usr/lib/libDiagnosticMessagesClient.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/PerformanceAnalysis.framework/Versions/A/PerformanceAnalysis
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/GenerationalStorage.framework/Versions/A/GenerationalStorage
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/Sharing.framework/Versions/A/Sharing
+0x0000000008c8b000 	/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics
+0x0000000008c8b000 	/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText
+0x0000000008c8b000 	/System/Library/Frameworks/ImageIO.framework/Versions/A/ImageIO
+0x0000000008c8b000 	/usr/lib/libextension.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/Backup.framework/Versions/A/Backup
+0x0000000008c8b000 	/usr/lib/libarchive.2.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/CFNetwork.framework/Versions/A/CFNetwork
+0x0000000008c8b000 	/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration
+0x0000000008c8b000 	/usr/lib/libCRFSuite.dylib
+0x0000000008c8b000 	/usr/lib/libc++.1.dylib
+0x0000000008c8b000 	/usr/lib/libc++abi.dylib
+0x0000000008c8b000 	/usr/lib/system/libcache.dylib
+0x0000000008c8b000 	/usr/lib/system/libcommonCrypto.dylib
+0x0000000008c8b000 	/usr/lib/system/libcompiler_rt.dylib
+0x0000000008c8b000 	/usr/lib/system/libcopyfile.dylib
+0x0000000008c8b000 	/usr/lib/system/libcorecrypto.dylib
+0x0000000008c8b000 	/usr/lib/system/libdispatch.dylib
+0x0000000008c8b000 	/usr/lib/system/libdyld.dylib
+0x0000000008c8b000 	/usr/lib/system/libkeymgr.dylib
+0x0000000008c8b000 	/usr/lib/system/liblaunch.dylib
+0x0000000008c8b000 	/usr/lib/system/libmacho.dylib
+0x0000000008c8b000 	/usr/lib/system/libquarantine.dylib
+0x0000000008c8b000 	/usr/lib/system/libremovefile.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_asl.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_blocks.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_c.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_configuration.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_coreservices.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_coretls.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_dnssd.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_info.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_kernel.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_m.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_malloc.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_network.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_networkextension.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_notify.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_platform.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_pthread.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_sandbox.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_secinit.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_stats.dylib
+0x0000000008c8b000 	/usr/lib/system/libsystem_trace.dylib
+0x0000000008c8b000 	/usr/lib/system/libunc.dylib
+0x0000000008c8b000 	/usr/lib/system/libunwind.dylib
+0x0000000008c8b000 	/usr/lib/system/libxpc.dylib
+0x0000000008c8b000 	/usr/lib/libbz2.1.0.dylib
+0x0000000008c8b000 	/usr/lib/liblzma.5.dylib
+0x0000000008c8b000 	/usr/lib/libbsm.0.dylib
+0x0000000008c8b000 	/usr/lib/libsqlite3.dylib
+0x0000000008c8b000 	/usr/lib/system/libkxld.dylib
+0x0000000008c8b000 	/usr/lib/libxar.1.dylib
+0x0000000008c8b000 	/usr/lib/libpam.2.dylib
+0x0000000008c8b000 	/usr/lib/libOpenScriptingUtil.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/FSEvents
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices
+0x0000000008c8b000 	/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices
+0x0000000008c8b000 	/System/Library/Frameworks/NetFS.framework/Versions/A/NetFS
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/NetAuth.framework/Versions/A/NetAuth
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/login.framework/Versions/A/Frameworks/loginsupport.framework/Versions/A/loginsupport
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/TCC.framework/Versions/A/TCC
+0x0000000008c8b000 	/usr/lib/libmecabra.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/ATS
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ColorSync.framework/Versions/A/ColorSync
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/HIServices
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/LangAnalysis
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/PrintCore
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/SpeechSynthesis
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/vecLib
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLinearAlgebra.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontParser.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontRegistry.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/AppleVPA.framework/Versions/A/AppleVPA
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/AppleJPEG.framework/Versions/A/AppleJPEG
+0x0000000008c8b000 	/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libGIF.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libJP2.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ImageIO.framework/Versions/A/Resources/libRadiance.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGFXShared.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLImage.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCVMSPluginSupport.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreVMClient.dylib
+0x0000000008c8b000 	/usr/lib/libcups.2.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos
+0x0000000008c8b000 	/System/Library/Frameworks/GSS.framework/Versions/A/GSS
+0x0000000008c8b000 	/usr/lib/libresolv.9.dylib
+0x0000000008c8b000 	/usr/lib/libiconv.2.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/Heimdal.framework/Versions/A/Heimdal
+0x0000000008c8b000 	/usr/lib/libheimdal-asn1.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CommonAuth.framework/Versions/A/CommonAuth
+0x0000000008c8b000 	/System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/CFOpenDirectory
+0x0000000008c8b000 	/System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/LanguageModeling.framework/Versions/A/LanguageModeling
+0x0000000008c8b000 	/usr/lib/libcmph.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ServiceManagement.framework/Versions/A/ServiceManagement
+0x0000000008c8b000 	/usr/lib/libxslt.1.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Ink.framework/Versions/A/Ink
+0x0000000008c8b000 	/System/Library/Frameworks/QuartzCore.framework/Versions/A/Frameworks/CoreImage.framework/Versions/A/CoreImage
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CrashReporterSupport.framework/Versions/A/CrashReporterSupport
+0x0000000008c8b000 	/System/Library/Frameworks/OpenCL.framework/Versions/A/OpenCL
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/FaceCore.framework/Versions/A/FaceCore
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/Ubiquity.framework/Versions/A/Ubiquity
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/IconServices.framework/Versions/A/IconServices
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/ChunkingLibrary.framework/Versions/A/ChunkingLibrary
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Apple80211
+0x0000000008c8b000 	/System/Library/Frameworks/CoreWLAN.framework/Versions/A/CoreWLAN
+0x0000000008c8b000 	/System/Library/Frameworks/IOBluetooth.framework/Versions/A/IOBluetooth
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreWiFi.framework/Versions/A/CoreWiFi
+0x0000000008c8b000 	/System/Library/Frameworks/CoreBluetooth.framework/Versions/A/CoreBluetooth
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/DebugSymbols.framework/Versions/A/DebugSymbols
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreSymbolication.framework/Versions/A/CoreSymbolication
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/Symbolication.framework/Versions/A/Symbolication
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/SpeechRecognitionCore.framework/Versions/A/SpeechRecognitionCore
+0x000000010ac00000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/server/libjvm.dylib
+0x0000000008c8b000 	/usr/lib/libstdc++.6.dylib
+0x000000010a368000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libverify.dylib
+0x000000010a376000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libjava.dylib
+0x000000010a3ac000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libinstrument.dylib
+0x000000010bcaf000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libzip.dylib
+0x00000001e1f0a000 	/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/JavaRuntimeSupport
+0x00000001e1f20000 	/System/Library/Frameworks/JavaVM.framework/Versions/A/Frameworks/JavaNativeFoundation.framework/Versions/A/JavaNativeFoundation
+0x00000001e1f34000 	/System/Library/Frameworks/JavaVM.framework/Versions/A/JavaVM
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon
+0x00000001e1f40000 	/System/Library/PrivateFrameworks/JavaLaunching.framework/Versions/A/JavaLaunching
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/CommonPanels.framework/Versions/A/CommonPanels
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Help.framework/Versions/A/Help
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ImageCapture.framework/Versions/A/ImageCapture
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/OpenScripting.framework/Versions/A/OpenScripting
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework/Versions/A/Print
+0x0000000008c8b000 	/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SecurityHI.framework/Versions/A/SecurityHI
+0x00000001e3c6a000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libnet.dylib
+0x00000001e40d5000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libawt.dylib
+0x00000001e417d000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/./libmlib_image.dylib
+0x00000001e4249000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libawt_lwawt.dylib
+0x00000001e4300000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/./libosxapp.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/ExceptionHandling.framework/Versions/A/ExceptionHandling
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreServicesInternal.framework/Versions/A/CoreServicesInternal
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CloudDocs.framework/Versions/A/CloudDocs
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreDuet.framework/Versions/A/CoreDuet
+0x0000000008c8b000 	/System/Library/Frameworks/CloudKit.framework/Versions/A/CloudKit
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/ProtocolBuffer.framework/Versions/A/ProtocolBuffer
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreDuetDaemonProtocol.framework/Versions/A/CoreDuetDaemonProtocol
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreDuetDebugLogging.framework/Versions/A/CoreDuetDebugLogging
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/MMCS.framework/Versions/A/MMCS
+0x0000000008c8b000 	/System/Library/Frameworks/CoreLocation.framework/Versions/A/CoreLocation
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/ProtectedCloudStorage.framework/Versions/A/ProtectedCloudStorage
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/GeoServices.framework/Versions/A/GeoServices
+0x0000000008c8b000 	/System/Library/Frameworks/CoreGraphics.framework/Versions/A/Resources/libCGCMS.A.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/CoreGraphics.framework/Versions/A/Resources/libRIP.A.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/CoreGraphics.framework/Versions/A/Resources/libCGXType.A.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenCL.framework/Versions/A/Libraries/libcldcpuengine.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/DiskImages.framework/Versions/A/DiskImages
+0x0000000008c8b000 	/System/Library/Frameworks/DiscRecording.framework/Versions/A/DiscRecording
+0x0000000008c8b000 	/usr/lib/libcsfde.dylib
+0x0000000008c8b000 	/usr/lib/libcurl.4.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/MediaKit.framework/Versions/A/MediaKit
+0x0000000008c8b000 	/usr/lib/libCoreStorage.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/EFILogin.framework/Versions/A/EFILogin
+0x0000000008c8b000 	/usr/lib/libutil.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/FindMyDevice.framework/Versions/A/FindMyDevice
+0x0000000008c8b000 	/System/Library/Frameworks/LDAP.framework/Versions/A/LDAP
+0x0000000008c8b000 	/usr/lib/libsasl2.2.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CoreDaemon.framework/Versions/B/CoreDaemon
+0x0000000008c8b000 	/usr/lib/libcrypto.0.9.8.dylib
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/AppleSRP.framework/Versions/A/AppleSRP
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/TrustEvaluationAgent.framework/Versions/A/TrustEvaluationAgent
+0x00000001e7595000 	cl_kernels
+0x00000001e7597000 	/System/Library/Frameworks/OpenCL.framework/Versions/A/Libraries/ImageFormats/unorm8_bgra.dylib
+0x00000001e7587000 	cl_kernels
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/FamilyControls.framework/Versions/A/FamilyControls
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Frameworks/CommerceCore.framework/Versions/A/CommerceCore
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/SystemAdministration.framework/Versions/A/SystemAdministration
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/AppContainer.framework/Versions/A/AppContainer
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/SecCodeWrapper.framework/Versions/A/SecCodeWrapper
+0x0000000008c8b000 	/System/Library/Frameworks/DirectoryService.framework/Versions/A/DirectoryService
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/LoginUIKit.framework/Versions/A/Frameworks/LoginUICore.framework/Versions/A/LoginUICore
+0x0000000008c8b000 	/usr/lib/libodfde.dylib
+0x00000001e88b9000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libfontmanager.dylib
+0x00000001e8920000 	/Users/wifinaynay/Desktop/3J.Nightmare-Dungeon-final3/lib/natives/macosx/liblwjgl.dylib
+0x00000001e69f3000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libjawt.dylib
+0x00000001e89a2000 	/Users/wifinaynay/Desktop/3J.Nightmare-Dungeon-final3/lib/natives/macosx/openal.dylib
+0x00000001e8a11000 	/System/Library/Components/CoreAudio.component/Contents/MacOS/CoreAudio
+0x00000001e6a0b000 	/System/Library/Extensions/AppleHDA.kext/Contents/PlugIns/AppleHDAHALPlugIn.bundle/Contents/MacOS/AppleHDAHALPlugIn
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Resources/GLEngine.bundle/GLEngine
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLProgrammability.dylib
+0x00000001ecae7000 	/System/Library/Extensions/AppleIntelBDWGraphicsGLDriver.bundle/Contents/MacOS/AppleIntelBDWGraphicsGLDriver
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/IOAccelerator.framework/Versions/A/IOAccelerator
+0x0000000008c8b000 	/System/Library/PrivateFrameworks/GPUSupport.framework/Versions/A/Libraries/libGPUSupportMercury.dylib
+0x0000000008c8b000 	/System/Library/Frameworks/OpenGL.framework/Versions/A/Resources/GLRendererFloat.bundle/GLRendererFloat
+0x00000001e2062000 	/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/libnio.dylib
+
+VM Arguments:
+jvm_args: -Djava.library.path=/Users/wifinaynay/Desktop/3J.Nightmare-Dungeon-final3/lib/natives/macosx -javaagent:/Applications/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=52349:/Applications/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 
+java_command: Game
+java_class_path (initial): /Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/deploy.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/cldrdata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/dnsns.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/jaccess.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/jfxrt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/localedata.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/nashorn.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/sunec.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/sunjce_provider.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/sunpkcs11.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/ext/zipfs.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/javaws.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/jfxswt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/management-agent.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/plugin.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/lib/ant-javafx.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin
+SHELL=/bin/bash
+
+Signal Handlers:
+SIGSEGV: [libjvm.dylib+0x5b1141], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_ONSTACK|SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.dylib+0x5b1141], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.dylib+0x487bc4], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.dylib+0x487bc4], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.dylib+0x487bc4], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.dylib+0x487bc4], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.dylib+0x4876e2], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.dylib+0x485cb9], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.dylib+0x485cb9], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.dylib+0x485cb9], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.dylib+0x485cb9], sa_mask[0]=11111111011111110111111111111111, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Bsduname:Darwin 14.5.0 Darwin Kernel Version 14.5.0: Tue Apr 11 16:12:42 PDT 2017; root:xnu-2782.50.9.2.3~1/RELEASE_X86_64 x86_64
+rlimit: STACK 8192k, CORE 0k, NPROC 709, NOFILE 10240, AS infinity
+load average:2.40 2.42 2.39
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 61 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx
+
+Memory: 4k page, physical 8388608k(64188k free)
+
+/proc/meminfo:
+
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.121-b13) for bsd-amd64 JRE (1.8.0_121-b13), built on Dec 12 2016 20:39:32 by "java_re" with gcc 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2336.11.00)
+
+time: Sat Dec 16 22:38:49 2017
+elapsed time: 98 seconds (0d 0h 1m 38s)
+
